@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c8f1gu3mqa3jj"]
+[gd_scene load_steps=23 format=3 uid="uid://cf7uo1n1y32ay"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_h30ls"]
 [ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/tiles/TileFactory.gd" id="2_bhxfu"]
@@ -31,7 +31,7 @@ script = ExtResource("1_h30ls")
 
 [node name="CardFactory" parent="." node_paths=PackedStringArray("uiCardContainer") instance=ExtResource("2_dfrp1")]
 position = Vector2(-137.65247, 131.40872)
-uiCardContainer = NodePath("../CanvasLayer/Global margin/VBoxContainer/Card container/HBoxContainer")
+uiCardContainer = NodePath("../CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Card container/HBoxContainer")
 
 [node name="Tile factory" type="Node2D" parent="."]
 script = ExtResource("2_bhxfu")
@@ -62,82 +62,22 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Global margin"]
 layout_mode = 2
 
-[node name="Main container" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer"]
+[node name="Left margin" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_right = 20
 
-[node name="HboxContainer" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Left margin"]
 layout_mode = 2
 alignment = 2
 
-[node name="Countdown margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin/VBoxContainer"]
-layout_mode = 2
-text = "Bring this number to 0 by any means possible"
-label_settings = ExtResource("8_6utgn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Countdown margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 16
-
-[node name="Countdown" type="Label" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin/VBoxContainer/Countdown margin"]
-layout_mode = 2
-text = "100"
-label_settings = SubResource("LabelSettings_gldp8")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("10_e5nrv")
-
-[node name="Right area" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer"]
-layout_mode = 2
-
-[node name="Tile columns margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area/Tile columns margin"]
-layout_mode = 2
-theme_override_constants/separation = 0
-script = ExtResource("11_rpedi")
-
-[node name="Submit button container" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area" instance=ExtResource("8_rpedi")]
-layout_mode = 2
-signal_on_button_pressed = "play_phase_submitted"
-
-[node name="Card container" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Card container"]
-layout_mode = 2
-alignment = 1
-
-[node name="Footer container" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container"]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="Draw pile margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer"]
+[node name="Draw pile margin" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer/Left margin/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = -15
 theme_override_constants/margin_bottom = -15
 
-[node name="Draw icon" type="TextureButton" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Draw pile margin"]
+[node name="Draw icon" type="TextureButton" parent="CanvasLayer/Global margin/HBoxContainer/Left margin/VBoxContainer/Draw pile margin"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -145,14 +85,56 @@ texture_normal = ExtResource("9_by04b")
 texture_pressed = ExtResource("10_yuyms")
 script = ExtResource("11_byndm")
 
-[node name="Hands" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer" node_paths=PackedStringArray("number_tiles_container", "operator_tiles_container")]
+[node name="Middle margin" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin"]
+layout_mode = 2
+
+[node name="Countdown container" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Countdown container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer"]
+layout_mode = 2
+text = "Bring this number to 0 by any means possible"
+label_settings = ExtResource("8_6utgn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Countdown margin" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="Countdown" type="Label" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_gldp8")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_e5nrv")
+
+[node name="Card container" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Card container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Hand container" type="VBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer" node_paths=PackedStringArray("number_tiles_container", "operator_tiles_container")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("12_tf1n7")
 number_tiles_container = NodePath("Number hand background/Number hand container")
 operator_tiles_container = NodePath("Operator hand background/Operator hand container")
 
-[node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands"]
+[node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Hand container"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("13_hn3f4")
@@ -161,7 +143,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Number hand container" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands/Number hand background"]
+[node name="Number hand container" type="HBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Hand container/Number hand background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -171,7 +153,8 @@ grow_vertical = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands"]
+[node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Hand container"]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("13_hn3f4")
@@ -180,7 +163,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands/Operator hand background"]
+[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Middle margin/VBoxContainer/Hand container/Operator hand background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -190,14 +173,40 @@ grow_vertical = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Discard pile margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer"]
+[node name="Right margin" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Right margin"]
+layout_mode = 2
+alignment = 2
+
+[node name="Tile columns" type="VBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Tile columns margin" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer/Tile columns"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer/Tile columns/Tile columns margin"]
+layout_mode = 2
+theme_override_constants/separation = 0
+script = ExtResource("11_rpedi")
+
+[node name="Submit button container" parent="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer/Tile columns" instance=ExtResource("8_rpedi")]
+layout_mode = 2
+signal_on_button_pressed = "play_phase_submitted"
+
+[node name="Spacer" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Discard pile margin" type="MarginContainer" parent="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
 size_flags_stretch_ratio = 0.3
 theme_override_constants/margin_right = -14
 theme_override_constants/margin_bottom = -14
 
-[node name="Discard icon" type="TextureButton" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Discard pile margin"]
+[node name="Discard icon" type="TextureButton" parent="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer/Discard pile margin"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -205,4 +214,4 @@ texture_normal = ExtResource("14_4v0yt")
 texture_pressed = ExtResource("15_lhm7q")
 script = ExtResource("16_32rov")
 
-[editable path="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area/Submit button container"]
+[editable path="CanvasLayer/Global margin/HBoxContainer/Right margin/VBoxContainer/Tile columns/Submit button container"]
