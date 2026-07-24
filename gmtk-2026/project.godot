@@ -11,8 +11,20 @@ config_version=5
 [application]
 
 config/name="GMTK-2026"
+run/main_scene="uid://dfsmgxuitgpp"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SignalBus="*res://assets/scripts/generals/SignalBus.gd"
+Constants="*res://assets/scripts/generals/Constants.gd"
+AnimationUtils="*res://assets/scripts/animation/AnimationUtils.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
 
 [rendering]
 

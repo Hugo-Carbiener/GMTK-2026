@@ -1,0 +1,133 @@
+[gd_scene load_steps=17 format=3 uid="uid://dfsmgxuitgpp"]
+
+[ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_ye1mc"]
+[ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="2_ckblc"]
+[ext_resource type="PackedScene" uid="uid://hpq21508uwp0" path="res://assets/scenes/ui/base-texture-button.tscn" id="2_dyaho"]
+[ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/tiles/TileFactory.gd" id="2_xitjf"]
+[ext_resource type="Script" uid="uid://cshuev5xwvsfp" path="res://assets/scripts/tiles/models/OperatorTileModel.gd" id="3_nwww1"]
+[ext_resource type="Resource" uid="uid://v67olj756ry8" path="res://assets/resources/tile-models/operator-tile-models/DivTile.tres" id="4_7e3sx"]
+[ext_resource type="Resource" uid="uid://dpyblim6uor2s" path="res://assets/resources/tile-models/operator-tile-models/MinusTile.tres" id="5_67jys"]
+[ext_resource type="Resource" uid="uid://c23g4m542nqvk" path="res://assets/resources/tile-models/operator-tile-models/MultTile.tres" id="6_2b6ly"]
+[ext_resource type="Resource" uid="uid://cpnvtb6fqg1q8" path="res://assets/resources/tile-models/operator-tile-models/PlusTile.tres" id="7_2rwxs"]
+[ext_resource type="Texture2D" uid="uid://dsmtvac3yg6v2" path="res://assets/sprites/UI_draw-pile-icon.png" id="9_67jys"]
+[ext_resource type="Texture2D" uid="uid://dil0gufilg5hs" path="res://assets/sprites/UI_draw-pile-icon-pressed.png" id="10_2b6ly"]
+[ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/HandManager.gd" id="10_nwww1"]
+[ext_resource type="Script" uid="uid://bmagvmlookhwy" path="res://assets/scripts/piles/DrawPile.gd" id="11_2rwxs"]
+[ext_resource type="Texture2D" uid="uid://cnlyi5wse4n1l" path="res://assets/sprites/UI_discard-pile-icon.png" id="14_2rwxs"]
+[ext_resource type="Texture2D" uid="uid://4d52w72s1skf" path="res://assets/sprites/UI_discard-pile-icon-pressed.png" id="15_t33da"]
+[ext_resource type="Script" uid="uid://by320l0l85otw" path="res://assets/scripts/piles/DiscardPile.gd" id="16_t33da"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ye1mc")
+
+[node name="Tile factory" type="Node2D" parent="."]
+script = ExtResource("2_xitjf")
+operator_tile_models = Array[ExtResource("3_nwww1")]([ExtResource("4_7e3sx"), ExtResource("5_67jys"), ExtResource("6_2b6ly"), ExtResource("7_2rwxs")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87870693, 0.7167938, 0.551568, 1)
+
+[node name="Global margin" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin"]
+layout_mode = 2
+
+[node name="Main container" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+
+[node name="Submit button container" parent="CanvasLayer/Global margin/VBoxContainer/Main container" instance=ExtResource("2_dyaho")]
+layout_mode = 2
+signal_on_button_pressed = "play_phase_submitted"
+
+[node name="Footer container" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Draw pile margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer"]
+layout_mode = 2
+
+[node name="Draw icon" type="TextureButton" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Draw pile margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("9_67jys")
+texture_pressed = ExtResource("10_2b6ly")
+script = ExtResource("11_2rwxs")
+
+[node name="Hands" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer" node_paths=PackedStringArray("number_tiles_container", "operator_tiles_container")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("10_nwww1")
+number_tiles_container = NodePath("Number hand background/Number hand container")
+operator_tiles_container = NodePath("Operator hand background/Operator hand container")
+
+[node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ckblc")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Number hand container" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands/Number hand background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_ckblc")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Hands/Operator hand background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Discard pile margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer"]
+layout_mode = 2
+
+[node name="Discard icon" type="TextureButton" parent="CanvasLayer/Global margin/VBoxContainer/Footer container/HBoxContainer/Discard pile margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("14_2rwxs")
+texture_pressed = ExtResource("15_t33da")
+script = ExtResource("16_t33da")
+
+[editable path="CanvasLayer/Global margin/VBoxContainer/Main container/Submit button container"]

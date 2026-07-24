@@ -1,0 +1,6 @@
+extends Node
+
+var MIN_NUMBER_TILE = 1;
+var MAX_NUMBER_TILE = 10;
+
+var DEFAULT_TILE_DRAWN = 7;
