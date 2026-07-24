@@ -21,8 +21,9 @@ func init_signals():
 
 func start_level():
 	current_phase = Phases.PLAY_PHASE;
-	TileFactory.instance.init();
-	DrawPile.instance.init();
+	CardFactory.instance.init();
+	#TileFactory.instance.init();
+	#DrawPile.instance.init();
 	start_phase(current_phase);
 
 static func get_next_phase() -> int:

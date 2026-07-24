@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwv4q5cw6t2pn"]
+
+[ext_resource type="Script" uid="uid://qk8nwfcirctb" path="res://assets/scripts/cards/CardFactory.gd" id="1_pkgvj"]
+[ext_resource type="Script" uid="uid://blef3j5kwcfvq" path="res://assets/scripts/cards/CardController.gd" id="2_usbl4"]
+
+[node name="CardFactory" type="Node2D"]
+script = ExtResource("1_pkgvj")
+cardModels = Array[ExtResource("2_usbl4")]([null, null, null])
