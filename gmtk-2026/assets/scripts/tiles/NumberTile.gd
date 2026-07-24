@@ -1,6 +1,6 @@
 class_name NumberTile extends Tile
 
-const number_tile_scene : PackedScene = preload("res://assets/scenes/components/operator-tile.tscn");
+const number_tile_scene : PackedScene = preload("res://assets/scenes/components/number-tile.tscn");
 
 var number : int;
 
@@ -17,3 +17,9 @@ func setup(tile_number : int):
 	self.number = tile_number;
 	self.value = str(tile_number);
 	self.label.text = str(tile_number);
+
+func on_click():
+	if status == TileFactory.TileStatus.NOT_SELECTED:
+		SignalBus.number_tile_selected.emit(self);
+	else:
+		SignalBus.number_tile_unselected.emit(self);
