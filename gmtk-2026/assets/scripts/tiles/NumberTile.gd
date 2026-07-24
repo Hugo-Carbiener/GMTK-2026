@@ -1,6 +1,6 @@
 class_name NumberTile extends Tile
 
-const number_tile_scene : PackedScene = preload("E:/dev/GMTK-2026/gmtk-2026/assets/scenes/components/number-tile.tscn");
+const number_tile_scene : PackedScene = preload("res://assets/scenes/components/operator-tile.tscn");
 
 var number : int;
 

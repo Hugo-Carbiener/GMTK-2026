@@ -1,6 +1,6 @@
 class_name OperatorTile extends Tile
 
-const operator_tile_scene : PackedScene = preload("E:/dev/GMTK-2026/gmtk-2026/assets/scenes/components/operator-tile.tscn");
+const operator_tile_scene : PackedScene = preload("res://assets/scenes/components/number-tile.tscn");
 
 var operator_type : TileFactory.OperatorTileType;
 
