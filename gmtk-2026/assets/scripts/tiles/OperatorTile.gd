@@ -1,6 +1,6 @@
 class_name OperatorTile extends Tile
 
-const operator_tile_scene : PackedScene = preload("res://assets/scenes/components/number-tile.tscn");
+const operator_tile_scene : PackedScene = preload("res://assets/scenes/components/operator-tile.tscn");
 
 var operator_type : TileFactory.OperatorTileType;
 

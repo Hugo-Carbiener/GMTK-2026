@@ -1,4 +1,4 @@
-class_name CardController extends Node2D
+class_name CardController extends Control
 # Card controller
 # Controls the card
 # Yeah
@@ -16,9 +16,9 @@ func _ready() -> void:
 static func Create(card:CardModel)->CardController:
 	print("Creating card");
 	var newCard = CardScene.instantiate();
-	newCard.CardController.Name=card.Name;
-	newCard.CardController.Description=card.Description;
-	newCard.CardController.Type=card.Type;
+	newCard.Name=card.Name;
+	newCard.Description=card.Description;
+	newCard.Type=card.Type;
 	return newCard;
 
 func TriggerCardEffect() -> bool:
