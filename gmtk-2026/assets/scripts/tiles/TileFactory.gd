@@ -8,6 +8,11 @@ static var instance : TileFactory;
 var number_deck : Array[NumberTile];
 var operator_deck : Array[OperatorTile];
 
+enum TileStatus {
+	SELECTED,
+	NOT_SELECTED
+}
+
 enum TileType {
 	OPERATOR,
 	NUMBER

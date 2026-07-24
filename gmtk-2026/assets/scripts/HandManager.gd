@@ -11,6 +11,13 @@ var operator_tiles : Array[OperatorTile];
 func _ready() -> void:
 	if instance == null:
 		instance = self;
+	init_signals();
+
+func init_signals():
+	SignalBus.operator_tile_selected.connect(on_operator_tile_selected);
+	SignalBus.number_tile_selected.connect(on_number_tile_selected);
+	SignalBus.operator_tile_unselected.connect(on_operator_tile_unselected);
+	SignalBus.number_tile_unselected.connect(on_number_tile_unselected);
 
 func on_turn_start():
 	for i in range(Constants.DEFAULT_TILE_DRAWN):
@@ -33,3 +40,17 @@ func discard_hands():
 		number_tiles_container.remove_child(number_tile);
 	for operator_tile in operator_tiles_container.get_children():
 		operator_tiles_container.remove_child(operator_tile);
+
+func on_operator_tile_selected(tile : OperatorTile):
+	operator_tiles.erase(tile);
+
+func on_operator_tile_unselected(tile : OperatorTile):
+	operator_tiles.append(tile);
+	tile.reparent(operator_tiles_container);
+
+func on_number_tile_selected(tile : NumberTile):
+	number_tiles.erase(tile);
+
+func on_number_tile_unselected(tile : NumberTile):
+	number_tiles.append(tile);
+	tile.reparent(number_tiles_container);
