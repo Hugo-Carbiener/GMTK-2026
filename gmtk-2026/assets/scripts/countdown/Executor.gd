@@ -37,6 +37,7 @@ func remove_operator_tile(tile : OperatorTile):
 			tile.on_unselection();
 			clear_empty_tile_couple();
 			return;
+	
 	printerr("Tried to remove non existant selected operator tile.");
 
 func add_number_tile(tile : NumberTile):
@@ -55,6 +56,7 @@ func remove_number_tile(tile : NumberTile):
 			tile.on_unselection();
 			clear_empty_tile_couple();
 			return;
+	
 	printerr("Tried to remove non existant selected number tile.");
 
 # Goes through tile couples to find empty ones. If they are non empty couples in lower slots, non empty couples bubble to the top 
@@ -75,3 +77,9 @@ func clear_empty_tile_couple():
 		var empty_tile_couple = tile_couples.pop_at(tile_couple_index);
 		tile_couples.append(empty_tile_couple);
 		move_child(empty_tile_couple, get_child_count() - 1);
+
+func execute():
+	for tile_couple in tile_couples:
+		if tile_couple.is_empty(): return;
+		
+		await tile_couple.execute();

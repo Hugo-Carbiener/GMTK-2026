@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfsmgxuitgpp"]
+[gd_scene load_steps=22 format=3 uid="uid://dfsmgxuitgpp"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_ye1mc"]
 [ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="2_ckblc"]
@@ -9,14 +9,21 @@
 [ext_resource type="Resource" uid="uid://dpyblim6uor2s" path="res://assets/resources/tile-models/operator-tile-models/MinusTile.tres" id="5_67jys"]
 [ext_resource type="Resource" uid="uid://c23g4m542nqvk" path="res://assets/resources/tile-models/operator-tile-models/MultTile.tres" id="6_2b6ly"]
 [ext_resource type="Resource" uid="uid://cpnvtb6fqg1q8" path="res://assets/resources/tile-models/operator-tile-models/PlusTile.tres" id="7_2rwxs"]
-[ext_resource type="Script" uid="uid://6omgg0p6dr4m" path="res://assets/scripts/tiles/Executor.gd" id="8_71pkm"]
+[ext_resource type="Script" uid="uid://6omgg0p6dr4m" path="res://assets/scripts/countdown/Executor.gd" id="8_71pkm"]
+[ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="8_53275"]
 [ext_resource type="Texture2D" uid="uid://dsmtvac3yg6v2" path="res://assets/sprites/UI_draw-pile-icon.png" id="9_67jys"]
+[ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="9_rhoc4"]
 [ext_resource type="Texture2D" uid="uid://dil0gufilg5hs" path="res://assets/sprites/UI_draw-pile-icon-pressed.png" id="10_2b6ly"]
 [ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/HandManager.gd" id="10_nwww1"]
+[ext_resource type="Script" uid="uid://qslm53ygf6ly" path="res://assets/scripts/countdown/Countdown.gd" id="10_rhoc4"]
 [ext_resource type="Script" uid="uid://bmagvmlookhwy" path="res://assets/scripts/piles/DrawPile.gd" id="11_2rwxs"]
 [ext_resource type="Texture2D" uid="uid://cnlyi5wse4n1l" path="res://assets/sprites/UI_discard-pile-icon.png" id="14_2rwxs"]
 [ext_resource type="Texture2D" uid="uid://4d52w72s1skf" path="res://assets/sprites/UI_discard-pile-icon-pressed.png" id="15_t33da"]
 [ext_resource type="Script" uid="uid://by320l0l85otw" path="res://assets/scripts/piles/DiscardPile.gd" id="16_t33da"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
+font = ExtResource("9_rhoc4")
+font_size = 64
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ye1mc")
@@ -24,6 +31,8 @@ script = ExtResource("1_ye1mc")
 [node name="Tile factory" type="Node2D" parent="."]
 script = ExtResource("2_xitjf")
 operator_tile_models = Array[ExtResource("3_nwww1")]([ExtResource("4_7e3sx"), ExtResource("5_67jys"), ExtResource("6_2b6ly"), ExtResource("7_2rwxs")])
+
+[node name="Count down" type="Node2D" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -43,32 +52,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin"]
 layout_mode = 2
 
 [node name="Main container" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
 size_flags_vertical = 3
 theme_override_constants/margin_right = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container"]
+[node name="HboxContainer" type="HBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container"]
+layout_mode = 2
+alignment = 2
+
+[node name="Countdown margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin"]
 layout_mode = 2
 
-[node name="Tile columns margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin/VBoxContainer"]
+layout_mode = 2
+text = "Bring this number to 0 by any means possible"
+label_settings = ExtResource("8_53275")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Countdown margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="Countdown" type="Label" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Countdown margin/VBoxContainer/Countdown margin"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_gldp8")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_rhoc4")
+
+[node name="Right area" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/VBoxContainer/Tile columns margin"]
+[node name="Tile columns margin" type="MarginContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area/Tile columns margin"]
 layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("8_71pkm")
 
-[node name="Submit button container" parent="CanvasLayer/Global margin/VBoxContainer/Main container/VBoxContainer" instance=ExtResource("2_dyaho")]
+[node name="Submit button container" parent="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area" instance=ExtResource("2_dyaho")]
 layout_mode = 2
 signal_on_button_pressed = "play_phase_submitted"
 
@@ -154,4 +192,4 @@ texture_normal = ExtResource("14_2rwxs")
 texture_pressed = ExtResource("15_t33da")
 script = ExtResource("16_t33da")
 
-[editable path="CanvasLayer/Global margin/VBoxContainer/Main container/VBoxContainer/Submit button container"]
+[editable path="CanvasLayer/Global margin/VBoxContainer/Main container/HboxContainer/Right area/Submit button container"]

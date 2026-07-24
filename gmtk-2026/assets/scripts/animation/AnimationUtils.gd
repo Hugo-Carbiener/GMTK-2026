@@ -52,7 +52,7 @@ func animate_scale(target : CanvasItem, from : Vector2, to : Vector2, duration :
 	tween.tween_property(target, "scale", to, duration).from(from).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT);
 	await tween.finished;
 
-func animate_integer(method : Callable, from : int, to : int, duration : float = Constants.default_transition_duration):
+func animate_integer(method : Callable, from : int, to : int, duration : float = Constants.DEFAULT_TRANSITION_DURATION):
 	var tween = get_tree().create_tween();
 	tween.tween_method(
 		method, # The update function

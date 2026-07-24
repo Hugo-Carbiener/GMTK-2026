@@ -25,6 +25,18 @@ func remove_operator():
 func remove_number():
 	number = null;
 
+func execute():
+	await operator.consume();
+	await number.consume();
+	operator_slot_container.remove_child(operator);
+	number_slot_container.remove_child(number);
+	operator.scale = Vector2i.ONE;
+	number.scale = Vector2i.ONE;
+	var new_countdown_value = operator.execute(number, Countdown.instance.countdown);
+	Countdown.instance.set_countdown_value(new_countdown_value);
+	remove_operator();
+	remove_number();
+
 func has_operator() -> bool:
 	return operator != null;
 

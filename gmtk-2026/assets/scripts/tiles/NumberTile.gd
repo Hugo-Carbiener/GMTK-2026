@@ -18,6 +18,10 @@ func setup(tile_number : int):
 	self.value = str(tile_number);
 	self.label.text = str(tile_number);
 
+func consume():
+	DiscardPile.instance.add_number_tile(self);
+	await on_consumption();
+
 func on_click():
 	if status == TileFactory.TileStatus.NOT_SELECTED:
 		SignalBus.number_tile_selected.emit(self);

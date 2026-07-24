@@ -15,6 +15,7 @@ func _ready() -> void:
 	button.button_up.connect(on_click);
 
 @abstract func on_click();
+@abstract func consume();
 
 func on_mouse_enter():
 	var tween = get_tree().create_tween();
@@ -29,6 +30,10 @@ func on_selection():
 
 func on_unselection():
 	status = TileFactory.TileStatus.NOT_SELECTED;
+
+func on_consumption():
+	status = TileFactory.TileStatus.NOT_SELECTED;
+	await AnimationUtils.animate_scale(self, scale, Vector2i.ZERO, Constants.DEFAULT_TRANSITION_DURATION);
 
 func on_selection_fail():
 	AnimationUtils.hshake(self, 50, Constants.SHORT_TRANSITION_DURATION);
