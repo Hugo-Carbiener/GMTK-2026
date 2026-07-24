@@ -1,33 +1,42 @@
 [gd_scene load_steps=4 format=3 uid="uid://df4gq1i1jy68w"]
 
-[ext_resource type="Texture2D" uid="uid://cpcedb3s3li07" path="res://assets/sprites/UI_tile-background.png" id="1_66sql"]
 [ext_resource type="Script" uid="uid://cdmhcm3nairdq" path="res://assets/scripts/tiles/NumberTile.gd" id="1_hy2c6"]
 [ext_resource type="LabelSettings" uid="uid://d33orh32xadkt" path="res://assets/fonts/tile-font.tres" id="2_6lmis"]
+[ext_resource type="Texture2D" uid="uid://bjliju6xsgyss" path="res://assets/sprites/UI_tile-background-2.png" id="2_hy2c6"]
 
-[node name="Number tile" type="MarginContainer" node_paths=PackedStringArray("label")]
+[node name="Number tile" type="MarginContainer" node_paths=PackedStringArray("label", "button")]
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_top = -2
 script = ExtResource("1_hy2c6")
-label = NodePath("Label margin/Label")
+label = NodePath("Number tile/Label margin/Label")
+button = NodePath("Number tile")
 
-[node name="Tile background" type="TextureRect" parent="."]
+[node name="Number tile" type="Button" parent="."]
 layout_mode = 2
-texture = ExtResource("1_66sql")
+focus_mode = 0
+mouse_filter = 1
+flat = true
+
+[node name="Tile background" type="TextureRect" parent="Number tile"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_hy2c6")
 stretch_mode = 3
 
-[node name="Label margin" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 3
+[node name="Label margin" type="MarginContainer" parent="Number tile"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 1
 
-[node name="Label" type="Label" parent="Label margin"]
+[node name="Label" type="Label" parent="Number tile/Label margin"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "+"
+mouse_filter = 1
+text = "2"
 label_settings = ExtResource("2_6lmis")
 horizontal_alignment = 1
 vertical_alignment = 1

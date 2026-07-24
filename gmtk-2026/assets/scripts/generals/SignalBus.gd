@@ -2,3 +2,8 @@ extends Node
 
 signal play_phase_submitted
 signal tile_drawn
+
+signal operator_tile_selected
+signal number_tile_selected
+signal operator_tile_unselected
+signal number_tile_unselected

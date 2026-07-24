@@ -4,29 +4,39 @@
 [ext_resource type="Texture2D" uid="uid://cpcedb3s3li07" path="res://assets/sprites/UI_tile-background.png" id="2_7pu50"]
 [ext_resource type="LabelSettings" uid="uid://d33orh32xadkt" path="res://assets/fonts/tile-font.tres" id="3_hsmia"]
 
-[node name="Number tile" type="MarginContainer" node_paths=PackedStringArray("label")]
+[node name="Operator tile" type="MarginContainer" node_paths=PackedStringArray("label", "button")]
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_top = -2
 script = ExtResource("1_80ej6")
-label = NodePath("Label margin/Label")
+label = NodePath("Operator tile/Label margin/Label")
+button = NodePath("Operator tile")
 
-[node name="Tile background" type="TextureRect" parent="."]
+[node name="Operator tile" type="Button" parent="."]
 layout_mode = 2
+focus_mode = 0
+focus_behavior_recursive = 1
+mouse_filter = 1
+flat = true
+
+[node name="Tile background" type="TextureRect" parent="Operator tile"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 texture = ExtResource("2_7pu50")
 stretch_mode = 3
 
-[node name="Label margin" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 3
+[node name="Label margin" type="MarginContainer" parent="Operator tile"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
 
-[node name="Label" type="Label" parent="Label margin"]
+[node name="Label" type="Label" parent="Operator tile/Label margin"]
 layout_mode = 2
 size_flags_vertical = 1
+mouse_filter = 1
 text = "+"
 label_settings = ExtResource("3_hsmia")
 horizontal_alignment = 1

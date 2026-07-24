@@ -4,6 +4,8 @@ class_name CardFactory extends Node2D
 
 static var instance : CardFactory;
 
+@export var uiCardContainer : HBoxContainer;
+
 func _ready() -> void:
 	if instance == null:
 		instance = self;
@@ -25,3 +27,4 @@ func GenerateCardDeck():
 	for genCard in cardModels:
 		var newCard = CardController.Create(genCard);
 		cardDeck.append(newCard);
+		uiCardContainer.add_child(newCard);

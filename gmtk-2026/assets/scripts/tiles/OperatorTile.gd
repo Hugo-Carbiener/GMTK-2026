@@ -28,3 +28,13 @@ func execute(number_tile : NumberTile, current_count : int) -> int:
 		_:
 			printerr("Invalid operator type on tile: " + str(operator_type));
 			return 0;
+
+func consume():
+	DiscardPile.instance.add_operator_tile(self);
+	await on_consumption();
+
+func on_click():
+	if status == TileFactory.TileStatus.NOT_SELECTED:
+		SignalBus.operator_tile_selected.emit(self);
+	else:
+		SignalBus.operator_tile_unselected.emit(self);
