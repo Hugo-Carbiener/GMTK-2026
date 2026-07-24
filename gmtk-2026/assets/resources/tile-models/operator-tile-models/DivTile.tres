@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="OperatorTileModel" load_steps=2 format=3 uid="uid://v67olj756ry8"]
+
+[ext_resource type="Script" uid="uid://cshuev5xwvsfp" path="res://assets/scripts/tiles/models/OperatorTileModel.gd" id="1_tamb5"]
+
+[resource]
+script = ExtResource("1_tamb5")
+operator_type = 3
+text = "/"
+is_in_base_deck = true
+amount_in_base_deck = 3
+metadata/_custom_type_script = "uid://cshuev5xwvsfp"

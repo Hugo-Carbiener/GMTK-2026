@@ -13,6 +13,7 @@ texture_pressed = ExtResource("2_u0rrn")
 stretch_mode = 5
 script = ExtResource("3_5jrn2")
 text_margin = NodePath("Text container")
+top_margin_default = 7
 top_margin_pressed = 11
 
 [node name="Text container" type="MarginContainer" parent="."]

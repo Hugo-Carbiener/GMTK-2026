@@ -1,0 +1,75 @@
+extends Node2D
+
+func push(target : CanvasItem, offset : Vector2, duration : float):
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "position", position + offset, duration).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN);
+	await tween.finished;
+
+func move(target : CanvasItem, from : Vector2, to : Vector2, duration : float):
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "position", to, duration).from(from).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN);
+	await tween.finished;
+
+func add_child_fade_in(parent : CanvasItem, child : CanvasItem, duration : float):
+	child.modulate.a = 0;
+	var tween = get_tree().create_tween();
+	tween.tween_callback(func(): parent.add_child(child));
+	tween.tween_property(child, "modulate:a", 1., duration).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN);
+	await tween.finished;
+
+func delete_child_fade_out(child : CanvasItem, duration : float):
+	var tween = get_tree().create_tween();
+	tween.tween_property(child, "modulate:a", 0., duration).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN)
+	tween.tween_callback(func(): child.queue_free());
+	await tween.finished;
+
+func transition_color(target : CanvasItem, color : Color, duration : float):
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "modulate", color, duration);
+	await tween.finished;
+
+func blink_sprite(target : CanvasItem, color : Color = Color.WHITE):
+	var base_color = target.modulate;
+	var blink_color = Color(10, 10, 10, 1) * color;
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "modulate", blink_color, Constants.blink_duration/2);
+	tween.tween_property(target, "modulate", base_color, Constants.blink_duration/2);
+	await tween.finished;
+
+func bounce(target : CanvasItem, factor : float):
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "scale", factor * Vector2.ONE, Constants.blink_duration);
+	tween.tween_property(target, "scale", Vector2.ONE, Constants.blink_duration);
+	await tween.finished;
+
+func fade(target : CanvasItem, to : float, duration : float, delay : float = 0.):
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "modulate:a", to, duration).set_delay(delay).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN);
+	await tween.finished;
+
+func animate_scale(target : CanvasItem, from : Vector2, to : Vector2, duration : float):
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "scale", to, duration).from(from).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT);
+	await tween.finished;
+
+func animate_integer(method : Callable, from : int, to : int, duration : float = Constants.default_transition_duration):
+	var tween = get_tree().create_tween();
+	tween.tween_method(
+		method, # The update function
+		from,                                        # Start value
+		to,                                          # End value
+	duration                                         # Time in seconds
+	).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await tween.finished;
+
+func make_float(target : CanvasItem, duration: float, amplitude: float):
+	var tween = create_tween().set_loops();
+	tween.set_trans(Tween.TRANS_SINE);
+	tween.set_ease(Tween.EASE_IN_OUT);
+	var initial_point = target.position;
+	var high_point = initial_point + Vector2(0, -amplitude);
+	var low_point = initial_point + Vector2(0, amplitude);
+	tween.tween_property(target, "position", high_point, duration / 2);
+	tween.tween_property(target, "position", low_point, duration);
+	tween.tween_property(target, "position", initial_point, duration / 2);
+	await tween.finished;
