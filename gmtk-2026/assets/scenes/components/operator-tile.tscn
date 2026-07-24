@@ -7,6 +7,7 @@
 [node name="Operator tile" type="MarginContainer" node_paths=PackedStringArray("label", "button")]
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/margin_top = -2
 script = ExtResource("1_80ej6")
 label = NodePath("Operator tile/Label margin/Label")
 button = NodePath("Operator tile")

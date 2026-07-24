@@ -31,4 +31,4 @@ func on_unselection():
 	status = TileFactory.TileStatus.NOT_SELECTED;
 
 func on_selection_fail():
-	pass;
+	AnimationUtils.hshake(self, 50, Constants.SHORT_TRANSITION_DURATION);

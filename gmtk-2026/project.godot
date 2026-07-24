@@ -21,6 +21,10 @@ SignalBus="*res://assets/scripts/generals/SignalBus.gd"
 Constants="*res://assets/scripts/generals/Constants.gd"
 AnimationUtils="*res://assets/scripts/animation/AnimationUtils.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=640

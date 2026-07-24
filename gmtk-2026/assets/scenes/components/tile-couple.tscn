@@ -18,7 +18,7 @@ theme_override_constants/margin_top = 16
 [node name="Border margin" type="MarginContainer" parent="Operator slot container"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 2
 
 [node name="Border" type="TextureRect" parent="Operator slot container/Border margin"]
 layout_mode = 2
@@ -35,7 +35,7 @@ theme_override_constants/margin_bottom = 16
 [node name="Border margin" type="MarginContainer" parent="Number slot container"]
 layout_mode = 2
 theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
+theme_override_constants/margin_top = 2
 
 [node name="Border" type="TextureRect" parent="Number slot container/Border margin"]
 layout_mode = 2

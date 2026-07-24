@@ -32,14 +32,14 @@ func blink_sprite(target : CanvasItem, color : Color = Color.WHITE):
 	var base_color = target.modulate;
 	var blink_color = Color(10, 10, 10, 1) * color;
 	var tween = get_tree().create_tween();
-	tween.tween_property(target, "modulate", blink_color, Constants.blink_duration/2);
-	tween.tween_property(target, "modulate", base_color, Constants.blink_duration/2);
+	tween.tween_property(target, "modulate", blink_color, Constants.SHORT_TRANSITION_DURATION/2);
+	tween.tween_property(target, "modulate", base_color, Constants.SHORT_TRANSITION_DURATION/2);
 	await tween.finished;
 
 func bounce(target : CanvasItem, factor : float):
 	var tween = get_tree().create_tween();
-	tween.tween_property(target, "scale", factor * Vector2.ONE, Constants.blink_duration);
-	tween.tween_property(target, "scale", Vector2.ONE, Constants.blink_duration);
+	tween.tween_property(target, "scale", factor * Vector2.ONE, Constants.SHORT_TRANSITION_DURATION);
+	tween.tween_property(target, "scale", Vector2.ONE, Constants.SHORT_TRANSITION_DURATION);
 	await tween.finished;
 
 func fade(target : CanvasItem, to : float, duration : float, delay : float = 0.):
@@ -73,3 +73,9 @@ func make_float(target : CanvasItem, duration: float, amplitude: float):
 	tween.tween_property(target, "position", low_point, duration);
 	tween.tween_property(target, "position", initial_point, duration / 2);
 	await tween.finished;
+
+func hshake(target : CanvasItem, amplitude: float, duration: float):
+	var original_x = target.position.x;
+	target.position.x = original_x + amplitude;
+	var tween = get_tree().create_tween();
+	tween.tween_property(target, "position:x", original_x, duration).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT);
