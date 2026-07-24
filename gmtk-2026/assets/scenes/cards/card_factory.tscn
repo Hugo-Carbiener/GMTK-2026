@@ -1,0 +1,11 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwv4q5cw6t2pn"]
+
+[ext_resource type="Script" uid="uid://qk8nwfcirctb" path="res://assets/scripts/cards/CardFactory.gd" id="1_pkgvj"]
+[ext_resource type="Script" uid="uid://thfceamgum8s" path="res://assets/scripts/cards/models/CardModel.gd" id="2_e3po4"]
+[ext_resource type="Resource" uid="uid://b6m71li6kbd32" path="res://assets/resources/cards/card_debug_1.tres" id="3_mfh4o"]
+[ext_resource type="Resource" uid="uid://c1perb5fa0je6" path="res://assets/resources/cards/card_debug_2.tres" id="4_nvi38"]
+[ext_resource type="Resource" uid="uid://67v6q6eatekg" path="res://assets/resources/cards/card_debug_3.tres" id="5_urbjt"]
+
+[node name="CardFactory" type="Node2D"]
+script = ExtResource("1_pkgvj")
+cardModels = Array[ExtResource("2_e3po4")]([ExtResource("3_mfh4o"), ExtResource("4_nvi38"), ExtResource("5_urbjt")])

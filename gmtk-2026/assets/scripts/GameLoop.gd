@@ -21,6 +21,7 @@ func init_signals():
 
 func start_level():
 	current_phase = Phases.PLAY_PHASE;
+	CardFactory.instance.init();
 	Executor.instance.init();
 	Countdown.instance.init();
 	TileFactory.instance.init();
