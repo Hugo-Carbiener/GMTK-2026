@@ -3,11 +3,17 @@ class_name StatsContainer extends Control
 const stats_scene : PackedScene = preload("res://assets/scenes/components/stats-container.tscn");
 
 @export_group("Components")
+@export var total_decrease_value_title : Label;
 @export var total_decrease_value : Label;
+@export var decrease_surplus_value_title : Label;
 @export var decrease_surplus_value : Label;
+@export var turns_remaining_value_title : Label;
 @export var turns_remaining_value : Label;
+@export var operation_used_value_title : Label;
 @export var operation_used_value : Label;
+@export var most_used_operator_value_title : Label;
 @export var most_used_operator_value : Label;
+@export var most_used_number_value_title : Label;
 @export var most_used_number_value : Label;
 
 static func create_stats() -> StatsContainer:
@@ -27,14 +33,27 @@ func setup():
 
 func fade_in():
 	total_decrease_value.modulate.a = 0;
+	total_decrease_value_title.modulate.a = 0;
 	decrease_surplus_value.modulate.a = 0;
+	decrease_surplus_value_title.modulate.a = 0;
 	turns_remaining_value.modulate.a = 0;
+	turns_remaining_value_title.modulate.a = 0;
 	operation_used_value.modulate.a = 0;
+	operation_used_value_title.modulate.a = 0;
 	most_used_operator_value.modulate.a = 0;
+	most_used_operator_value_title.modulate.a = 0;
 	most_used_number_value.modulate.a = 0;
-	AnimationUtils.fade(total_decrease_value, 1., Constants.DEFAULT_TRANSITION_DURATION);
-	AnimationUtils.fade(decrease_surplus_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION);
-	AnimationUtils.fade(turns_remaining_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 2);
-	AnimationUtils.fade(operation_used_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 3);
-	AnimationUtils.fade(most_used_operator_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 4);
+	most_used_number_value_title.modulate.a = 0;
+	AnimationUtils.fade(total_decrease_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION);
+	await AnimationUtils.fade(total_decrease_value, 1., Constants.DEFAULT_TRANSITION_DURATION);
+	AnimationUtils.fade(decrease_surplus_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION);
+	await AnimationUtils.fade(decrease_surplus_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION);
+	AnimationUtils.fade(turns_remaining_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 2);
+	await AnimationUtils.fade(turns_remaining_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 2);
+	
+	AnimationUtils.fade(operation_used_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 3);
+	await AnimationUtils.fade(operation_used_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 3);
+	AnimationUtils.fade(most_used_operator_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 4);
+	await AnimationUtils.fade(most_used_operator_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 4);
+	AnimationUtils.fade(most_used_number_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 5);
 	await AnimationUtils.fade(most_used_number_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 5);
