@@ -5,5 +5,3 @@
 @export var Name : String; # Name of the card
 @export var Description : String; # Description of the card
 @export var Type : CardFactory.CARD_TYPE; # Effect type of the card
-
-@abstract func TriggerCardEffect() -> bool;

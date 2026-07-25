@@ -79,6 +79,7 @@ func clear_empty_tile_couple():
 		move_child(empty_tile_couple, get_child_count() - 1);
 
 func execute():
+	await CardFactory.instance.ExecuteCardSubmit(tile_couples); #Await is here cause we'll put some animations at some point for the cards
 	for tile_couple in tile_couples:
 		if tile_couple.is_empty(): return;
 		

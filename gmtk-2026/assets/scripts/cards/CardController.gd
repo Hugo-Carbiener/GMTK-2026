@@ -32,8 +32,3 @@ func ChangeCardVisuals()->void:
 	LabelCardName.text = self.Name;
 	LabelCardDescription.text = self.Description;
 	return;
-	
-# Portal function that will call the Model's effect
-func CallingTriggerCardEffect() -> bool:
-	print("HELLO, I AM A CARD EFFECT ! RIVETING !!!");
-	return Model.TriggerCardEffect();

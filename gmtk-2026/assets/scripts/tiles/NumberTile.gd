@@ -27,3 +27,10 @@ func on_click():
 		SignalBus.number_tile_selected.emit(self);
 	else:
 		SignalBus.number_tile_unselected.emit(self);
+
+func UpdateTile(newValue:int)->void:
+	#TODO : add visual effect for update (shimer ?)
+	self.number = newValue;
+	self.value = str(newValue);
+	self.label.text = str(newValue);
+	return;
