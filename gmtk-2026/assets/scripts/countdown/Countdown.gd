@@ -14,7 +14,7 @@ func init():
 	set_countdown_value(initial_countdown_value);
 
 func set_countdown_value(value : int):
-	AnimationUtils.animate_integer(
+	await AnimationUtils.animate_integer(
 		func(x): text = str(x),
 		countdown,
 		value

@@ -11,6 +11,7 @@ signal play_phase_submitted
 # shop
 signal number_tile_bought
 signal operator_tile_bought
+signal operator_tile_bundle_bought
 signal card_reward_selected
 signal on_money_update
 

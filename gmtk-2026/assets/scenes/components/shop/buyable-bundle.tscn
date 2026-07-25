@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxvfurblwgc66"]
+
+[ext_resource type="Script" uid="uid://cdnawqfe5g1qc" path="res://assets/scripts/ui/shop/BuyableBundle.gd" id="1_ddevj"]
+[ext_resource type="LabelSettings" uid="uid://ceikhk71hq3jx" path="res://assets/fonts/price-fonts/valid-price-font.tres" id="2_ddevj"]
+[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="3_31emy"]
+[ext_resource type="Texture2D" uid="uid://qnar3lki7b33" path="res://assets/sprites/UI_slot.png" id="4_2jufq"]
+[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="5_nt1db"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2jufq"]
+blend_mode = 3
+
+[node name="Buyable bundle" type="MarginContainer" node_paths=PackedStringArray("bonus_currency_label", "bonus_currency_container", "content_container", "button", "bought_visual")]
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("1_ddevj")
+bonus_currency_label = NodePath("VBoxContainer/Bonus money margin/HBoxContainer/Bonus value")
+bonus_currency_container = NodePath("VBoxContainer/Bonus money margin")
+content_container = NodePath("VBoxContainer/HBoxContainer/Content container")
+button = NodePath("Button")
+bought_visual = NodePath("VBoxContainer/HBoxContainer/Bought visual")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Bought visual" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.7411765)
+material = SubResource("CanvasItemMaterial_2jufq")
+layout_mode = 2
+texture = ExtResource("4_2jufq")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer/Bought visual"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer/Bought visual/MarginContainer"]
+layout_mode = 2
+text = "No
+stock"
+label_settings = ExtResource("5_nt1db")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content container" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_behavior_recursive = 1
+mouse_filter = 2
+
+[node name="Spacer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Bonus money margin" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = -12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Bonus money margin"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 1
+
+[node name="Plus text" type="Label" parent="VBoxContainer/Bonus money margin/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "+"
+label_settings = ExtResource("2_ddevj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bonus value" type="Label" parent="VBoxContainer/Bonus money margin/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "99"
+label_settings = ExtResource("2_ddevj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Bonus money margin/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Money value" type="TextureRect" parent="VBoxContainer/Bonus money margin/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_31emy")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+focus_behavior_recursive = 1
+mouse_filter = 1
+flat = true

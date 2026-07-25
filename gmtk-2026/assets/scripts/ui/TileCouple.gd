@@ -33,7 +33,7 @@ func execute():
 	operator.scale = Vector2i.ONE;
 	number.scale = Vector2i.ONE;
 	var new_countdown_value = operator.execute(number, Countdown.instance.countdown);
-	Countdown.instance.set_countdown_value(new_countdown_value);
+	await Countdown.instance.set_countdown_value(new_countdown_value);
 	SignalBus.on_tile_couple_executed.emit(operator, number);
 	remove_operator();
 	remove_number();

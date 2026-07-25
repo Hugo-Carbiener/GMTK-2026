@@ -36,10 +36,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 script = ExtResource("1_6p2lh")
 tile_shop_number_tile_container = NodePath("Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container/Number tile container")
 tile_shop_operator_tile_container = NodePath("Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container/Operator tile container")
@@ -141,6 +141,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Number tile container" type="GridContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 mouse_filter = 2
 columns = 3
@@ -157,6 +158,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Operator tile container" type="GridContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 mouse_filter = 2
 columns = 3
@@ -196,6 +198,8 @@ vertical_alignment = 1
 layout_mode = 2
 text = "Less effective, less expensive"
 label_settings = ExtResource("18_co8v4")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Tiles margin" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles/Tile bundles padding/Tile bundle container"]
 layout_mode = 2
@@ -230,6 +234,8 @@ size_flags_horizontal = 4
 mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
 [node name="Card reward title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Card reward container/Card reward title margin"]
 layout_mode = 2

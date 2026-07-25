@@ -1,20 +1,50 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4l7wt4s7jut8"]
+[gd_scene load_steps=5 format=3 uid="uid://d4l7wt4s7jut8"]
 
 [ext_resource type="Script" uid="uid://cyp5o5kal36po" path="res://assets/scripts/ui/shop/BuyableElement.gd" id="1_4wyyw"]
+[ext_resource type="Texture2D" uid="uid://qnar3lki7b33" path="res://assets/sprites/UI_slot.png" id="2_nn2yv"]
+[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="3_ju0gv"]
 
-[node name="Buyable element" type="MarginContainer" node_paths=PackedStringArray("content_container", "price_tag_container", "button")]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nn2yv"]
+blend_mode = 3
+
+[node name="Buyable element" type="MarginContainer" node_paths=PackedStringArray("content_container", "price_tag_container", "button", "bought_visual")]
 offset_right = 32.0
 offset_bottom = 32.0
 script = ExtResource("1_4wyyw")
 content_container = NodePath("VBoxContainer/Content container")
 price_tag_container = NodePath("VBoxContainer/Price tag container")
 button = NodePath("Button")
+bought_visual = NodePath("VBoxContainer/Bought visual")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 focus_behavior_recursive = 1
 mouse_filter = 2
 theme_override_constants/separation = 0
+
+[node name="Bought visual" type="TextureRect" parent="VBoxContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.7411765)
+material = SubResource("CanvasItemMaterial_nn2yv")
+layout_mode = 2
+texture = ExtResource("2_nn2yv")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Bought visual"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 6
+
+[node name="Label" type="Label" parent="VBoxContainer/Bought visual/MarginContainer"]
+layout_mode = 2
+text = "No
+stock"
+label_settings = ExtResource("3_ju0gv")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Content container" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2

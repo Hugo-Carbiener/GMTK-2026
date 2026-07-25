@@ -6,3 +6,5 @@
 font = ExtResource("1_jrlna")
 font_size = 8
 font_color = Color(0.314106, 0.82799864, 0.43019855, 1)
+outline_size = 4
+outline_color = Color(6.1366705e-07, 0.4173373, 0.040662445, 1)

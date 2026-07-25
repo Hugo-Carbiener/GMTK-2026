@@ -6,6 +6,8 @@ var operator_deck : Array[OperatorTile];
 var currency : int;
 
 func pay(amount : int):
+	if amount == 0: return;
+	
 	var new_value = max(0, currency - amount);
 	AnimationUtils.animate_integer(
 		func(x): set_currency(x),
@@ -14,6 +16,8 @@ func pay(amount : int):
 	);
 
 func gain(amount : int):
+	if amount == 0: return;
+		
 	var new_value = max(0, currency + amount);
 	AnimationUtils.animate_integer(
 		func(x): set_currency(x),

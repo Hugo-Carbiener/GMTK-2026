@@ -12,6 +12,7 @@ class_name Shop extends Control
 var reroll_amount : int = 0;
 var number_tiles : Array[NumberTile];
 var operator_tiles : Array[OperatorTile];
+var bundle_tiles : Array[OperatorTile];
 var card_rewards : Array[CardController];
 
 var card_reward_selected : bool = false;
@@ -26,10 +27,12 @@ func init_signals():
 	SignalBus.card_reward_selected.connect(select_card_reward);
 	SignalBus.number_tile_bought.connect(on_number_tile_bought);
 	SignalBus.operator_tile_bought.connect(on_operator_tile_bought);
+	SignalBus.operator_tile_bundle_bought.connect(on_bundle_tile_bought);
 
 func populate_shop():
-	await generate_number_tile_shop();
-	await generate_operator_tile_shop();
+	generate_number_tile_shop();
+	generate_operator_tile_shop();
+	generate_bundles();
 	generate_card_rewards();
 	set_reroll_price();
 	SignalBus.on_money_update.emit(UserData.currency);
@@ -47,6 +50,13 @@ func generate_operator_tile_shop():
 		var buyable_tile = BuyableElement.create_buyable_element(operator_tile.model.price, operator_tile);
 		operator_tiles.append(operator_tile);
 		tile_shop_operator_tile_container.add_child(buyable_tile);
+
+func generate_bundles():
+	for i in range(Constants.DEFAULT_BUNDLE_AMOUNT_IN_SHOP):
+		var operator_tile = TileFactory.get_random_bundle_operator_tile();
+		var buyable_tile = BuyableBundle.create_buyable_element(operator_tile.model.price, operator_tile);
+		bundle_tiles.append(operator_tile);
+		tile_bundle_operator_tile_container.add_child(buyable_tile);
 
 func generate_card_rewards():
 	for i in range(Constants.DEFAULT_CARD_AMOUNT_IN_SHOP):
@@ -75,10 +85,13 @@ func reset_shop():
 		child.queue_free();
 	for child in tile_shop_operator_tile_container.get_children():
 		child.queue_free();
+	for child in tile_bundle_operator_tile_container.get_children():
+		child.queue_free();
 	for child in card_reward_container.get_children():
 		child.queue_free();
 	number_tiles.clear();
 	operator_tiles.clear();
+	bundle_tiles.clear();
 	card_rewards.clear();
 
 func select_card_reward(card : CardController):
@@ -104,7 +117,7 @@ func on_number_tile_bought(buyable_element : BuyableElement, tile : NumberTile, 
 	UserData.pay(price);
 	UserData.number_deck.append(tile);
 	number_tiles.erase(tile);
-	tile_shop_number_tile_container.remove_child(buyable_element);
+	buyable_element.mark_as_bought();
 
 func on_operator_tile_bought(buyable_element : BuyableElement, tile : OperatorTile, price : int):
 	if operator_tiles.find(tile) == -1:
@@ -115,5 +128,12 @@ func on_operator_tile_bought(buyable_element : BuyableElement, tile : OperatorTi
 	UserData.pay(price);
 	UserData.operator_deck.append(tile);
 	operator_tiles.erase(tile);
-	tile_shop_operator_tile_container.remove_child(buyable_element);
-	
+	buyable_element.mark_as_bought();
+
+func on_bundle_tile_bought(buyable_element : BuyableBundle, tile : OperatorTile):
+	if bundle_tiles.find(tile) == -1:
+		printerr("Attempted to buy an operator tile bundle not found in the shop stocks.");
+		return;
+	UserData.operator_deck.append(tile);
+	bundle_tiles.erase(tile);
+	buyable_element.mark_as_bought();
