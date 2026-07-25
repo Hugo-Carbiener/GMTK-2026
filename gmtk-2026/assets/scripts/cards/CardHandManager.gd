@@ -9,7 +9,9 @@ func _ready() -> void:
 		instance = self;
 
 func on_turn_start():
-	for i in range(Constants.MAX_NUMBER_CARDS):
+	var numCardsToDraw = Constants.MAX_NUMBER_CARDS_DRAWN;
+	if(cards.size()+numCardsToDraw>Constants.MAX_NUMBER_CARDS_IN_HAND):numCardsToDraw=Constants.MAX_NUMBER_CARDS_IN_HAND-cards.size();
+	for i in range(numCardsToDraw):
 		draw_random_card();
 
 func draw_random_card():

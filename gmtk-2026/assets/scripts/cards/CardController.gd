@@ -30,6 +30,7 @@ static func Create(card:CardModel)->CardController:
 	newCard.Model=card;
 	newCard.ChangeCardVisuals();
 	newCard.MarkedForDeath=false;
+	newCard.CardIsFlipped=false;
 	return newCard;
 
 func ChangeCardVisuals()->void:

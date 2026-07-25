@@ -45,7 +45,7 @@ func load_card_models():
 
 var rng = RandomNumberGenerator.new();
 func GenerateCardDeck()->void:
-	for i in range(0, Constants.MAX_NUMBER_CARDS):
+	for i in range(0, Constants.MAX_NUMBER_CARDS_DRAWN):
 		var new_card = generate_random_card();
 		cardDeck[new_card.Model]= new_card;
 
