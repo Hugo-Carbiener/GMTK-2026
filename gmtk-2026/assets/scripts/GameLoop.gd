@@ -23,10 +23,10 @@ func init_signals():
 func start_level():
 	current_phase = Phases.PLAY_PHASE;
 	turns_left = Constants.BASE_TURN_NUMBER;
+	TileFactory.init();
 	CardFactory.instance.init();
 	Executor.instance.init();
 	Countdown.instance.init();
-	TileFactory.instance.init();
 	DrawPile.instance.init();
 	start_phase(current_phase);
 

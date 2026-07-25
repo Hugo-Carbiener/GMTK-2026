@@ -5,11 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://bjliju6xsgyss" path="res://assets/sprites/UI_tile-background-2.png" id="2_hy2c6"]
 
 [node name="Number tile" type="MarginContainer" node_paths=PackedStringArray("label", "button")]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_top = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -608.0
+offset_bottom = -328.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_hy2c6")
-label = NodePath("Number tile/Label margin/Label")
+label = NodePath("Label margin/Label")
 button = NodePath("Number tile")
 
 [node name="Number tile" type="Button" parent="."]
@@ -18,24 +22,21 @@ focus_mode = 0
 mouse_filter = 1
 flat = true
 
-[node name="Tile background" type="TextureRect" parent="Number tile"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Tile background" type="TextureRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("2_hy2c6")
 stretch_mode = 3
 
-[node name="Label margin" type="MarginContainer" parent="Number tile"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Label margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 1
 
-[node name="Label" type="Label" parent="Number tile/Label margin"]
+[node name="Label" type="Label" parent="Label margin"]
 layout_mode = 2
 size_flags_vertical = 1
-mouse_filter = 1
 text = "2"
 label_settings = ExtResource("2_6lmis")
 horizontal_alignment = 1

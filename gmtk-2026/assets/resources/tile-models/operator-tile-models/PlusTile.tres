@@ -7,4 +7,6 @@ script = ExtResource("1_tr210")
 text = "+"
 is_in_base_deck = true
 amount_in_base_deck = 3
+is_in_bundle = true
+price = 2
 metadata/_custom_type_script = "uid://cshuev5xwvsfp"

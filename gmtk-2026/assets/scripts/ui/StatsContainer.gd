@@ -21,7 +21,7 @@ func setup():
 	turns_remaining_value.text = str(Stats.instance.turns_remaining);
 	operation_used_value.text = str(Stats.instance.operations_applied);
 	var most_used_operator = Stats.instance.get_most_used_operator();
-	most_used_operator_value.text = TileFactory.instance.operatorTileTypeToChar.get(most_used_operator) + " (" + str(Stats.instance.operator_used.get(most_used_operator)) + "times)";
+	most_used_operator_value.text = TileFactory.operatorTileTypeToChar.get(most_used_operator) + " (" + str(Stats.instance.operator_used.get(most_used_operator)) + "times)";
 	var most_used_number = Stats.instance.get_most_used_number();
 	most_used_number_value.text = str(most_used_number) + " (" + str(Stats.instance.numbers_used.get(most_used_number)) + "times)";
 

@@ -3,6 +3,7 @@ class_name OperatorTile extends Tile
 const operator_tile_scene : PackedScene = preload("res://assets/scenes/components/operator-tile.tscn");
 
 var operator_type : TileFactory.OperatorTileType;
+var model : OperatorTileModel;
 
 static func create_tile(tile_model : OperatorTileModel) -> OperatorTile:
 	var operator_tile = operator_tile_scene.instantiate();
@@ -14,6 +15,7 @@ func setup(tile_model : OperatorTileModel):
 	self.operator_type = tile_model.operator_type;
 	self.value = tile_model.text;
 	self.label.text = tile_model.text;
+	model = tile_model;
 
 func execute(number_tile : NumberTile, current_count : int) -> int:
 	match(operator_type):

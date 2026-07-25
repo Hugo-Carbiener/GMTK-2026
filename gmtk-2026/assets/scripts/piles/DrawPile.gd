@@ -12,9 +12,9 @@ func init():
 	populate_deck();
 
 func populate_deck():
-	for number_tile in TileFactory.instance.number_deck:
+	for number_tile in UserData.number_deck:
 		add_number_tile(number_tile);
-	for operator_tile in TileFactory.instance.operator_deck:
+	for operator_tile in UserData.operator_deck:
 		add_operator_tile(operator_tile);
 
 func draw_number_tile() -> NumberTile:

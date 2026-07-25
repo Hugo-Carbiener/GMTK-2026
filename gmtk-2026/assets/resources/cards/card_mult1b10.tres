@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Card_MultiplyXByY" load_steps=2 format=3 uid="uid://ofbxtn3gcr4n"]
 
-[ext_resource type="Script" uid="uid://ctk5u7kfjf5o2" path="res://assets/scripts/cards/models/Card_MultiplyXByY.gd" id="1_ikv5m"]
+[ext_resource type="Script" path="res://assets/scripts/cards/models/Card_MultiplyXByY.gd" id="1_ikv5m"]
 
 [resource]
 script = ExtResource("1_ikv5m")

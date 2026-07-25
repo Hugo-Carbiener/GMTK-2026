@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://c8f1gu3mqa3jj"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_h30ls"]
-[ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/tiles/TileFactory.gd" id="2_bhxfu"]
+[ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/generals/TileFactory.gd" id="2_bhxfu"]
 [ext_resource type="PackedScene" uid="uid://bwv4q5cw6t2pn" path="res://assets/scenes/cards/card_factory.tscn" id="2_dfrp1"]
 [ext_resource type="Script" uid="uid://cshuev5xwvsfp" path="res://assets/scripts/tiles/models/OperatorTileModel.gd" id="3_dfrp1"]
 [ext_resource type="Resource" uid="uid://v67olj756ry8" path="res://assets/resources/tile-models/operator-tile-models/DivTile.tres" id="4_5a828"]

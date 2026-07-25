@@ -24,14 +24,17 @@ func init()->void:
 var rng = RandomNumberGenerator.new();
 func GenerateCardDeck()->void:
 	for i in range(0, Constants.MAX_NUMBER_CARDS):
-		var randNum = rng.randi_range(0, cardModels.size()-1);
-		var newCardModel = cardModels.get(randNum);
-		while(newCardModel!=null and cardDeck.has(newCardModel)==true):
-			randNum = rng.randi_range(0, cardModels.size()-1);
-			newCardModel = cardModels.get(randNum);
-		var newCard = CardController.Create(newCardModel);
-		cardDeck[newCardModel]= newCard;
-		uiCardContainer.add_child(newCard);
+		var new_card = generate_random_card();
+		cardDeck[new_card.Model]= new_card;
+		uiCardContainer.add_child(new_card);
+
+func generate_random_card() -> CardController:
+	var randNum = rng.randi_range(0, cardModels.size()-1);
+	var newCardModel = cardModels.get(randNum);
+	while(newCardModel!=null and cardDeck.has(newCardModel)==true):
+		randNum = rng.randi_range(0, cardModels.size()-1);
+		newCardModel = cardModels.get(randNum);
+	return CardController.Create(newCardModel);
 
 #Function called when submitting
 func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:

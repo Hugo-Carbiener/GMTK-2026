@@ -1,15 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://dfsmgxuitgpp"]
+[gd_scene load_steps=26 format=3 uid="uid://dfsmgxuitgpp"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_ye1mc"]
 [ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="2_ckblc"]
 [ext_resource type="PackedScene" uid="uid://hpq21508uwp0" path="res://assets/scenes/ui/base-texture-button.tscn" id="2_dyaho"]
 [ext_resource type="PackedScene" uid="uid://bwv4q5cw6t2pn" path="res://assets/scenes/cards/card_factory.tscn" id="2_gldp8"]
-[ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/tiles/TileFactory.gd" id="2_xitjf"]
-[ext_resource type="Script" uid="uid://cshuev5xwvsfp" path="res://assets/scripts/tiles/models/OperatorTileModel.gd" id="3_nwww1"]
-[ext_resource type="Resource" uid="uid://v67olj756ry8" path="res://assets/resources/tile-models/operator-tile-models/DivTile.tres" id="4_7e3sx"]
-[ext_resource type="Resource" uid="uid://dpyblim6uor2s" path="res://assets/resources/tile-models/operator-tile-models/MinusTile.tres" id="5_67jys"]
-[ext_resource type="Resource" uid="uid://c23g4m542nqvk" path="res://assets/resources/tile-models/operator-tile-models/MultTile.tres" id="6_2b6ly"]
-[ext_resource type="Resource" uid="uid://cpnvtb6fqg1q8" path="res://assets/resources/tile-models/operator-tile-models/PlusTile.tres" id="7_2rwxs"]
 [ext_resource type="Script" uid="uid://6omgg0p6dr4m" path="res://assets/scripts/countdown/Executor.gd" id="8_71pkm"]
 [ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="8_53275"]
 [ext_resource type="Script" uid="uid://blnjpinkjkj7h" path="res://assets/scripts/countdown/Stats.gd" id="9_40vaa"]
@@ -25,14 +19,15 @@
 [ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="17_smjt1"]
 [ext_resource type="Script" uid="uid://dmbh6a480bju7" path="res://assets/scripts/ui/TurnCounter.gd" id="18_tfsx1"]
 [ext_resource type="Script" uid="uid://b72s0jeb8jvfc" path="res://assets/scripts/ui/pop-up-screens/LoseScreen.gd" id="25_te4eo"]
+[ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="26_r652n"]
+[ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="27_jmfrp"]
+[ext_resource type="Script" uid="uid://ca6oanlr5h24s" path="res://assets/scripts/ui/pop-up-screens/WinScreen.gd" id="27_mx32y"]
+[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/popup-subtitle.tres" id="28_67d1b"]
+[ext_resource type="Script" uid="uid://blmob42mssc5r" path="res://assets/scripts/ui/pop-up-screens/ConfirmationPopUp.gd" id="28_mx32y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
 font = ExtResource("9_rhoc4")
 font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_tfsx1"]
-font = ExtResource("9_rhoc4")
-font_color = Color(0.5542514, 0.13153619, 0.14418903, 1)
 
 [node name="Level_H" type="Node2D"]
 script = ExtResource("1_ye1mc")
@@ -40,10 +35,6 @@ script = ExtResource("1_ye1mc")
 [node name="CardFactory" parent="." node_paths=PackedStringArray("uiCardContainer") instance=ExtResource("2_gldp8")]
 position = Vector2(-137.65247, 131.40872)
 uiCardContainer = NodePath("../CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Card container/HBoxContainer")
-
-[node name="Tile factory" type="Node2D" parent="."]
-script = ExtResource("2_xitjf")
-operator_tile_models = Array[ExtResource("3_nwww1")]([ExtResource("4_7e3sx"), ExtResource("5_67jys"), ExtResource("6_2b6ly"), ExtResource("7_2rwxs")])
 
 [node name="Count down" type="Node2D" parent="."]
 
@@ -164,7 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = -64
 alignment = 1
 
 [node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Hand container"]
@@ -184,7 +175,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 24
+theme_override_constants/separation = -64
 alignment = 1
 
 [node name="Turn container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer"]
@@ -295,14 +286,14 @@ theme_override_constants/separation = 19
 [node name="Title" type="Label" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "You could not bring the count down in time..."
-label_settings = SubResource("LabelSettings_tfsx1")
+label_settings = ExtResource("26_r652n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats container" type="MarginContainer" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container")]
+[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button")]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -310,9 +301,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.972549)
-script = ExtResource("25_te4eo")
+script = ExtResource("27_mx32y")
 title = NodePath("MarginContainer/VBoxContainer/Title")
 stats_container = NodePath("MarginContainer/VBoxContainer/Stats container")
+next_level_pop_up = NodePath("Confirmation pop up")
+next_level_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Next level button")
 launch_signal = "on_win"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Win screen"]
@@ -331,11 +324,87 @@ theme_override_constants/separation = 19
 [node name="Title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mission accomplished! The visitors are pleased."
-label_settings = SubResource("LabelSettings_tfsx1")
+label_settings = ExtResource("26_r652n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats container" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Shop button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+signal_on_button_pressed = "shop_clicked"
+
+[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Shop button/Text container" index="0"]
+text = "Shop"
+
+[node name="Next level button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+
+[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Next level button/Text container" index="0"]
+text = "Next
+level"
+
+[node name="Confirmation pop up" type="MarginContainer" parent="CanvasLayer/Win screen" node_paths=PackedStringArray("cancel_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("28_mx32y")
+cancel_button = NodePath("VBoxContainer/Button container/Cancel button")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Win screen/Confirmation pop up"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.972549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Win screen/Confirmation pop up"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 19
+
+[node name="Title" type="Label" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
+layout_mode = 2
+text = "You are going to the next encounter without visiting the shop."
+label_settings = ExtResource("26_r652n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
+layout_mode = 2
+text = "(You conserve shells between encounters)"
+label_settings = ExtResource("28_67d1b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button container" type="HBoxContainer" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Cancel button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+
+[node name="Button text" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Cancel button/Text container" index="0"]
+text = "Cancel"
+
+[node name="Next fight button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+signal_on_button_pressed = "next_encounter_clicked"
+
+[node name="Button text" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Next fight button/Text container" index="0"]
+text = "Next
+fight"
+
 [editable path="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Submit button container"]
+[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Shop button"]
+[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Next level button"]
+[editable path="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Cancel button"]
+[editable path="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Next fight button"]

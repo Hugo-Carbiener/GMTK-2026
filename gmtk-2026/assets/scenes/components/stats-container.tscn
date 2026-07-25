@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://hgeym6y6qyjk"]
 
 [ext_resource type="Script" uid="uid://b70m7q8mhtcje" path="res://assets/scripts/ui/StatsContainer.gd" id="1_bjtgb"]
-[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/stats-title.tres" id="1_mv2he"]
+[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/popup-subtitle.tres" id="1_mv2he"]
 [ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="2_bjtgb"]
 [ext_resource type="Texture2D" uid="uid://bkgbd2fuxpa2y" path="res://assets/sprites/UI_separator.png" id="3_dxojl"]
 

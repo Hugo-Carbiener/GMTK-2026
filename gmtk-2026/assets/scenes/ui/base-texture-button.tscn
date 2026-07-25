@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cqkgwi5mgeijg" path="res://assets/scripts/ui/BaseTextureButton.gd" id="3_5jrn2"]
 [ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="4_ef4yx"]
 
-[node name="TextureButton" type="TextureButton" node_paths=PackedStringArray("text_margin")]
+[node name="Base button" type="TextureButton" node_paths=PackedStringArray("text_margin")]
 offset_right = 80.0
 offset_bottom = 32.0
 texture_normal = ExtResource("1_r8hyv")

@@ -1,57 +1,56 @@
 [gd_scene load_steps=5 format=3 uid="uid://cr5mjvrne3jfv"]
 
+[ext_resource type="Texture2D" uid="uid://bjs8f2so80yc7" path="res://assets/sprites/UI_card-background.png" id="1_5yskb"]
 [ext_resource type="Script" uid="uid://blef3j5kwcfvq" path="res://assets/scripts/cards/CardController.gd" id="1_lgpeh"]
-[ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://icon.svg" id="2_lfsh1"]
-[ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="3_5yskb"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_xjee2"]
-line_spacing = 2.745
-font = ExtResource("3_5yskb")
-font_size = 8
+[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="3_xjee2"]
+[ext_resource type="Texture2D" uid="uid://8aicdqxox5tr" path="res://assets/sprites/jimothy.png" id="4_xjee2"]
 
 [node name="Card" type="TextureRect" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription")]
-offset_right = 128.0
-offset_bottom = 128.0
-texture = ExtResource("2_lfsh1")
+self_modulate = Color(0.47617084, 0.5705026, 0.71798384, 1)
+clip_contents = true
+offset_right = 48.0
+offset_bottom = 64.0
+texture = ExtResource("1_5yskb")
+stretch_mode = 3
 script = ExtResource("1_lgpeh")
-LabelCardName = NodePath("MarginContainer/VBoxContainer/Name")
-LabelCardDescription = NodePath("MarginContainer/VBoxContainer/Description")
+LabelCardName = NodePath("Card padding/VBoxContainer/Name")
+LabelCardDescription = NodePath("Card padding/VBoxContainer/Description")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Card padding" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -60.5
-offset_top = -62.0
-offset_right = 60.5
-offset_bottom = 62.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Card padding"]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Name" type="Label" parent="Card padding/VBoxContainer"]
 layout_mode = 2
 text = "NOM"
-label_settings = SubResource("LabelSettings_xjee2")
+label_settings = ExtResource("3_xjee2")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Card padding/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_top = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = -65
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Card padding/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_xjee2")
+expand_mode = 4
+
+[node name="Description" type="Label" parent="Card padding/VBoxContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 text = "Imme anbzdba zdbqdzbdzqbdv yvzavzdv vydavzvdz hbhbhbh b bhbhbvvb"
-label_settings = SubResource("LabelSettings_xjee2")
+label_settings = ExtResource("3_xjee2")
 autowrap_mode = 2
