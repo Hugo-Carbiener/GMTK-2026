@@ -36,6 +36,7 @@ script = ExtResource("1_h30ls")
 [node name="Count down" type="Node2D" parent="."]
 
 [node name="Alien" parent="." node_paths=PackedStringArray("Aliens") instance=ExtResource("2_byndm")]
+position = Vector2(145, 112.000015)
 Aliens = {
 0: NodePath("Alien_Jellyfish"),
 1: NodePath("Alien_Shark")
@@ -46,15 +47,6 @@ script = ExtResource("2_rpedi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
-
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.71652323, 0.51166373, 0.4659539, 1)
 
 [node name="Ui" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -345,6 +337,7 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button", "base_gain_container", "turn_remaining_container", "bounty_container", "total_container")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
