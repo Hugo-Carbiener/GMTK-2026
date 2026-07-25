@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dpl3vikfb488s"]
+
+[ext_resource type="Texture2D" uid="uid://6qx6yxbdbfb8" path="res://assets/sprites/Aliens/Jelly3.png" id="1_u30ex"]
+[ext_resource type="Texture2D" uid="uid://dytwvqnppede8" path="res://assets/sprites/Aliens/Jelly1.png" id="2_jjjln"]
+[ext_resource type="Texture2D" uid="uid://djyvgbreh3ktj" path="res://assets/sprites/Aliens/Jelly2.png" id="3_ck6wj"]
+[ext_resource type="Texture2D" uid="uid://dg4mdg27f10pm" path="res://assets/sprites/Aliens/Jelly4.png" id="4_trb3b"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u30ex")
+}],
+"loop": true,
+"name": &"defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jjjln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ck6wj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_trb3b")
+}],
+"loop": true,
+"name": &"victory",
+"speed": 5.0
+}]

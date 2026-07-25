@@ -1,42 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://b37we3vq24yiv"]
+[gd_scene load_steps=5 format=3 uid="uid://b37we3vq24yiv"]
 
-[ext_resource type="Texture2D" uid="uid://6qx6yxbdbfb8" path="res://assets/sprites/Aliens/Jelly3.png" id="1_a327s"]
-[ext_resource type="Texture2D" uid="uid://dytwvqnppede8" path="res://assets/sprites/Aliens/Jelly1.png" id="1_mgu1h"]
+[ext_resource type="SpriteFrames" uid="uid://dpl3vikfb488s" path="res://assets/animations/jellyfish.tres" id="1_kvebi"]
 [ext_resource type="Script" uid="uid://cuc7djtl306yx" path="res://assets/scripts/alien/AlienController.gd" id="2_021w8"]
-[ext_resource type="Texture2D" uid="uid://djyvgbreh3ktj" path="res://assets/sprites/Aliens/Jelly2.png" id="3_s8lyl"]
-[ext_resource type="Texture2D" uid="uid://dg4mdg27f10pm" path="res://assets/sprites/Aliens/Jelly4.png" id="4_6o27f"]
+[ext_resource type="SpriteFrames" uid="uid://bkbrlkcdjxw3w" path="res://assets/animations/shark.tres" id="3_8s5x0"]
+[ext_resource type="Texture2D" uid="uid://8aicdqxox5tr" path="res://assets/sprites/jimothy.png" id="6_s8lyl"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_inibr"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_a327s")
-}],
-"loop": true,
-"name": &"defeat",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.41,
-"texture": ExtResource("1_mgu1h")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_s8lyl")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_6o27f")
-}],
-"loop": true,
-"name": &"victory",
-"speed": 5.0
-}]
-
-[node name="Alien" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_inibr")
-animation = &"defeat"
+[node name="Alien" type="Node2D" node_paths=PackedStringArray("Aliens")]
+scale = Vector2(0.05, 0.05)
 script = ExtResource("2_021w8")
+Aliens = {
+0: NodePath("Alien_Jellyfish"),
+1: NodePath("Alien_Shark")
+}
+
+[node name="Alien_Jellyfish" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.99999994, 0.99999994)
+sprite_frames = ExtResource("1_kvebi")
+animation = &"defeat"
+
+[node name="Alien_Shark" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.765, 1.765)
+sprite_frames = ExtResource("3_8s5x0")
+animation = &"defeat"
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(2246, 230)
+scale = Vector2(50, 50)
+texture = ExtResource("6_s8lyl")

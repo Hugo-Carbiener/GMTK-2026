@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bkbrlkcdjxw3w"]
+
+[ext_resource type="Texture2D" uid="uid://dh35lb2542u2h" path="res://assets/sprites/Aliens/Shak_23.png" id="1_ej14y"]
+[ext_resource type="Texture2D" uid="uid://r43dg5p5wno" path="res://assets/sprites/Aliens/Shak_21.png" id="2_7tjc0"]
+[ext_resource type="Texture2D" uid="uid://b0s2n13h2poty" path="res://assets/sprites/Aliens/Shak_22.png" id="3_ouiv0"]
+[ext_resource type="Texture2D" uid="uid://vqsjhb07yom1" path="res://assets/sprites/Aliens/Shak_24.png" id="4_ltr3s"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ej14y")
+}],
+"loop": true,
+"name": &"defeat",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7tjc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ouiv0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ltr3s")
+}],
+"loop": true,
+"name": &"victory",
+"speed": 5.0
+}]
