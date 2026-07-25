@@ -7,6 +7,6 @@ script = ExtResource("1_ikv5m")
 NumToMultiply = 1
 NumToMultiplyBy = 10
 Name = "Keep it up !"
-Description = "We going to the moon with this !"
+Description = "Why take 1 when you can take 10 !"
 Type = 1
 metadata/_custom_type_script = "uid://ctk5u7kfjf5o2"

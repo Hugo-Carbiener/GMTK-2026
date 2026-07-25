@@ -7,6 +7,6 @@ script = ExtResource("1_v3tea")
 NumToMultiply = 4
 NumToMultiplyBy = 2
 Name = "Let it roll !"
-Description = "WOOOOOOOO"
+Description = "4 x 2 !"
 Type = 1
 metadata/_custom_type_script = "uid://ctk5u7kfjf5o2"
