@@ -115,7 +115,7 @@ func on_number_tile_bought(buyable_element : BuyableElement, tile : NumberTile, 
 	if UserData.currency < price:
 		return;
 	UserData.pay(price);
-	UserData.number_deck.append(tile);
+	UserData.number_deck.append(tile.get_number());
 	number_tiles.erase(tile);
 	buyable_element.mark_as_bought();
 
