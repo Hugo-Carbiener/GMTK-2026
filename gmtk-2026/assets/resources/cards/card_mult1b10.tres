@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card_MultiplyXByY" load_steps=2 format=3 uid="uid://ofbxtn3gcr4n"]
+
+[ext_resource type="Script" uid="uid://ctk5u7kfjf5o2" path="res://assets/scripts/cards/models/Card_MultiplyXByY.gd" id="1_ikv5m"]
+
+[resource]
+script = ExtResource("1_ikv5m")
+NumToMultiply = 1
+NumToMultiplyBy = 10
+Name = "Keep it up !"
+Description = "We going to the moon with this !"
+Type = 1
+metadata/_custom_type_script = "uid://ctk5u7kfjf5o2"

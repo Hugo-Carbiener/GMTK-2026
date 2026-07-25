@@ -5,9 +5,14 @@ class_name CardController extends Control
 const CardScene : PackedScene = preload("res://assets/scenes/cards/card.tscn");
 
 # Card elements
-@export var Name = "DEFAULT_CARD";
-@export var Description = "DEFAULT_DESCRIPTION"
-@export var Type = CardFactory.CARD_TYPE.SUBMIT_EFFECT; #By default submit effect
+var Name : String;
+var Description : String;
+var Type : CardFactory.CARD_TYPE;
+var Model : CardModel;
+
+# Card visual elements
+@export var LabelCardName : Label;
+@export var LabelCardDescription : Label;
 
 func _ready() -> void:
 	print("I am a card !");
@@ -19,10 +24,16 @@ static func Create(card:CardModel)->CardController:
 	newCard.Name=card.Name;
 	newCard.Description=card.Description;
 	newCard.Type=card.Type;
+	newCard.Model=card;
+	newCard.ChangeCardVisuals();
 	return newCard;
 
-func TriggerCardEffect() -> bool:
+func ChangeCardVisuals()->void:
+	LabelCardName.text = self.Name;
+	LabelCardDescription.text = self.Description;
+	return;
+	
+# Portal function that will call the Model's effect
+func CallingTriggerCardEffect() -> bool:
 	print("HELLO, I AM A CARD EFFECT ! RIVETING !!!");
-	# Returns 0 when effect is triggered, 1 otherwise, I dunno could be useful down the line
-	#TODO : THIS SHOULD CALL A SCRIPT LOADED IN THE CARD MODEL which will contain the card's effect
-	return 0;
+	return Model.TriggerCardEffect();

@@ -18,7 +18,6 @@ enum CARD_TYPE{
 @export var cardModels : Array[CardModel]; #All the possible cards based on the card model
 var cardDeck : Array[CardController]; #The in-game drawn cards 
 
-
 func init():
 	GenerateCardDeck();
 

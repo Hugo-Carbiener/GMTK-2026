@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cf7uo1n1y32ay"]
+[gd_scene load_steps=23 format=3 uid="uid://c8f1gu3mqa3jj"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_h30ls"]
 [ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/tiles/TileFactory.gd" id="2_bhxfu"]
