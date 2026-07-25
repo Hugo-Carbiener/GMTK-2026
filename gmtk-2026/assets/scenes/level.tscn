@@ -338,6 +338,7 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button", "base_gain_container", "turn_remaining_container", "bounty_container", "total_container")]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

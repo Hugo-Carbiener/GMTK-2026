@@ -58,13 +58,27 @@ func load_operator_tile_models_by_types():
 		file_name = dir.get_next()
 
 func generate_decks():
-	generate_number_deck();
+	generate_number_deck(get_base_number_repartition());
 	generate_operator_deck();
 	generate_shop_lists();
 
-func generate_number_deck():
-	for tile_number in range(Constants.MIN_NUMBER_TILE, Constants.MAX_NUMBER_TILE + 1):
-		UserData.number_deck.append(tile_number);
+func get_base_number_repartition() -> Dictionary[int, int]:
+	var dict : Dictionary[int, int];
+	for i in range(Constants.MIN_NUMBER_TILE, Constants.MAX_NUMBER_TILE + 1):
+		for y in range(Constants.MIN_NUMBER_TILE, Constants.MAX_NUMBER_TILE + 1):
+			var number = int(round((i + y) /2.));
+			if dict.has(number):
+				dict.set(number, dict.get(number) + 1);
+			else:
+				dict.set(number, 1);
+	for key in dict:
+		dict.set(key, round(dict.get(key) / 4));
+	return dict;
+
+func generate_number_deck(tile_repartition : Dictionary[int, int]):
+	for number in tile_repartition:
+		for i in range(tile_repartition.get(number)):
+			UserData.number_deck.append(number);
 
 func generate_operator_deck():
 	if operator_tile_models_by_types.is_empty():
