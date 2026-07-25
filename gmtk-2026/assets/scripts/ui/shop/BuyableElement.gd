@@ -22,9 +22,10 @@ func setup(_price : int, _content : Control):
 	price_label.text = str(price);
 	self.content = _content;
 	content_container.add_child(_content);
+	update_status(UserData.currency);
 
 func _ready() -> void:
 	SignalBus.on_money_update.connect(update_status);
 
-func update_status():
-	price_label.label_settings = valid_price_font if price >= UserData.currency else invalid_price_font;
+func update_status(value : int):
+	price_label.label_settings = valid_price_font if price >= value else invalid_price_font;

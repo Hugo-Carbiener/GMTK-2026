@@ -28,18 +28,19 @@ var operatorTileTypeToChar = {
 	OperatorTileType.DIV : "/",
 }
 
-func init():
+func _ready() -> void:
 	load_operator_tile_models();
+
+func init():
 	generate_decks();
 
 func load_operator_tile_models():
-	var resources: Array[OperatorTileModel];
 	var path = "res://assets/resources/tile-models/operator-tile-models";
 	var dir = DirAccess.open(path)
 
 	if !dir:
 		printerr("Could not find directory " + path);
-		return resources;
+		return;
 
 	dir.list_dir_begin()
 	var file_name = dir.get_next()
@@ -54,8 +55,7 @@ func load_operator_tile_models():
 				var res = load(file_path)
 				# Check if the resource matches or inherits from target_type
 				if res and res is OperatorTileModel:
-					if not resources.has(res):
-						operator_tile_models.append(res)
+					operator_tile_models.append(res)
 
 		file_name = dir.get_next()
 

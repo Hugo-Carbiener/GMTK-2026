@@ -25,24 +25,25 @@ func populate_shop():
 	await generate_number_tile_shop();
 	await generate_operator_tile_shop();
 	generate_card_rewards();
+	SignalBus.on_money_update.emit(UserData.currency);
 
 func generate_number_tile_shop():
 	for i in range(Constants.DEFAULT_TILE_AMOUNT_IN_SHOP):
 		var number_tile = TileFactory.get_random_number_tile();
 		var buyable_tile = BuyableElement.create_buyable_element(Constants.NUMBER_TILE_BASE_PRICE, number_tile);
 		number_tiles.append(number_tile);
-		await AnimationUtils.add_child_fade_in(tile_shop_number_tile_container, buyable_tile, Constants.SHORT_TRANSITION_DURATION);
+		tile_shop_number_tile_container.add_child(buyable_tile);
 
 func generate_operator_tile_shop():
 	for i in range(Constants.DEFAULT_TILE_AMOUNT_IN_SHOP):
 		var operator_tile = TileFactory.get_random_paid_operator_tile();
 		var buyable_tile = BuyableElement.create_buyable_element(operator_tile.model.price, operator_tile);
 		operator_tiles.append(operator_tile);
-		await AnimationUtils.add_child_fade_in(tile_shop_operator_tile_container, buyable_tile, Constants.SHORT_TRANSITION_DURATION);
+		tile_shop_operator_tile_container.add_child(buyable_tile);
 
 func generate_card_rewards():
 	for i in range(Constants.DEFAULT_CARD_AMOUNT_IN_SHOP):
-		var card_reward = CardFactory.instance.generate_random_card();
+		var card_reward = CardFactory.generate_random_card();
 		card_reward_container.add_child(card_reward);
 		card_rewards.append(card_reward);
 
@@ -52,12 +53,12 @@ func reroll():
 	populate_shop();
 
 func reset_shop():
-	for child in tile_shop_number_tile_container:
-		tile_shop_number_tile_container.remove_child(child);
-	for child in tile_shop_operator_tile_container:
-		tile_shop_operator_tile_container.remove_child(child);
-	for child in card_reward_container:
-		card_reward_container.remove_child(child);
+	for child in tile_shop_number_tile_container.get_children():
+		child.queue_free();
+	for child in tile_shop_operator_tile_container.get_children():
+		child.queue_free();
+	for child in card_reward_container.get_children():
+		child.queue_free();
 	number_tiles.clear();
 	operator_tiles.clear();
 	card_rewards.clear();

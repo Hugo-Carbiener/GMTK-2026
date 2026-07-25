@@ -1,6 +1,6 @@
-class_name HandManager extends Control
+class_name TileHandManager extends Control
 
-static var instance : HandManager;
+static var instance : TileHandManager;
 
 var number_tiles : Array[NumberTile];
 var operator_tiles : Array[OperatorTile];

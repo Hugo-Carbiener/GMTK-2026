@@ -1,40 +1,54 @@
-class_name CardFactory extends Node2D
+extends Node2D
 # Card factory
 # Will generate the cards
-
-static var instance : CardFactory;
-
-@export var uiCardContainer : HBoxContainer;
-
 func _ready() -> void:
-	if instance == null:
-		instance = self;
+	load_card_models();
 
 enum CARD_TYPE{
 	DRAW_EFFECT,
 	SUBMIT_EFFECT
 }
 
-@export var cardModels : Array[CardModel]; #All the possible cards based on the card model
+var cardModels : Array[CardModel]; #All the possible cards based on the card model
 var cardDeck : Dictionary[CardModel,CardController]; #The in-game drawn cards 
 
 func init()->void:
 	GenerateCardDeck();
+
+func load_card_models():
+	var path = "res://assets/resources/cards/";
+	var dir = DirAccess.open(path)
+
+	if !dir:
+		printerr("Could not find directory " + path);
+		return;
+
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+
+	while file_name != "":
+		if not dir.current_is_dir():
+			# Remove .remap or .import suffixes if present in exported builds
+			var clean_name = file_name.trim_suffix(".remap").trim_suffix(".import")
+			var file_path = path.path_join(clean_name)
+
+			if ResourceLoader.exists(file_path):
+				var res = load(file_path)
+				# Check if the resource matches or inherits from target_type
+				if res and res is CardModel:	
+					cardModels.append(res)
+
+		file_name = dir.get_next()
 
 var rng = RandomNumberGenerator.new();
 func GenerateCardDeck()->void:
 	for i in range(0, Constants.MAX_NUMBER_CARDS):
 		var new_card = generate_random_card();
 		cardDeck[new_card.Model]= new_card;
-		uiCardContainer.add_child(new_card);
 
 func generate_random_card() -> CardController:
-	var randNum = rng.randi_range(0, cardModels.size()-1);
-	var newCardModel = cardModels.get(randNum);
-	while(newCardModel!=null and cardDeck.has(newCardModel)==true):
-		randNum = rng.randi_range(0, cardModels.size()-1);
-		newCardModel = cardModels.get(randNum);
-	return CardController.Create(newCardModel);
+	var card_model = cardModels.get(randi() % cardModels.size());
+	return CardController.Create(card_model);
 
 #Function called when submitting
 func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
