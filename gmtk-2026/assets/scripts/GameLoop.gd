@@ -24,8 +24,6 @@ func init_signals():
 func start_level():
 	current_phase = Phases.PLAY_PHASE;
 	turns_left = Constants.BASE_TURN_NUMBER;
-	TileFactory.init();
-	CardFactory.init();
 	Executor.instance.init();
 	Countdown.instance.init();
 	DrawPile.instance.init();
@@ -73,3 +71,7 @@ static func win_level():
 
 static func lose_level():
 	SignalBus.on_loss.emit();
+
+static func compute_gains():
+	pass
+	

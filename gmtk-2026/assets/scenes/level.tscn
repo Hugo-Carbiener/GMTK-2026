@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dfsmgxuitgpp"]
+[gd_scene load_steps=27 format=3 uid="uid://dfsmgxuitgpp"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_ye1mc"]
 [ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="2_ckblc"]
@@ -8,15 +8,17 @@
 [ext_resource type="Script" uid="uid://blnjpinkjkj7h" path="res://assets/scripts/countdown/Stats.gd" id="9_40vaa"]
 [ext_resource type="Texture2D" uid="uid://dsmtvac3yg6v2" path="res://assets/sprites/UI_draw-pile-icon.png" id="9_67jys"]
 [ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="9_rhoc4"]
-[ext_resource type="Script" path="res://assets/scripts/cards/CardHandManager.gd" id="10_1gm5j"]
+[ext_resource type="Script" uid="uid://cbghe7g1gbw8u" path="res://assets/scripts/cards/CardHandManager.gd" id="10_1gm5j"]
 [ext_resource type="Texture2D" uid="uid://dil0gufilg5hs" path="res://assets/sprites/UI_draw-pile-icon-pressed.png" id="10_2b6ly"]
-[ext_resource type="Script" path="res://assets/scripts/tiles/TileHandManager.gd" id="10_nwww1"]
+[ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/tiles/TileHandManager.gd" id="10_nwww1"]
 [ext_resource type="Script" uid="uid://qslm53ygf6ly" path="res://assets/scripts/countdown/Countdown.gd" id="10_rhoc4"]
 [ext_resource type="Script" uid="uid://bmagvmlookhwy" path="res://assets/scripts/piles/DrawPile.gd" id="11_2rwxs"]
 [ext_resource type="Script" uid="uid://by320l0l85otw" path="res://assets/scripts/piles/DiscardPile.gd" id="16_t33da"]
-[ext_resource type="Script" path="res://assets/scripts/ui/shop/CurrencyCounter.gd" id="17_40vaa"]
+[ext_resource type="Script" uid="uid://d0xx0t4jhv723" path="res://assets/scripts/ui/shop/CurrencyCounter.gd" id="17_40vaa"]
 [ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="17_te4eo"]
 [ext_resource type="Script" uid="uid://dmbh6a480bju7" path="res://assets/scripts/ui/TurnCounter.gd" id="18_tfsx1"]
+[ext_resource type="PackedScene" uid="uid://hgeym6y6qyjk" path="res://assets/scenes/components/stats-container.tscn" id="21_1gm5j"]
+[ext_resource type="Texture2D" uid="uid://ytts6lujxwnv" path="res://assets/sprites/UI_vseparator.png" id="22_te4eo"]
 [ext_resource type="Script" uid="uid://b72s0jeb8jvfc" path="res://assets/scripts/ui/pop-up-screens/LoseScreen.gd" id="25_te4eo"]
 [ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="26_r652n"]
 [ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="27_jmfrp"]
@@ -337,7 +339,6 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button")]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -346,7 +347,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.972549)
 script = ExtResource("27_mx32y")
 title = NodePath("MarginContainer/VBoxContainer/Title")
-stats_container = NodePath("MarginContainer/VBoxContainer/Stats container")
+stats_container = NodePath("MarginContainer/VBoxContainer/HboxContainer/Stats container")
 next_level_pop_up = NodePath("Confirmation pop up")
 next_level_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Next level button")
 launch_signal = "on_win"
@@ -358,6 +359,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Win screen/MarginContainer"]
 layout_mode = 2
@@ -371,7 +376,20 @@ label_settings = ExtResource("26_r652n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Stats container" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+[node name="HboxContainer" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Stats container" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer"]
+layout_mode = 2
+
+[node name="Stats container2" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer/Stats container" instance=ExtResource("21_1gm5j")]
+layout_mode = 2
+
+[node name="Separator" type="TextureRect" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer"]
+layout_mode = 2
+texture = ExtResource("22_te4eo")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]

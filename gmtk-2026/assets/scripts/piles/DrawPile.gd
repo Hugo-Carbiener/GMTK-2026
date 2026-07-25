@@ -12,9 +12,11 @@ func init():
 	populate_deck();
 
 func populate_deck():
-	for number_tile in UserData.number_deck:
+	for number in UserData.number_deck:
+		var number_tile = NumberTile.create_tile(number);
 		add_number_tile(number_tile);
-	for operator_tile in UserData.operator_deck:
+	for operator_type in UserData.operator_deck:
+		var operator_tile = OperatorTile.create_tile(TileFactory.operator_tile_models_by_types.get(operator_type));
 		add_operator_tile(operator_tile);
 
 func draw_number_tile() -> NumberTile:
