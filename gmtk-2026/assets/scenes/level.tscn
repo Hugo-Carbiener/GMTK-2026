@@ -302,4 +302,40 @@ vertical_alignment = 1
 [node name="Stats container" type="MarginContainer" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.80784315)
+script = ExtResource("25_te4eo")
+title = NodePath("MarginContainer/VBoxContainer/Title")
+stats_container = NodePath("MarginContainer/VBoxContainer/Stats container")
+launch_signal = "on_win"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Win screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Win screen/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 19
+
+[node name="Title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mission accomplished! The visitors are pleased."
+label_settings = SubResource("LabelSettings_tfsx1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Stats container" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [editable path="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Submit button container"]

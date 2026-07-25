@@ -64,7 +64,6 @@ static func check_win_loose_conditions():
 		lose_level();
 
 static func win_level():
-	print("YOU WIN");
 	SignalBus.on_win.emit();
 
 static func lose_level():
