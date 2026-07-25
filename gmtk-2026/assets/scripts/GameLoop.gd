@@ -45,5 +45,8 @@ static func execution_phase():
 	start_phase(get_next_phase());
 
 static func end_turn():
+	var can_end_turn = await Executor.instance.on_turn_end();
+	if !can_end_turn: return;
+	
 	HandManager.instance.discard_hands();
 	start_phase(get_next_phase());

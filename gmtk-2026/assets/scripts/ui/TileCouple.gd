@@ -37,6 +37,18 @@ func execute():
 	remove_operator();
 	remove_number();
 
+func cancel():
+	if has_operator():
+		await operator.consume();
+		operator_slot_container.remove_child(operator);
+		operator.scale = Vector2i.ONE;
+		remove_operator();
+	if has_number():
+		await number.consume();
+		number_slot_container.remove_child(number);
+		number.scale = Vector2i.ONE;
+		remove_number();
+
 func has_operator() -> bool:
 	return operator != null;
 
