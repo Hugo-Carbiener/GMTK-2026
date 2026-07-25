@@ -1,6 +1,6 @@
 extends Node2D
 
-var operator_tile_models : Array[OperatorTileModel];
+var operator_tile_models_by_types : Dictionary[OperatorTileType, OperatorTileModel];
 var bundle_tile_models : Array[OperatorTileModel];
 var paid_tile_models : Array[OperatorTileModel];
 
@@ -29,12 +29,10 @@ var operatorTileTypeToChar = {
 }
 
 func _ready() -> void:
-	load_operator_tile_models();
-
-func init():
+	load_operator_tile_models_by_types();
 	generate_decks();
 
-func load_operator_tile_models():
+func load_operator_tile_models_by_types():
 	var path = "res://assets/resources/tile-models/operator-tile-models";
 	var dir = DirAccess.open(path)
 
@@ -55,7 +53,7 @@ func load_operator_tile_models():
 				var res = load(file_path)
 				# Check if the resource matches or inherits from target_type
 				if res and res is OperatorTileModel:
-					operator_tile_models.append(res)
+					operator_tile_models_by_types.set(res.operator_type, res);
 
 		file_name = dir.get_next()
 
@@ -66,30 +64,28 @@ func generate_decks():
 
 func generate_number_deck():
 	for tile_number in range(Constants.MIN_NUMBER_TILE, Constants.MAX_NUMBER_TILE + 1):
-		var number_tile = NumberTile.create_tile(tile_number);
-		UserData.number_deck.append(number_tile);
+		UserData.number_deck.append(tile_number);
 
 func generate_operator_deck():
-	if operator_tile_models.is_empty():
+	if operator_tile_models_by_types.is_empty():
 		printerr("Empty operator tile model in tile factory");
 		return;
-	for operator_tile_model in operator_tile_models:
+	for operator_tile_model in operator_tile_models_by_types.values():
 		if operator_tile_model == null: continue;
 		if !operator_tile_model.is_in_base_deck: continue;
 		
 		for i in range(operator_tile_model.amount_in_base_deck):
-			var operator_tile = OperatorTile.create_tile(operator_tile_model);
-			UserData.operator_deck.append(operator_tile);
+			UserData.operator_deck.append(operator_tile_model.operator_type);
 
 func generate_shop_lists():
-	for tile_model in operator_tile_models:
+	for tile_model in operator_tile_models_by_types.values():
 		if tile_model.is_in_bundle:
 			bundle_tile_models.append(tile_model);
 		else:
 			paid_tile_models.append(tile_model);
 
 func get_random_operator_tile() -> OperatorTile:
-	return OperatorTile.create_tile(operator_tile_models.get(randi() % operator_tile_models.size()));
+	return OperatorTile.create_tile(operator_tile_models_by_types.get(randi() % operator_tile_models_by_types.size()));
 
 func get_random_paid_operator_tile():
 	return OperatorTile.create_tile(paid_tile_models.get(randi() % paid_tile_models.size()));

@@ -3,6 +3,7 @@ extends Node2D
 # Will generate the cards
 func _ready() -> void:
 	load_card_models();
+	GenerateCardDeck();
 
 enum CARD_TYPE{
 	DRAW_EFFECT,
@@ -16,9 +17,6 @@ enum CARD_STATUS {
 
 var cardModels : Array[CardModel]; #All the possible cards based on the card model
 var cardDeck : Dictionary[CardModel,CardController]; #The in-game drawn cards 
-
-func init()->void:
-	GenerateCardDeck();
 
 func load_card_models():
 	var path = "res://assets/resources/cards/";
@@ -40,7 +38,7 @@ func load_card_models():
 			if ResourceLoader.exists(file_path):
 				var res = load(file_path)
 				# Check if the resource matches or inherits from target_type
-				if res and res is CardModel:	
+				if res and res is CardModel:
 					cardModels.append(res)
 
 		file_name = dir.get_next()
