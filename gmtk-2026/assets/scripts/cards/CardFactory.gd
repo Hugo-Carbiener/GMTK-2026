@@ -40,7 +40,7 @@ func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
 		if(model.Type==CARD_TYPE.SUBMIT_EFFECT):
 			cardDeck[model].Model.TriggerCardEffect(tileCouples);
 			#TODO : add some visual bullshittery here 
-			ClearCardFromDeck(model);
+			#ClearCardFromDeck(model);
 	return;
 
 func ExecuteCardDraw()->void:
@@ -49,7 +49,7 @@ func ExecuteCardDraw()->void:
 		if(model.Type==CARD_TYPE.DRAW_EFFECT):
 			cardDeck[model].Model.TriggerCardEffect();
 			#TODO : add some visual bullshittery here 
-			ClearCardFromDeck(model);
+			#ClearCardFromDeck(model);
 	return;
 
 func ClearCardFromDeck(model:CardModel)->void:
