@@ -66,12 +66,17 @@ static func can_start_win_lose_conditions() -> bool:
 	return false; 
 
 static func win_level():
-	UserData.gain(20);
 	SignalBus.on_win.emit();
 
 static func lose_level():
+	UserData.gain(compute_gains());
 	SignalBus.on_loss.emit();
 
-static func compute_gains():
-	pass
-	
+static func get_turn_remaining_gain() -> int:
+	return turns_left * Constants.MONEY_PER_TURN_LEFT;
+
+static func get_bounty_gains() -> int:
+	return Constants.MONEY_BOUNTY_FOR_PERFECT if Countdown.instance.countdown == 0 else 0;
+
+static func compute_gains() -> int:
+	return get_turn_remaining_gain() + get_bounty_gains();
