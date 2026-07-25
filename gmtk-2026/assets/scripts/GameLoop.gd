@@ -68,6 +68,7 @@ static func can_start_win_lose_conditions() -> bool:
 	return false; 
 
 static func win_level():
+	UserData.gain(20);
 	SignalBus.on_win.emit();
 
 static func lose_level():

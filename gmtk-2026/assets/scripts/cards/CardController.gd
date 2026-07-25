@@ -10,17 +10,17 @@ var Description : String;
 var Type : CardFactory.CARD_TYPE;
 var Model : CardModel;
 var MarkedForDeath : bool = false;
+var status : CardFactory.CARD_STATUS;
 
 # Card visual elements
 @export var LabelCardName : Label;
 @export var LabelCardDescription : Label;
+@export var button : Button;
 
 func _ready() -> void:
-	print("I am a card !");
-	pass 
+	button.button_up.connect(on_click);
 
 static func Create(card:CardModel)->CardController:
-	print("Creating card");
 	var newCard = CardScene.instantiate();
 	newCard.Name=card.Name;
 	newCard.Description=card.Description;
@@ -34,6 +34,11 @@ func ChangeCardVisuals()->void:
 	LabelCardName.text = self.Name;
 	LabelCardDescription.text = self.Description;
 	return;
+
+func on_click():
+	print("Click card");
+	if status == CardFactory.CARD_STATUS.IN_SHOP:
+		SignalBus.card_reward_selected.emit(self);
 
 func Destroy()->void:
 	#TODO : add visual bullshittery

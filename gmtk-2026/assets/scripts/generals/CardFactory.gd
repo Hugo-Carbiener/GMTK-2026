@@ -9,6 +9,11 @@ enum CARD_TYPE{
 	SUBMIT_EFFECT
 }
 
+enum CARD_STATUS {
+	IN_HAND,
+	IN_SHOP
+}
+
 var cardModels : Array[CardModel]; #All the possible cards based on the card model
 var cardDeck : Dictionary[CardModel,CardController]; #The in-game drawn cards 
 

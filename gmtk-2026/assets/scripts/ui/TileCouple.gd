@@ -26,7 +26,7 @@ func remove_number():
 	number = null;
 
 func execute():
-	await operator.consume();
+	operator.consume();
 	await number.consume();
 	operator_slot_container.remove_child(operator);
 	number_slot_container.remove_child(number);

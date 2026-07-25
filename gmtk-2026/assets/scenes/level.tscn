@@ -28,7 +28,7 @@
 font = ExtResource("9_rhoc4")
 font_size = 64
 
-[node name="Level_H" type="Node2D"]
+[node name="Encounter" type="Node2D"]
 script = ExtResource("1_ye1mc")
 
 [node name="Count down" type="Node2D" parent="."]

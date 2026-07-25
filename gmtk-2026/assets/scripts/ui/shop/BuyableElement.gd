@@ -1,16 +1,14 @@
-class_name BuyableElement extends Control
+class_name BuyableElement extends HoverableElement
 
 const buyable_element_scene : PackedScene = preload("res://assets/scenes/components/shop/buyable-element.tscn");
 
-@export_group("Fonts")
-@export var valid_price_font : LabelSettings;
-@export var invalid_price_font : LabelSettings;
 @export_group("Components")
-@export var price_label : Label;
 @export var content_container : Control;
+@export var price_tag_container : Control;
+@export var button : Button;
 
+var price_tag : PriceTag;
 var content : Control;
-var price : int;
 
 static func create_buyable_element(_price : int, _content : Control) -> BuyableElement:
 	var element = buyable_element_scene.instantiate();
@@ -18,14 +16,23 @@ static func create_buyable_element(_price : int, _content : Control) -> BuyableE
 	return element;
 
 func setup(_price : int, _content : Control):
-	self.price = _price;
-	price_label.text = str(price);
 	self.content = _content;
+	price_tag = PriceTag.create_price_tag(_price);
+	price_tag_container.add_child(price_tag);
 	content_container.add_child(_content);
-	update_status(UserData.currency);
 
 func _ready() -> void:
-	SignalBus.on_money_update.connect(update_status);
+	super();
+	button.button_up.connect(on_click);
 
-func update_status(value : int):
-	price_label.label_settings = valid_price_font if price >= value else invalid_price_font;
+func on_click():
+	if price_tag.price > UserData.currency:
+		AnimationUtils.hshake(self, 50, Constants.SHORT_TRANSITION_DURATION);
+		AnimationUtils.blink_sprite(self, Color.RED);
+
+	if content is NumberTile:
+		var number_tile_content : NumberTile = content;
+		SignalBus.number_tile_bought.emit(self, number_tile_content, price_tag.price);
+	elif content is OperatorTile:
+		var operator_tile_content : OperatorTile = content;
+		SignalBus.operator_tile_bought.emit(self, operator_tile_content, price_tag.price);

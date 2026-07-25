@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxwaxx5fk3pmu"]
+
+[ext_resource type="LabelSettings" uid="uid://qm1x256gljpi" path="res://assets/fonts/price-fonts/invalid-price-font.tres" id="1_2d4ru"]
+[ext_resource type="Script" uid="uid://v6xx5vmck8ef" path="res://assets/scripts/ui/shop/PriceTag.gd" id="1_o4mvx"]
+[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="2_o4mvx"]
+[ext_resource type="LabelSettings" uid="uid://ceikhk71hq3jx" path="res://assets/fonts/price-fonts/valid-price-font.tres" id="2_y2hf3"]
+
+[node name="Price margin" type="MarginContainer" node_paths=PackedStringArray("label")]
+size_flags_horizontal = 4
+focus_behavior_recursive = 1
+mouse_filter = 2
+script = ExtResource("1_o4mvx")
+valid_price_font = ExtResource("2_y2hf3")
+invalid_price_font = ExtResource("1_2d4ru")
+label = NodePath("Price container/Price margin/Price")
+
+[node name="Price container" type="HBoxContainer" parent="."]
+layout_mode = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+theme_override_constants/separation = 1
+
+[node name="Price margin" type="MarginContainer" parent="Price container"]
+layout_mode = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+theme_override_constants/margin_top = 2
+
+[node name="Price" type="Label" parent="Price container/Price margin"]
+layout_mode = 2
+size_flags_vertical = 1
+focus_behavior_recursive = 1
+text = "999"
+label_settings = ExtResource("1_2d4ru")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Currency icon" type="TextureRect" parent="Price container"]
+layout_mode = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
+texture = ExtResource("2_o4mvx")

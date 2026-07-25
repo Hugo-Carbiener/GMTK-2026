@@ -5,16 +5,27 @@
 [ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="3_xjee2"]
 [ext_resource type="Texture2D" uid="uid://8aicdqxox5tr" path="res://assets/sprites/jimothy.png" id="4_xjee2"]
 
-[node name="Card" type="TextureRect" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription")]
+[node name="Card" type="TextureRect" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription", "button")]
 self_modulate = Color(0.47617084, 0.5705026, 0.71798384, 1)
 clip_contents = true
 offset_right = 48.0
 offset_bottom = 64.0
+focus_behavior_recursive = 1
 texture = ExtResource("1_5yskb")
 stretch_mode = 3
 script = ExtResource("1_lgpeh")
 LabelCardName = NodePath("Card padding/VBoxContainer/Name")
 LabelCardDescription = NodePath("Card padding/VBoxContainer/Description")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
 
 [node name="Card padding" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -23,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -30,6 +42,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Card padding"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Name" type="Label" parent="Card padding/VBoxContainer"]
 layout_mode = 2
@@ -40,11 +53,13 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="Card padding/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = -65
 
 [node name="TextureRect" type="TextureRect" parent="Card padding/VBoxContainer/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("4_xjee2")
 expand_mode = 4
 

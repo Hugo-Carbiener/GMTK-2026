@@ -1,46 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4l7wt4s7jut8"]
+[gd_scene load_steps=2 format=3 uid="uid://d4l7wt4s7jut8"]
 
 [ext_resource type="Script" uid="uid://cyp5o5kal36po" path="res://assets/scripts/ui/shop/BuyableElement.gd" id="1_4wyyw"]
-[ext_resource type="LabelSettings" uid="uid://ceikhk71hq3jx" path="res://assets/fonts/price-fonts/valid-price-font.tres" id="2_ju0gv"]
-[ext_resource type="LabelSettings" uid="uid://qm1x256gljpi" path="res://assets/fonts/price-fonts/invalid-price-font.tres" id="4_d2o6k"]
-[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="5_4wyyw"]
 
-[node name="Buyable element" type="MarginContainer" node_paths=PackedStringArray("price_label", "content_container")]
+[node name="Buyable element" type="MarginContainer" node_paths=PackedStringArray("content_container", "price_tag_container", "button")]
 offset_right = 32.0
 offset_bottom = 32.0
 script = ExtResource("1_4wyyw")
-valid_price_font = ExtResource("2_ju0gv")
-invalid_price_font = ExtResource("4_d2o6k")
-price_label = NodePath("VBoxContainer/Price margin/Price container/Price margin/Price")
 content_container = NodePath("VBoxContainer/Content container")
+price_tag_container = NodePath("VBoxContainer/Price tag container")
+button = NodePath("Button")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Content container" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
+focus_behavior_recursive = 1
+mouse_filter = 2
 
-[node name="Price margin" type="MarginContainer" parent="VBoxContainer"]
+[node name="Price tag container" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 
-[node name="Price container" type="HBoxContainer" parent="VBoxContainer/Price margin"]
+[node name="Button" type="Button" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 1
-
-[node name="Price margin" type="MarginContainer" parent="VBoxContainer/Price margin/Price container"]
-layout_mode = 2
-theme_override_constants/margin_top = 2
-
-[node name="Price" type="Label" parent="VBoxContainer/Price margin/Price container/Price margin"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "999"
-label_settings = ExtResource("4_d2o6k")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Currency icon" type="TextureRect" parent="VBoxContainer/Price margin/Price container"]
-layout_mode = 2
-texture = ExtResource("5_4wyyw")
+focus_mode = 0
+focus_behavior_recursive = 1
+mouse_filter = 1
+flat = true
