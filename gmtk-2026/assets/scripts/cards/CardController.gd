@@ -10,12 +10,14 @@ var Description : String;
 var Type : CardFactory.CARD_TYPE;
 var Model : CardModel;
 var MarkedForDeath : bool = false;
+var CardIsFlipped : bool = false;
 var status : CardFactory.CARD_STATUS;
 
 # Card visual elements
 @export var LabelCardName : Label;
 @export var LabelCardDescription : Label;
 @export var button : Button;
+@export var CardPadding : MarginContainer;
 
 func _ready() -> void:
 	button.button_up.connect(on_click);
@@ -36,9 +38,16 @@ func ChangeCardVisuals()->void:
 	return;
 
 func on_click():
-	print("Click card");
-	if status == CardFactory.CARD_STATUS.IN_SHOP:
-		SignalBus.card_reward_selected.emit(self);
+	match status:
+		CardFactory.CARD_STATUS.IN_SHOP:
+			SignalBus.card_reward_selected.emit(self);
+		CardFactory.CARD_STATUS.IN_HAND:
+			FlipCard();
+
+func FlipCard()->void:
+	CardPadding.visible=CardIsFlipped;
+	CardIsFlipped=!CardIsFlipped;
+
 
 func Destroy()->void:
 	#TODO : add visual bullshittery

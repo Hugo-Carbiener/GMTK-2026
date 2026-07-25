@@ -5,7 +5,7 @@
 [ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="3_xjee2"]
 [ext_resource type="Texture2D" uid="uid://8aicdqxox5tr" path="res://assets/sprites/jimothy.png" id="4_xjee2"]
 
-[node name="Card" type="TextureRect" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription", "button")]
+[node name="Card" type="TextureRect" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription", "button", "CardPadding")]
 self_modulate = Color(0.47617084, 0.5705026, 0.71798384, 1)
 clip_contents = true
 offset_right = 48.0
@@ -17,6 +17,7 @@ script = ExtResource("1_lgpeh")
 LabelCardName = NodePath("Card padding/VBoxContainer/Name")
 LabelCardDescription = NodePath("Card padding/VBoxContainer/Description")
 button = NodePath("Button")
+CardPadding = NodePath("Card padding")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

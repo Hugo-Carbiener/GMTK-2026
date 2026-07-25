@@ -66,10 +66,10 @@ static func can_start_win_lose_conditions() -> bool:
 	return false; 
 
 static func win_level():
+	UserData.gain(compute_gains());
 	SignalBus.on_win.emit();
 
 static func lose_level():
-	UserData.gain(compute_gains());
 	SignalBus.on_loss.emit();
 
 static func get_turn_remaining_gain() -> int:

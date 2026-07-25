@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c8f1gu3mqa3jj"]
+[gd_scene load_steps=27 format=3 uid="uid://c8f1gu3mqa3jj"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_h30ls"]
 [ext_resource type="PackedScene" uid="uid://b37we3vq24yiv" path="res://assets/scenes/Alien/alien.tscn" id="2_byndm"]
@@ -22,7 +22,6 @@
 [ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="19_lhm7q"]
 [ext_resource type="Script" uid="uid://ca6oanlr5h24s" path="res://assets/scripts/ui/pop-up-screens/WinScreen.gd" id="20_32rov"]
 [ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="21_xyoef"]
-[ext_resource type="PackedScene" uid="uid://hgeym6y6qyjk" path="res://assets/scenes/components/stats-container.tscn" id="21_yuyms"]
 [ext_resource type="Script" uid="uid://blmob42mssc5r" path="res://assets/scripts/ui/pop-up-screens/ConfirmationPopUp.gd" id="22_30nsa"]
 [ext_resource type="Texture2D" uid="uid://ytts6lujxwnv" path="res://assets/sprites/UI_vseparator.png" id="22_byndm"]
 [ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/popup-subtitle.tres" id="23_tf6ax"]
@@ -31,15 +30,12 @@
 font = ExtResource("9_iqutw")
 font_size = 64
 
-[node name="Encounter_H" type="Node2D"]
+[node name="Encounter" type="Node2D"]
 script = ExtResource("1_h30ls")
 
 [node name="Count down" type="Node2D" parent="."]
 
 [node name="Alien" parent="." node_paths=PackedStringArray("Aliens") instance=ExtResource("2_byndm")]
-z_index = 4096
-position = Vector2(143.99998, 119)
-scale = Vector2(0.065, 0.065)
 Aliens = {
 0: NodePath("Alien_Jellyfish"),
 1: NodePath("Alien_Shark")
@@ -50,6 +46,15 @@ script = ExtResource("2_rpedi")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.71652323, 0.51166373, 0.4659539, 1)
 
 [node name="Ui" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -339,8 +344,7 @@ vertical_alignment = 1
 [node name="Stats container" type="MarginContainer" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button")]
-visible = false
+[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button", "base_gain_container", "turn_remaining_container", "bounty_container", "total_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -349,9 +353,13 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.972549)
 script = ExtResource("20_32rov")
 title = NodePath("MarginContainer/VBoxContainer/Title")
-stats_container = NodePath("MarginContainer/VBoxContainer/HboxContainer/Stats container")
+stats_container = NodePath("MarginContainer/VBoxContainer/Content/Stats container")
 next_level_pop_up = NodePath("Confirmation pop up")
-next_level_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Next level button")
+next_level_button = NodePath("MarginContainer/VBoxContainer/Button container/Next level button")
+base_gain_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Base gain container")
+turn_remaining_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Turns remaining container")
+bounty_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Bounty container")
+total_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container/Shell container")
 launch_signal = "on_win"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Win screen"]
@@ -378,38 +386,84 @@ label_settings = ExtResource("19_lhm7q")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HboxContainer" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+[node name="Content" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="Stats container" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer"]
+[node name="Stats container" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Stats container2" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer/Stats container" instance=ExtResource("21_yuyms")]
-layout_mode = 2
-
-[node name="Separator" type="TextureRect" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer"]
+[node name="Separator" type="TextureRect" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content"]
 layout_mode = 2
 texture = ExtResource("22_byndm")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HboxContainer"]
+[node name="Gain container margin" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Gain container" type="VBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Gains title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+layout_mode = 2
+text = "Gains"
+label_settings = ExtResource("19_lhm7q")
+
+[node name="Base gain container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+[node name="Base gain title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Base gain container"]
+layout_mode = 2
+text = "Base gain:"
+label_settings = ExtResource("23_tf6ax")
+
+[node name="Turns remaining container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+layout_mode = 2
+
+[node name="Turns remaining title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Turns remaining container"]
+layout_mode = 2
+text = "Turns remaining bonus:"
+label_settings = ExtResource("23_tf6ax")
+
+[node name="Bounty container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+layout_mode = 2
+
+[node name="Bounty title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Bounty container"]
+layout_mode = 2
+text = "Perfect score bounty:"
+label_settings = ExtResource("23_tf6ax")
+
+[node name="Total container" type="VBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+layout_mode = 2
+
+[node name="Total title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container"]
+layout_mode = 2
+text = "
+Total:"
+label_settings = ExtResource("19_lhm7q")
+
+[node name="Shell container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Shop button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("21_xyoef")]
+[node name="Shop button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container" instance=ExtResource("21_xyoef")]
 layout_mode = 2
 signal_on_button_pressed = "shop_clicked"
 
-[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Shop button/Text container" index="0"]
+[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Shop button/Text container" index="0"]
 text = "Shop"
 
-[node name="Next level button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("21_xyoef")]
+[node name="Next level button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container" instance=ExtResource("21_xyoef")]
 layout_mode = 2
 
-[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Next level button/Text container" index="0"]
+[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Next level button/Text container" index="0"]
 text = "Next
 level"
 
@@ -467,7 +521,7 @@ text = "Next
 fight"
 
 [editable path="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Submit button container"]
-[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Shop button"]
-[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Next level button"]
+[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Shop button"]
+[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Next level button"]
 [editable path="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Cancel button"]
 [editable path="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Next fight button"]

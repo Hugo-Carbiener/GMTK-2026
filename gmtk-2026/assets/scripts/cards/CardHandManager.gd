@@ -22,6 +22,7 @@ func draw_random_card():
 func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
 	print("Triggering submit cards !");
 	for card in cards:
+		if card.CardIsFlipped:continue;
 		if(card.Type==CardFactory.CARD_TYPE.SUBMIT_EFFECT):
 			if(card.Model.TriggerCardEffect(tileCouples)):
 				card.MarkedForDeath=true;
@@ -33,6 +34,7 @@ func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
 func ExecuteCardDraw()->void:
 	print("Triggering draw cards !");
 	for card in cards:
+		if card.CardIsFlipped:continue;
 		if(card.Type==CardFactory.CARD_TYPE.DRAW_EFFECT):
 			if(card.Model.TriggerCardEffect()):
 				card.MarkedForDeath=true;
