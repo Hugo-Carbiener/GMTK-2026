@@ -9,6 +9,7 @@ var Name : String;
 var Description : String;
 var Type : CardFactory.CARD_TYPE;
 var Model : CardModel;
+var MarkedForDeath : bool = false;
 
 # Card visual elements
 @export var LabelCardName : Label;
@@ -26,6 +27,7 @@ static func Create(card:CardModel)->CardController:
 	newCard.Type=card.Type;
 	newCard.Model=card;
 	newCard.ChangeCardVisuals();
+	newCard.MarkedForDeath=false;
 	return newCard;
 
 func ChangeCardVisuals()->void:
