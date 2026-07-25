@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds1vvttfao0gl"]
+
+[ext_resource type="Texture2D" uid="uid://bk2h2jb8vsbmf" path="res://assets/sprites/UI_no-reward.png" id="1_glaaw"]
+
+[node name="No reward" type="TextureRect"]
+texture = ExtResource("1_glaaw")

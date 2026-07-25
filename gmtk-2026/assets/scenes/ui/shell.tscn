@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhkdc3rblvnx1"]
+
+[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="1_v5upp"]
+
+[node name="Shell" type="TextureRect"]
+texture = ExtResource("1_v5upp")
