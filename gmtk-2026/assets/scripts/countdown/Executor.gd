@@ -88,9 +88,9 @@ func clear_non_filled_tile_couples():
 func execute():
 	is_submitting = true;
 	await clear_non_filled_tile_couples();
-	await CardFactory.instance.ExecuteCardSubmit(tile_couples); #Await is here cause we'll put some animations at some point for the cards
+	await CardFactory.ExecuteCardSubmit(tile_couples); #Await is here cause we'll put some animations at some point for the cards
 	for tile_couple in tile_couples:
-		if tile_couple.is_empty(): return;
+		if tile_couple.is_empty(): break;
 		
 		await tile_couple.execute();
 	is_submitting = false;

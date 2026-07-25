@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func on_pressed():
 	text_margin.add_theme_constant_override("margin_top", top_margin_pressed);
-	if SignalBus and SignalBus.has_signal(signal_on_button_pressed):
+	if !signal_on_button_pressed.is_empty() and SignalBus and SignalBus.has_signal(signal_on_button_pressed):
 		SignalBus.emit_signal(signal_on_button_pressed);
 
 func on_released():

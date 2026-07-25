@@ -18,15 +18,16 @@ func _ready() -> void:
 	init_signals();
 
 func init_signals():
-	SignalBus.play_phase_submitted.connect(end_turn);
+	if !SignalBus.play_phase_submitted.is_connected(end_turn):
+		SignalBus.play_phase_submitted.connect(end_turn);
 
 func start_level():
 	current_phase = Phases.PLAY_PHASE;
 	turns_left = Constants.BASE_TURN_NUMBER;
-	CardFactory.instance.init();
+	TileFactory.init();
+	CardFactory.init();
 	Executor.instance.init();
 	Countdown.instance.init();
-	TileFactory.instance.init();
 	DrawPile.instance.init();
 	start_phase(current_phase);
 
@@ -40,30 +41,34 @@ static func start_phase(phase: Phases):
 static func play_phase():
 	turns_left -= 1;
 	SignalBus.play_phase_started.emit();
-	HandManager.instance.on_turn_start();
+	TileHandManager.instance.on_turn_start();
+	CardHandManager.instance.on_turn_start();
 
 static func execution_phase():
 	SignalBus.execution_phase_started.emit();
 	await Executor.instance.execute();
-	check_win_loose_conditions();
-	start_phase(get_next_phase());
+	if !can_start_win_lose_conditions():
+		start_phase(get_next_phase());
 
 static func end_turn():
 	var can_end_turn = await Executor.instance.on_turn_end();
 	if !can_end_turn: return;
 	
-	HandManager.instance.discard_hands();
+	TileHandManager.instance.discard_hands();
 	start_phase(get_next_phase());
 
-static func check_win_loose_conditions():
+static func can_start_win_lose_conditions() -> bool:
 	if Countdown.instance.countdown <= 0:
 		win_level();
-		return;
+		return true;
 	
 	if turns_left == 0:
 		lose_level();
+		return true;
+	return false; 
 
 static func win_level():
+	UserData.gain(20);
 	SignalBus.on_win.emit();
 
 static func lose_level():

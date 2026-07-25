@@ -1,0 +1,334 @@
+[gd_scene load_steps=13 format=3 uid="uid://djbietfg5n1l1"]
+
+[ext_resource type="Script" uid="uid://caaxuk4dtt411" path="res://assets/scripts/ui/shop/Shop.gd" id="1_6p2lh"]
+[ext_resource type="Texture2D" uid="uid://bkgbd2fuxpa2y" path="res://assets/sprites/UI_separator.png" id="6_2uom1"]
+[ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="7_kam1a"]
+[ext_resource type="Texture2D" uid="uid://d13fvsagoolpj" path="res://assets/sprites/UI_base-background.png" id="7_nxakl"]
+[ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="8_6p2lh"]
+[ext_resource type="PackedScene" uid="uid://cxwaxx5fk3pmu" path="res://assets/scenes/components/shop/price-tag.tscn" id="8_b4a4x"]
+[ext_resource type="Script" uid="uid://d0xx0t4jhv723" path="res://assets/scripts/ui/shop/CurrencyCounter.gd" id="9_b4a4x"]
+[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="10_d6ybq"]
+[ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="13_ti5cm"]
+[ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="14_xvw66"]
+[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="18_co8v4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
+font = ExtResource("14_xvw66")
+font_size = 48
+
+[node name="Shop" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.71652323, 0.51166373, 0.4659539, 1)
+
+[node name="Shop UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("tile_shop_number_tile_container", "tile_shop_operator_tile_container", "tile_bundle_operator_tile_container", "card_reward_container", "reroll_button", "reroll_price_tag", "next_level_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_6p2lh")
+tile_shop_number_tile_container = NodePath("Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container/Number tile container")
+tile_shop_operator_tile_container = NodePath("Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container/Operator tile container")
+tile_bundle_operator_tile_container = NodePath("Page container/Shop content container/Tile bundles/Tile bundles padding/Tile bundle container/Tiles margin/Operator tile container")
+card_reward_container = NodePath("Page container/Shop content container/Card reward/Card reward container/Card reward padding/HBoxContainer")
+reroll_button = NodePath("Page container/Shop content container/Card reward/Button container/Reroll button")
+reroll_price_tag = NodePath("Page container/Shop content container/Card reward/Button container/Reroll button/Text container/Price margin")
+next_level_button = NodePath("Page container/Shop content container/Card reward/Button container/Next level button")
+
+[node name="Page container" type="VBoxContainer" parent="CanvasLayer/Shop UI"]
+layout_mode = 2
+
+[node name="Page padding" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title container" type="VBoxContainer" parent="CanvasLayer/Shop UI/Page container/Page padding"]
+layout_mode = 2
+
+[node name="Subtext" type="Label" parent="CanvasLayer/Shop UI/Page container/Page padding/Title container"]
+layout_mode = 2
+text = "Get ready for the next encounter"
+label_settings = ExtResource("13_ti5cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shop text margin" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Page padding/Title container"]
+layout_mode = 2
+theme_override_constants/margin_top = 6
+
+[node name="Shop text" type="Label" parent="CanvasLayer/Shop UI/Page container/Page padding/Title container/Shop text margin"]
+layout_mode = 2
+text = "SHOP"
+label_settings = SubResource("LabelSettings_gldp8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Shop content container" type="HBoxContainer" parent="CanvasLayer/Shop UI/Page container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Tile shop" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Background" type="NinePatchRect" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop"]
+modulate = Color(0.4539553, 0.5293821, 0.37678492, 1)
+layout_mode = 2
+texture = ExtResource("7_nxakl")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Tile shop padding" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Tile shop container" type="VBoxContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Tile shop title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container"]
+layout_mode = 2
+text = "~ Tile shop ~"
+label_settings = ExtResource("13_ti5cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container"]
+layout_mode = 2
+text = "New tiles for a price"
+label_settings = ExtResource("18_co8v4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Tiles margin" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 16
+
+[node name="Tiles container" type="VBoxContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Number title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
+layout_mode = 2
+text = "Numbers"
+label_settings = ExtResource("13_ti5cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number tile container" type="GridContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
+layout_mode = 2
+mouse_filter = 2
+columns = 3
+
+[node name="Separator" type="TextureRect" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
+layout_mode = 2
+texture = ExtResource("6_2uom1")
+
+[node name="Operators title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
+layout_mode = 2
+text = "Operators"
+label_settings = ExtResource("13_ti5cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Operator tile container" type="GridContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
+layout_mode = 2
+mouse_filter = 2
+columns = 3
+
+[node name="Tile bundles" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Background" type="NinePatchRect" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles"]
+modulate = Color(0.6720501, 0.36165833, 0.68738973, 1)
+layout_mode = 2
+texture = ExtResource("7_nxakl")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Tile bundles padding" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Tile bundle container" type="VBoxContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles/Tile bundles padding"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Tile bundle title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles/Tile bundles padding/Tile bundle container"]
+layout_mode = 2
+text = "~ Tile bundles ~"
+label_settings = ExtResource("13_ti5cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles/Tile bundles padding/Tile bundle container"]
+layout_mode = 2
+text = "Less effective, less expensive"
+label_settings = ExtResource("18_co8v4")
+
+[node name="Tiles margin" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles/Tile bundles padding/Tile bundle container"]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="Operator tile container" type="GridContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles/Tile bundles padding/Tile bundle container/Tiles margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 3
+
+[node name="Card reward" type="VBoxContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Card reward container" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Background" type="NinePatchRect" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Card reward container"]
+modulate = Color(0.37293574, 0.5310716, 0.57692516, 1)
+layout_mode = 2
+texture = ExtResource("7_nxakl")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Card reward title margin" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Card reward container"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="Card reward title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Card reward container/Card reward title margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "~ Pick one for free ~"
+label_settings = ExtResource("13_ti5cm")
+
+[node name="Card reward padding" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Card reward container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Card reward container/Card reward padding"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Button container" type="HBoxContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Reroll button" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container" instance=ExtResource("7_kam1a")]
+layout_mode = 2
+
+[node name="Button text" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container/Reroll button/Text container" index="0"]
+text = "Reroll"
+
+[node name="Price margin" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container/Reroll button/Text container" index="1" instance=ExtResource("8_b4a4x")]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Next level button" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container" instance=ExtResource("7_kam1a")]
+layout_mode = 2
+
+[node name="Button text" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container/Next level button/Text container" index="0"]
+text = "Next
+level"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container"]
+layout_mode = 2
+
+[node name="Currency container" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/MarginContainer"]
+custom_minimum_size = Vector2(96, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Shop UI/Page container/MarginContainer/Currency container"]
+layout_mode = 2
+
+[node name="Money title" type="Label" parent="CanvasLayer/Shop UI/Page container/MarginContainer/Currency container/VBoxContainer"]
+layout_mode = 2
+text = "money"
+label_settings = ExtResource("13_ti5cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Shop UI/Page container/MarginContainer/Currency container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("8_6p2lh")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/MarginContainer/Currency container/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Shop UI/Page container/MarginContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 2
+
+[node name="Currency amount" type="Label" parent="CanvasLayer/Shop UI/Page container/MarginContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("13_ti5cm")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_b4a4x")
+
+[node name="Currency icon" type="TextureRect" parent="CanvasLayer/Shop UI/Page container/MarginContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_d6ybq")
+stretch_mode = 2
+
+[editable path="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container/Reroll button"]
+[editable path="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container/Next level button"]

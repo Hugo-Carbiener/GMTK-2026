@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://c8f1gu3mqa3jj"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_h30ls"]
-[ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/tiles/TileFactory.gd" id="2_bhxfu"]
+[ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/generals/TileFactory.gd" id="2_bhxfu"]
 [ext_resource type="PackedScene" uid="uid://bwv4q5cw6t2pn" path="res://assets/scenes/cards/card_factory.tscn" id="2_dfrp1"]
 [ext_resource type="Script" uid="uid://cshuev5xwvsfp" path="res://assets/scripts/tiles/models/OperatorTileModel.gd" id="3_dfrp1"]
 [ext_resource type="Resource" uid="uid://v67olj756ry8" path="res://assets/resources/tile-models/operator-tile-models/DivTile.tres" id="4_5a828"]
@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dil0gufilg5hs" path="res://assets/sprites/UI_draw-pile-icon-pressed.png" id="10_yuyms"]
 [ext_resource type="Script" uid="uid://bmagvmlookhwy" path="res://assets/scripts/piles/DrawPile.gd" id="11_byndm"]
 [ext_resource type="Script" uid="uid://6omgg0p6dr4m" path="res://assets/scripts/countdown/Executor.gd" id="11_rpedi"]
-[ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/HandManager.gd" id="12_tf1n7"]
+[ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/tiles/TileHandManager.gd" id="12_tf1n7"]
 [ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="13_hn3f4"]
 [ext_resource type="Texture2D" uid="uid://cnlyi5wse4n1l" path="res://assets/sprites/UI_discard-pile-icon.png" id="14_4v0yt"]
 [ext_resource type="Texture2D" uid="uid://4d52w72s1skf" path="res://assets/sprites/UI_discard-pile-icon-pressed.png" id="15_lhm7q"]

@@ -1,49 +1,35 @@
-[gd_scene load_steps=28 format=3 uid="uid://dfsmgxuitgpp"]
+[gd_scene load_steps=25 format=3 uid="uid://dfsmgxuitgpp"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_ye1mc"]
 [ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="2_ckblc"]
 [ext_resource type="PackedScene" uid="uid://hpq21508uwp0" path="res://assets/scenes/ui/base-texture-button.tscn" id="2_dyaho"]
-[ext_resource type="PackedScene" uid="uid://bwv4q5cw6t2pn" path="res://assets/scenes/cards/card_factory.tscn" id="2_gldp8"]
-[ext_resource type="Script" uid="uid://dbdmygxjuiww5" path="res://assets/scripts/tiles/TileFactory.gd" id="2_xitjf"]
-[ext_resource type="Script" uid="uid://cshuev5xwvsfp" path="res://assets/scripts/tiles/models/OperatorTileModel.gd" id="3_nwww1"]
-[ext_resource type="Resource" uid="uid://v67olj756ry8" path="res://assets/resources/tile-models/operator-tile-models/DivTile.tres" id="4_7e3sx"]
-[ext_resource type="Resource" uid="uid://dpyblim6uor2s" path="res://assets/resources/tile-models/operator-tile-models/MinusTile.tres" id="5_67jys"]
-[ext_resource type="Resource" uid="uid://c23g4m542nqvk" path="res://assets/resources/tile-models/operator-tile-models/MultTile.tres" id="6_2b6ly"]
-[ext_resource type="Resource" uid="uid://cpnvtb6fqg1q8" path="res://assets/resources/tile-models/operator-tile-models/PlusTile.tres" id="7_2rwxs"]
 [ext_resource type="Script" uid="uid://6omgg0p6dr4m" path="res://assets/scripts/countdown/Executor.gd" id="8_71pkm"]
 [ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="8_53275"]
 [ext_resource type="Script" uid="uid://blnjpinkjkj7h" path="res://assets/scripts/countdown/Stats.gd" id="9_40vaa"]
 [ext_resource type="Texture2D" uid="uid://dsmtvac3yg6v2" path="res://assets/sprites/UI_draw-pile-icon.png" id="9_67jys"]
 [ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="9_rhoc4"]
+[ext_resource type="Script" path="res://assets/scripts/cards/CardHandManager.gd" id="10_1gm5j"]
 [ext_resource type="Texture2D" uid="uid://dil0gufilg5hs" path="res://assets/sprites/UI_draw-pile-icon-pressed.png" id="10_2b6ly"]
-[ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/HandManager.gd" id="10_nwww1"]
+[ext_resource type="Script" path="res://assets/scripts/tiles/TileHandManager.gd" id="10_nwww1"]
 [ext_resource type="Script" uid="uid://qslm53ygf6ly" path="res://assets/scripts/countdown/Countdown.gd" id="10_rhoc4"]
 [ext_resource type="Script" uid="uid://bmagvmlookhwy" path="res://assets/scripts/piles/DrawPile.gd" id="11_2rwxs"]
-[ext_resource type="Texture2D" uid="uid://cnlyi5wse4n1l" path="res://assets/sprites/UI_discard-pile-icon.png" id="14_2rwxs"]
-[ext_resource type="Texture2D" uid="uid://4d52w72s1skf" path="res://assets/sprites/UI_discard-pile-icon-pressed.png" id="15_t33da"]
 [ext_resource type="Script" uid="uid://by320l0l85otw" path="res://assets/scripts/piles/DiscardPile.gd" id="16_t33da"]
-[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="17_smjt1"]
+[ext_resource type="Script" path="res://assets/scripts/ui/shop/CurrencyCounter.gd" id="17_40vaa"]
+[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="17_te4eo"]
 [ext_resource type="Script" uid="uid://dmbh6a480bju7" path="res://assets/scripts/ui/TurnCounter.gd" id="18_tfsx1"]
 [ext_resource type="Script" uid="uid://b72s0jeb8jvfc" path="res://assets/scripts/ui/pop-up-screens/LoseScreen.gd" id="25_te4eo"]
+[ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="26_r652n"]
+[ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="27_jmfrp"]
+[ext_resource type="Script" uid="uid://ca6oanlr5h24s" path="res://assets/scripts/ui/pop-up-screens/WinScreen.gd" id="27_mx32y"]
+[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/popup-subtitle.tres" id="28_67d1b"]
+[ext_resource type="Script" uid="uid://blmob42mssc5r" path="res://assets/scripts/ui/pop-up-screens/ConfirmationPopUp.gd" id="28_mx32y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
 font = ExtResource("9_rhoc4")
 font_size = 64
 
-[sub_resource type="LabelSettings" id="LabelSettings_tfsx1"]
-font = ExtResource("9_rhoc4")
-font_color = Color(0.5542514, 0.13153619, 0.14418903, 1)
-
-[node name="Level_H" type="Node2D"]
+[node name="Encounter" type="Node2D"]
 script = ExtResource("1_ye1mc")
-
-[node name="CardFactory" parent="." node_paths=PackedStringArray("uiCardContainer") instance=ExtResource("2_gldp8")]
-position = Vector2(-137.65247, 131.40872)
-uiCardContainer = NodePath("../CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Card container/HBoxContainer")
-
-[node name="Tile factory" type="Node2D" parent="."]
-script = ExtResource("2_xitjf")
-operator_tile_models = Array[ExtResource("3_nwww1")]([ExtResource("4_7e3sx"), ExtResource("5_67jys"), ExtResource("6_2b6ly"), ExtResource("7_2rwxs")])
 
 [node name="Count down" type="Node2D" parent="."]
 
@@ -86,7 +72,7 @@ alignment = 2
 [node name="Draw pile margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = -15
-theme_override_constants/margin_bottom = -15
+theme_override_constants/margin_bottom = -12
 
 [node name="Draw icon" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Draw pile margin"]
 layout_mode = 2
@@ -95,6 +81,106 @@ size_flags_vertical = 8
 texture_normal = ExtResource("9_67jys")
 texture_pressed = ExtResource("10_2b6ly")
 script = ExtResource("11_2rwxs")
+
+[node name="Discard pile" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Draw pile margin"]
+layout_mode = 2
+disabled = true
+script = ExtResource("16_t33da")
+
+[node name="Turn container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container"]
+layout_mode = 2
+
+[node name="Turns left title" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container/VBoxContainer"]
+layout_mode = 2
+text = "turns left"
+label_settings = ExtResource("8_53275")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("2_ckblc")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Turn amount" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "4"
+label_settings = ExtResource("8_53275")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("18_tfsx1")
+
+[node name="Currency container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container"]
+layout_mode = 2
+
+[node name="Money title" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer"]
+layout_mode = 2
+text = "money"
+label_settings = ExtResource("8_53275")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+texture = ExtResource("2_ckblc")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 2
+
+[node name="Currency amount" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("8_53275")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("17_40vaa")
+
+[node name="Currency icon" type="TextureRect" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("17_te4eo")
+stretch_mode = 2
 
 [node name="Middle margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer"]
 layout_mode = 2
@@ -133,21 +219,20 @@ script = ExtResource("10_rhoc4")
 [node name="Card container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Card container"]
+[node name="Card hand" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Card container"]
 layout_mode = 2
 alignment = 1
+script = ExtResource("10_1gm5j")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer"]
-layout_mode = 2
-
-[node name="Hand container" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("number_tiles_container", "operator_tiles_container")]
+[node name="Hand container" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer" node_paths=PackedStringArray("number_tiles_container", "operator_tiles_container")]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("10_nwww1")
 number_tiles_container = NodePath("Number hand background/Number hand container")
 operator_tiles_container = NodePath("Operator hand background/Operator hand container")
 
-[node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Hand container"]
+[node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -157,17 +242,18 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Number hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Hand container/Number hand background"]
+[node name="Number hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container/Number hand background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 24
+mouse_filter = 2
+theme_override_constants/separation = -64
 alignment = 1
 
-[node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Hand container"]
+[node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
@@ -177,53 +263,16 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Hand container/Operator hand background"]
+[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container/Operator hand background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 24
+mouse_filter = 2
+theme_override_constants/separation = -64
 alignment = 1
-
-[node name="Turn container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Turn container"]
-layout_mode = 2
-texture = ExtResource("2_ckblc")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Turn container"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 7
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Turn container/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Turns left" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Turn container/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Turns 
-left:"
-label_settings = ExtResource("17_smjt1")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Turn amount" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/HBoxContainer/Turn container/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "4"
-label_settings = ExtResource("8_53275")
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("18_tfsx1")
 
 [node name="Right margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer"]
 layout_mode = 2
@@ -250,21 +299,6 @@ signal_on_button_pressed = "play_phase_submitted"
 [node name="Spacer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Discard pile margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 8
-size_flags_stretch_ratio = 0.3
-theme_override_constants/margin_right = -14
-theme_override_constants/margin_bottom = -14
-
-[node name="Discard icon" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Discard pile margin"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-texture_normal = ExtResource("14_2rwxs")
-texture_pressed = ExtResource("15_t33da")
-script = ExtResource("16_t33da")
 
 [node name="Lose screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container")]
 visible = false
@@ -295,14 +329,14 @@ theme_override_constants/separation = 19
 [node name="Title" type="Label" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "You could not bring the count down in time..."
-label_settings = SubResource("LabelSettings_tfsx1")
+label_settings = ExtResource("26_r652n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats container" type="MarginContainer" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container")]
+[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button")]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -310,9 +344,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.972549)
-script = ExtResource("25_te4eo")
+script = ExtResource("27_mx32y")
 title = NodePath("MarginContainer/VBoxContainer/Title")
 stats_container = NodePath("MarginContainer/VBoxContainer/Stats container")
+next_level_pop_up = NodePath("Confirmation pop up")
+next_level_button = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Next level button")
 launch_signal = "on_win"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Win screen"]
@@ -331,11 +367,87 @@ theme_override_constants/separation = 19
 [node name="Title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mission accomplished! The visitors are pleased."
-label_settings = SubResource("LabelSettings_tfsx1")
+label_settings = ExtResource("26_r652n")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats container" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Shop button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+signal_on_button_pressed = "shop_clicked"
+
+[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Shop button/Text container" index="0"]
+text = "Shop"
+
+[node name="Next level button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+
+[node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Next level button/Text container" index="0"]
+text = "Next
+level"
+
+[node name="Confirmation pop up" type="MarginContainer" parent="CanvasLayer/Win screen" node_paths=PackedStringArray("cancel_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("28_mx32y")
+cancel_button = NodePath("VBoxContainer/Button container/Cancel button")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Win screen/Confirmation pop up"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.972549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Win screen/Confirmation pop up"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 19
+
+[node name="Title" type="Label" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
+layout_mode = 2
+text = "You are going to the next encounter without visiting the shop."
+label_settings = ExtResource("26_r652n")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
+layout_mode = 2
+text = "(You conserve shells between encounters)"
+label_settings = ExtResource("28_67d1b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button container" type="HBoxContainer" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Cancel button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+
+[node name="Button text" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Cancel button/Text container" index="0"]
+text = "Cancel"
+
+[node name="Next fight button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("27_jmfrp")]
+layout_mode = 2
+signal_on_button_pressed = "next_encounter_clicked"
+
+[node name="Button text" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Next fight button/Text container" index="0"]
+text = "Next
+fight"
+
 [editable path="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Submit button container"]
+[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Shop button"]
+[editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/HBoxContainer/Next level button"]
+[editable path="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Cancel button"]
+[editable path="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Next fight button"]
