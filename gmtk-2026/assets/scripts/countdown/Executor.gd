@@ -96,8 +96,8 @@ func execute():
 func on_turn_end() -> bool:
 	if is_submitting: return false;
 	is_submitting = true;
-	
-	if !await can_be_submitted():
+	await clear_non_filled_tile_couples();
+	if !can_be_submitted():
 		await on_submission_fail();
 		is_submitting = false;
 		return false;
@@ -106,7 +106,6 @@ func on_turn_end() -> bool:
 	return true;
 
 func can_be_submitted() -> bool:
-	await clear_non_filled_tile_couples();
 	for tile_couple in tile_couples:
 		if tile_couple.is_filled(): return true;
 	return false;

@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://hgeym6y6qyjk"]
+
+[ext_resource type="Script" uid="uid://b70m7q8mhtcje" path="res://assets/scripts/ui/StatsContainer.gd" id="1_bjtgb"]
+[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/stats-title.tres" id="1_mv2he"]
+[ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="2_bjtgb"]
+[ext_resource type="Texture2D" uid="uid://bkgbd2fuxpa2y" path="res://assets/sprites/UI_separator.png" id="3_dxojl"]
+
+[node name="Stats container" type="MarginContainer" node_paths=PackedStringArray("total_decrease_value", "decrease_surplus_value", "turns_remaining_value", "operation_used_value", "most_used_operator_value", "most_used_number_value")]
+size_flags_horizontal = 4
+script = ExtResource("1_bjtgb")
+total_decrease_value = NodePath("VBoxContainer/Total decrease container/Total decrease value")
+decrease_surplus_value = NodePath("VBoxContainer/Countdown decrease surplus container/Decrease surplus value")
+turns_remaining_value = NodePath("VBoxContainer/Turns remaining container/Turns remaining value")
+operation_used_value = NodePath("VBoxContainer/Operations used container/Operation used value")
+most_used_operator_value = NodePath("VBoxContainer/Most used operator container/Most used operator  value")
+most_used_number_value = NodePath("VBoxContainer/Most used number container/Most used number  value")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Total decrease container" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Total decrease" type="Label" parent="VBoxContainer/Total decrease container"]
+layout_mode = 2
+text = "Total countdown decrease: "
+label_settings = ExtResource("1_mv2he")
+
+[node name="Total decrease value" type="Label" parent="VBoxContainer/Total decrease container"]
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("2_bjtgb")
+
+[node name="Countdown decrease surplus container" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Decrease surplus" type="Label" parent="VBoxContainer/Countdown decrease surplus container"]
+layout_mode = 2
+text = "Countdown decrease surplus: "
+label_settings = ExtResource("1_mv2he")
+
+[node name="Decrease surplus value" type="Label" parent="VBoxContainer/Countdown decrease surplus container"]
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("2_bjtgb")
+
+[node name="Turns remaining container" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Turns remaining" type="Label" parent="VBoxContainer/Turns remaining container"]
+layout_mode = 2
+text = "Turns remaining: "
+label_settings = ExtResource("1_mv2he")
+
+[node name="Turns remaining value" type="Label" parent="VBoxContainer/Turns remaining container"]
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("2_bjtgb")
+
+[node name="Separator" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_dxojl")
+
+[node name="Operations used container" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Operation used" type="Label" parent="VBoxContainer/Operations used container"]
+layout_mode = 2
+text = "Operations used: "
+label_settings = ExtResource("1_mv2he")
+
+[node name="Operation used value" type="Label" parent="VBoxContainer/Operations used container"]
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("2_bjtgb")
+
+[node name="Most used operator container" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Most used operator" type="Label" parent="VBoxContainer/Most used operator container"]
+layout_mode = 2
+text = "most used operator: "
+label_settings = ExtResource("1_mv2he")
+
+[node name="Most used operator  value" type="Label" parent="VBoxContainer/Most used operator container"]
+layout_mode = 2
+text = "+ (99 times)"
+label_settings = ExtResource("2_bjtgb")
+
+[node name="Most used number container" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Most used number" type="Label" parent="VBoxContainer/Most used number container"]
+layout_mode = 2
+text = "most used number: "
+label_settings = ExtResource("1_mv2he")
+
+[node name="Most used number  value" type="Label" parent="VBoxContainer/Most used number container"]
+layout_mode = 2
+text = "2 (99 times)"
+label_settings = ExtResource("2_bjtgb")
