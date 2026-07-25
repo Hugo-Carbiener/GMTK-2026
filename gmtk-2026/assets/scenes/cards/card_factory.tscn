@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwv4q5cw6t2pn"]
+[gd_scene load_steps=6 format=3 uid="uid://bwv4q5cw6t2pn"]
 
 [ext_resource type="Script" uid="uid://qk8nwfcirctb" path="res://assets/scripts/cards/CardFactory.gd" id="1_pkgvj"]
 [ext_resource type="Script" uid="uid://thfceamgum8s" path="res://assets/scripts/cards/models/CardModel.gd" id="2_e3po4"]
 [ext_resource type="Resource" uid="uid://cgdpcdwrjr1si" path="res://assets/resources/cards/card_mult4b2.tres" id="3_hr3of"]
 [ext_resource type="Resource" uid="uid://ofbxtn3gcr4n" path="res://assets/resources/cards/card_mult1b10.tres" id="4_e3po4"]
+[ext_resource type="Resource" uid="uid://dv1pkwiugkfdw" path="res://assets/resources/cards/card_mult5b0.tres" id="5_e3po4"]
 
 [node name="CardFactory" type="Node2D"]
 script = ExtResource("1_pkgvj")
-cardModels = Array[ExtResource("2_e3po4")]([ExtResource("3_hr3of"), ExtResource("4_e3po4"), ExtResource("4_e3po4")])
+cardModels = Array[ExtResource("2_e3po4")]([ExtResource("3_hr3of"), ExtResource("4_e3po4"), ExtResource("5_e3po4")])

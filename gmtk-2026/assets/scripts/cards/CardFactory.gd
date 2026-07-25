@@ -26,18 +26,35 @@ func GenerateCardDeck()->void:
 	for i in range(0, Constants.MAX_NUMBER_CARDS):
 		var randNum = rng.randi_range(0, cardModels.size()-1);
 		var newCardModel = cardModels.get(randNum);
-		while(newCardModel!=null and cardDeck.has(newCardModel)==false):
-			#TODO : in some rare edgecases we might be here for a while -> maybe put a forced limiter ?
-			var newCard = CardController.Create(newCardModel);
-			cardDeck[newCardModel]= newCard;
-			uiCardContainer.add_child(newCard);
-			break;
+		while(newCardModel!=null and cardDeck.has(newCardModel)==true):
+			randNum = rng.randi_range(0, cardModels.size()-1);
+			newCardModel = cardModels.get(randNum);
+		var newCard = CardController.Create(newCardModel);
+		cardDeck[newCardModel]= newCard;
+		uiCardContainer.add_child(newCard);
 
 #Function called when submitting
 func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
-	print("Triggering cards !");
+	print("Triggering submit cards !");
 	for model in cardDeck:
 		if(model.Type==CARD_TYPE.SUBMIT_EFFECT):
 			cardDeck[model].Model.TriggerCardEffect(tileCouples);
 			#TODO : add some visual bullshittery here 
+			ClearCardFromDeck(model);
 	return;
+
+func ExecuteCardDraw()->void:
+	print("Triggering draw cards !");
+	for model in cardDeck:
+		if(model.Type==CARD_TYPE.DRAW_EFFECT):
+			cardDeck[model].Model.TriggerCardEffect();
+			#TODO : add some visual bullshittery here 
+			ClearCardFromDeck(model);
+	return;
+
+func ClearCardFromDeck(model:CardModel)->void:
+	#TODO : add some visual bullshittery here 
+	cardDeck[model].Destroy();
+	cardDeck[model] = null;
+	cardDeck.erase(model);
+	

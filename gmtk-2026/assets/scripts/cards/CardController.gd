@@ -32,3 +32,7 @@ func ChangeCardVisuals()->void:
 	LabelCardName.text = self.Name;
 	LabelCardDescription.text = self.Description;
 	return;
+
+func Destroy()->void:
+	#TODO : add visual bullshittery
+	queue_free();
