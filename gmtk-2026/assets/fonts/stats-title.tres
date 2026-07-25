@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://8ctotgrwvi1l"]
+
+[ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="1_1opt7"]
+
+[resource]
+font = ExtResource("1_1opt7")
+font_color = Color(0.62621814, 0.29573414, 0.24059853, 1)

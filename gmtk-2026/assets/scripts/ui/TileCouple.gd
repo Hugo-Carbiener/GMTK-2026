@@ -34,8 +34,15 @@ func execute():
 	number.scale = Vector2i.ONE;
 	var new_countdown_value = operator.execute(number, Countdown.instance.countdown);
 	Countdown.instance.set_countdown_value(new_countdown_value);
+	SignalBus.on_tile_couple_executed.emit(operator, number);
 	remove_operator();
 	remove_number();
+
+func cancel():
+	if has_operator():
+		SignalBus.operator_tile_unselected.emit(operator);
+	if has_number():
+		SignalBus.number_tile_unselected.emit(number);
 
 func has_operator() -> bool:
 	return operator != null;
