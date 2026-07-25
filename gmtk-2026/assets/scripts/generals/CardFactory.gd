@@ -52,36 +52,3 @@ func GenerateCardDeck()->void:
 func generate_random_card() -> CardController:
 	var card_model = cardModels.get(randi() % cardModels.size());
 	return CardController.Create(card_model);
-
-#Function called when submitting
-func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
-	print("Triggering submit cards !");
-	for model in cardDeck:
-		if(model.Type==CARD_TYPE.SUBMIT_EFFECT):
-			if(cardDeck[model].Model.TriggerCardEffect(tileCouples)):
-				cardDeck[model].MarkedForDeath=true;
-				#TODO : add some visual bullshittery here 
-	# Now we clean the cards
-	ClearCardsFromDeck()
-	return;
-
-func ExecuteCardDraw()->void:
-	print("Triggering draw cards !");
-	for model in cardDeck:
-		if(model.Type==CARD_TYPE.DRAW_EFFECT):
-			if(cardDeck[model].Model.TriggerCardEffect()):
-				cardDeck[model].MarkedForDeath=true;
-				#TODO : add some visual bullshittery here 
-	# Now we clean the cards
-	ClearCardsFromDeck();
-	return;
-
-func ClearCardsFromDeck()->void:
-	#TODO : clean this to avoid performing multiple useless loops -> put the cards marked for death in specific dict to clean during the triggers (see above)
-	for model in cardDeck:
-		if(cardDeck[model].MarkedForDeath):
-			#TODO : add some visual bullshittery here 
-			cardDeck[model].Destroy();
-			cardDeck[model] = null;
-			cardDeck.erase(model);
-	
