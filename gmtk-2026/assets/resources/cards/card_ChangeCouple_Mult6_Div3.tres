@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card_ChangeCoupleToCouple" load_steps=2 format=3 uid="uid://cigdws6dljqh5"]
+
+[ext_resource type="Script" uid="uid://cwp6iojug55qj" path="res://assets/scripts/cards/models/Submit/Card_ChangeCoupleToCouple.gd" id="1_la2ph"]
+
+[resource]
+script = ExtResource("1_la2ph")
+NumToChange = 6
+OpToChange = 2
+NumToChangeTo = 3
+OpToChangeTo = 3
+Name = "Halve it !"
+Description = "Change all x6 to /3"
+Type = 1
+metadata/_custom_type_script = "uid://cwp6iojug55qj"

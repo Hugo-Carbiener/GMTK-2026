@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card_ChangeCoupleToCouple" load_steps=2 format=3 uid="uid://dsugi43aqoe23"]
+
+[ext_resource type="Script" uid="uid://cwp6iojug55qj" path="res://assets/scripts/cards/models/Submit/Card_ChangeCoupleToCouple.gd" id="1_o61sk"]
+
+[resource]
+script = ExtResource("1_o61sk")
+NumToChange = 7
+OpToChange = 3
+NumToChangeTo = 3
+OpToChangeTo = 2
+Name = "No more 7"
+Description = "Change all /7 to x3"
+Type = 1
+metadata/_custom_type_script = "uid://cwp6iojug55qj"

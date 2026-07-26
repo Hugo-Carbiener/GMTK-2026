@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card_ChangeCoupleToCouple" load_steps=2 format=3 uid="uid://b80j7mt7phjuy"]
+
+[ext_resource type="Script" uid="uid://cwp6iojug55qj" path="res://assets/scripts/cards/models/Submit/Card_ChangeCoupleToCouple.gd" id="1_hwejr"]
+
+[resource]
+script = ExtResource("1_hwejr")
+NumToChange = 7
+OpToChange = 1
+NumToChangeTo = 8
+Name = "Up a notch"
+Description = "Change all -7 to +8"
+Type = 1
+metadata/_custom_type_script = "uid://cwp6iojug55qj"
