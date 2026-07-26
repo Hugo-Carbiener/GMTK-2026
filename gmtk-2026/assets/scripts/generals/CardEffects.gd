@@ -11,6 +11,33 @@ enum CARD_REWARD_TARGET{
 	DISCARD
 }
 
+#Test if a couple is present in the list
+func TestIfCouplePresent(tileCouples:Array[TileCouple], num:int, op:TileFactory.OperatorTileType)->bool:
+	for couple in tileCouples:
+		if couple==null or couple.number==null or couple.operator==null:continue;
+		if(couple.operator.model.operator_type==op and couple.number.number==num):
+			return true;
+	return false
+
+func ApplyCoupleToAllNum(tileCouples:Array[TileCouple], num:int, op:TileFactory.OperatorTileType)->bool:
+	var ret=false;
+	for couple in tileCouples:
+		if couple==null or couple.number==null:continue;
+		match(op):
+			TileFactory.OperatorTileType.PLUS:
+				couple.number.number = couple.number.number + num;
+				ret=true;
+			TileFactory.OperatorTileType.MINUS:
+				couple.number.number = couple.number.number - num;
+				ret=true;
+			TileFactory.OperatorTileType.MULT:
+				couple.number.number = couple.number.number * num;
+				ret=true;
+			TileFactory.OperatorTileType.DIV:
+				couple.number.number = couple.number.number / num;
+				ret=true;
+	return ret;
+
 # Change all tiles of a number in tile couples
 func ChangeNumber(tileCouples:Array[TileCouple], numberToChange:int, numberToChangeTo:int)->bool:
 	var ret = false;

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card_ApplyNumValueToAllFromCouple" load_steps=2 format=3 uid="uid://d2mdq7g0djmai"]
+
+[ext_resource type="Script" uid="uid://58q8la3u4h5s" path="res://assets/scripts/cards/models/Submit/Card_ApplyNumValueToAllFromCouple.gd" id="1_hapf0"]
+
+[resource]
+script = ExtResource("1_hapf0")
+Num = 1
+Op = 1
+NumToApply = 1
+OpToApply = 1
+Name = "Reduce it all !"
+Description = "If -1 is present, -1 to all tiles"
+Type = 1
+metadata/_custom_type_script = "uid://58q8la3u4h5s"
