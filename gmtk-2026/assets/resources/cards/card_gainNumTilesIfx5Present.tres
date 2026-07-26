@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card_GainIfCouplePresent" load_steps=2 format=3 uid="uid://orwgq7ot7y10"]
+
+[ext_resource type="Script" uid="uid://dpqp4bouhnu4n" path="res://assets/scripts/cards/models/Submit/Card_GainIfCouplePresent.gd" id="1_2eskr"]
+
+[resource]
+script = ExtResource("1_2eskr")
+Num = 5
+Op = 2
+Name = "Maximum Gains !"
+Description = "If x5 present, gain the number of placed tiles as shells"
+Type = 1
+metadata/_custom_type_script = "uid://dpqp4bouhnu4n"
