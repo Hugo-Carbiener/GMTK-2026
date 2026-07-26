@@ -3,7 +3,6 @@ extends Node2D
 # Will generate the cards
 func _ready() -> void:
 	load_card_models();
-	GenerateCardDeck();
 
 enum CARD_TYPE{
 	DRAW_EFFECT,
@@ -42,12 +41,6 @@ func load_card_models():
 					cardModels.append(res)
 
 		file_name = dir.get_next()
-
-var rng = RandomNumberGenerator.new();
-func GenerateCardDeck()->void:
-	for i in range(0, Constants.MAX_NUMBER_CARDS_DRAWN):
-		var new_card = generate_random_card();
-		cardDeck[new_card.Model]= new_card;
 
 func generate_random_card() -> CardController:
 	var card_model = cardModels.get(randi() % cardModels.size());
