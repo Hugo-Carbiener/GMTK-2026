@@ -11,7 +11,7 @@ static func create_tile(tile_model : OperatorTileModel) -> OperatorTile:
 	return operator_tile;
 
 func setup(tile_model : OperatorTileModel):
-	self.type = TileFactory.TileType.NUMBER;
+	self.type = TileFactory.TileType.OPERATOR;
 	self.operator_type = tile_model.operator_type;
 	self.value = tile_model.text;
 	self.label.text = tile_model.text;
