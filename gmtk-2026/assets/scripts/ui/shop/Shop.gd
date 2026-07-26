@@ -125,7 +125,7 @@ func on_operator_tile_bought(buyable_element : BuyableElement, tile : OperatorTi
 	if UserData.currency < price:
 		return;
 	UserData.pay(price);
-	UserData.operator_deck.append(tile);
+	UserData.operator_deck.append(tile.operator_type);
 	operator_tiles.erase(tile);
 	buyable_element.mark_as_bought();
 
@@ -133,6 +133,6 @@ func on_bundle_tile_bought(buyable_element : BuyableBundle, tile : OperatorTile)
 	if bundle_tiles.find(tile) == -1:
 		printerr("Attempted to buy an operator tile bundle not found in the shop stocks.");
 		return;
-	UserData.operator_deck.append(tile);
+	UserData.operator_deck.append(tile.operator_type);
 	bundle_tiles.erase(tile);
 	buyable_element.mark_as_bought();

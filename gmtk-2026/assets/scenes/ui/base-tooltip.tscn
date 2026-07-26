@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcsu80t7ux5g8"]
+
+[ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="1_3yd7q"]
+[ext_resource type="Script" uid="uid://dlynmt82cv8vv" path="res://assets/scripts/ui/tooltip/BaseTooltip.gd" id="1_xggp5"]
+[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="3_xggp5"]
+
+[node name="BaseTooltip" type="MarginContainer" node_paths=PackedStringArray("label")]
+offset_right = 101.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_xggp5")
+label = NodePath("Content margin/Text margin/Text")
+
+[node name="Frame" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_3yd7q")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="Content margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Background" type="ColorRect" parent="Content margin"]
+z_index = -1
+layout_mode = 2
+color = Color(0, 0, 0, 0.88235295)
+
+[node name="Text margin" type="MarginContainer" parent="Content margin"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Text" type="Label" parent="Content margin/Text margin"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "This is a tooltip"
+label_settings = ExtResource("3_xggp5")
+horizontal_alignment = 1
+vertical_alignment = 1
