@@ -1,4 +1,4 @@
-class_name CardController extends Control
+class_name CardController extends HoverableElement
 # Card controller
 # Controls the card
 # Yeah
@@ -17,9 +17,12 @@ var status : CardFactory.CARD_STATUS;
 @export var LabelCardName : Label;
 @export var LabelCardDescription : Label;
 @export var button : Button;
-@export var CardPadding : MarginContainer;
+@export var card_content_container : Control;
+@export var card_flipped_container : Control;
 
 func _ready() -> void:
+	super();
+	grow_factor = 1.1;
 	button.button_up.connect(on_click);
 
 static func Create(card:CardModel)->CardController:
@@ -45,10 +48,17 @@ func on_click():
 		CardFactory.CARD_STATUS.IN_HAND:
 			FlipCard();
 
-func FlipCard()->void:
-	CardPadding.visible=CardIsFlipped;
-	CardIsFlipped=!CardIsFlipped;
+func on_execution():
+	await AnimationUtils.bounce(self, grow_factor);
 
+func FlipCard()->void:
+	is_hover_blocked = true;
+	CardIsFlipped=!CardIsFlipped;
+	await AnimationUtils.animate_scale(self, Vector2i.ONE, Vector2.DOWN, Constants.SHORT_TRANSITION_DURATION * 2);
+	card_content_container.visible = !CardIsFlipped;
+	card_flipped_container.visible = CardIsFlipped;
+	await AnimationUtils.animate_scale(self, Vector2.DOWN, Vector2i.ONE, Constants.SHORT_TRANSITION_DURATION * 2);
+	is_hover_blocked = false;
 
 func Destroy()->void:
 	#TODO : add visual bullshittery

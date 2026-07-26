@@ -63,7 +63,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Alien" parent="." node_paths=PackedStringArray("Aliens") instance=ExtResource("2_1gm5j")]
-position = Vector2(-193.99997, -43)
+position = Vector2(-222, -74)
 Aliens = {
 0: NodePath("Alien_Jellyfish"),
 1: NodePath("Alien_Shark")
@@ -265,7 +265,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("10_nwww1")
 number_tiles_container = NodePath("Number hand background/Number hand container")
-operator_tiles_container = NodePath("Operator hand background/Operator hand container")
+operator_tiles_container = NodePath("Operator hand background/MarginContainer/Operator hand container")
 
 [node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container"]
 custom_minimum_size = Vector2(0, 32)
@@ -299,13 +299,17 @@ patch_margin_top = 6
 patch_margin_right = 16
 patch_margin_bottom = 6
 
-[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container/Operator hand background"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container/Operator hand background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = -16
+
+[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container/Operator hand background/MarginContainer"]
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = -64
 alignment = 1

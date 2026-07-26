@@ -12,6 +12,7 @@ offset_right = -608.0
 offset_bottom = -328.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 4
 script = ExtResource("1_80ej6")
 label = NodePath("Label margin/Label")
 button = NodePath("Operator tile")
