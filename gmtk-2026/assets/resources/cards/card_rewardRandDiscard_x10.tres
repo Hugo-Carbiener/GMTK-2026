@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card_AddCardForCouple" load_steps=2 format=3 uid="uid://ifow8mo1xdw1"]
+
+[ext_resource type="Script" uid="uid://c0w6wyxlcxchp" path="res://assets/scripts/cards/models/Submit/Card_AddCardForCouple.gd" id="1_w4at4"]
+
+[resource]
+script = ExtResource("1_w4at4")
+Num = 10
+Op = 2
+RewardTarget = 1
+Name = "Costs and Rewards"
+Description = "Obtain a random card for x10 !"
+Type = 1
+metadata/_custom_type_script = "uid://c0w6wyxlcxchp"

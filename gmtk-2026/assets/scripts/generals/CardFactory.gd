@@ -50,6 +50,28 @@ func PopulatePlayerDeck()->void:
 		var model = cardModelsUniverse.get(randi() % cardModelsUniverse.size());
 		UserData.AddCardToPlayerDeck(model); #TODO : do we want to have multiple examples of the same card ?
 
+func AddRandomCardToPlayerDiscard()->CardModel:
+	var model = cardModelsUniverse.get(randi() % cardModelsUniverse.size());
+	UserData.AddCardToPlayerDeck(model);
+	CardHandManager.instance.AddCardToDiscardPile(model);
+	return model;
+
+func AddRandomCardToPlayerStack()->CardModel:
+	var model = cardModelsUniverse.get(randi() % cardModelsUniverse.size());
+	UserData.AddCardToPlayerDeck(model);
+	CardHandManager.instance.AddCardToStackPile(model);
+	return model;
+
+func AddCardToPlayerStack(model:CardModel)->CardModel:
+	UserData.AddCardToPlayerDeck(model);
+	CardHandManager.instance.AddCardToStackPile(model);
+	return model;
+
+func AddCardToPlayerDiscard(model:CardModel)->CardModel:
+	UserData.AddCardToPlayerDeck(model);
+	CardHandManager.instance.AddCardToStackPile(model);
+	return model;
+
 # Generates a random card based on the universe
 func generate_random_card() -> CardController:
 	var card_model = cardModelsUniverse.get(randi() % cardModelsUniverse.size());
