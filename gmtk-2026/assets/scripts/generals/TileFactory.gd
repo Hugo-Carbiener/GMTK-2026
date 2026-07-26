@@ -6,7 +6,8 @@ var paid_tile_models : Array[OperatorTileModel];
 
 enum TileStatus {
 	SELECTED,
-	NOT_SELECTED
+	NOT_SELECTED,
+	NOT_SELECTABLE
 }
 
 enum TileType {

@@ -44,16 +44,16 @@ func fade_in():
 	most_used_operator_value_title.modulate.a = 0;
 	most_used_number_value.modulate.a = 0;
 	most_used_number_value_title.modulate.a = 0;
-	AnimationUtils.fade(total_decrease_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION);
-	await AnimationUtils.fade(total_decrease_value, 1., Constants.DEFAULT_TRANSITION_DURATION);
-	AnimationUtils.fade(decrease_surplus_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION);
-	await AnimationUtils.fade(decrease_surplus_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION);
-	AnimationUtils.fade(turns_remaining_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 2);
-	await AnimationUtils.fade(turns_remaining_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 2);
+	AnimationUtils.fade(total_decrease_value_title, 1., Constants.SHORT_TRANSITION_DURATION * 2);
+	await AnimationUtils.fade(total_decrease_value, 1., Constants.SHORT_TRANSITION_DURATION * 2);
+	AnimationUtils.fade(decrease_surplus_value_title, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION);
+	await AnimationUtils.fade(decrease_surplus_value, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION);
+	AnimationUtils.fade(turns_remaining_value_title, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 2);
+	await AnimationUtils.fade(turns_remaining_value, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 2);
 	
-	AnimationUtils.fade(operation_used_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 3);
-	await AnimationUtils.fade(operation_used_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 3);
-	AnimationUtils.fade(most_used_operator_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 4);
-	await AnimationUtils.fade(most_used_operator_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 4);
-	AnimationUtils.fade(most_used_number_value_title, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 5);
-	await AnimationUtils.fade(most_used_number_value, 1., Constants.DEFAULT_TRANSITION_DURATION, Constants.SHORT_TRANSITION_DURATION * 5);
+	AnimationUtils.fade(operation_used_value_title, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 3);
+	await AnimationUtils.fade(operation_used_value, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 3);
+	AnimationUtils.fade(most_used_operator_value_title, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 4);
+	await AnimationUtils.fade(most_used_operator_value, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 4);
+	AnimationUtils.fade(most_used_number_value_title, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 5);
+	await AnimationUtils.fade(most_used_number_value, 1., Constants.SHORT_TRANSITION_DURATION * 2, Constants.SHORT_TRANSITION_DURATION * 5);

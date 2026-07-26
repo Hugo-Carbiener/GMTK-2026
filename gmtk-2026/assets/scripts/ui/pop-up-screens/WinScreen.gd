@@ -30,25 +30,23 @@ func launch():
 	await gain_animation();
 
 func gain_animation():
-	for i in range(Constants.BASE_MONEY_REWARD):
-		await AnimationUtils.add_child_fade_in(base_gain_container, shell_scene.instantiate(), Constants.DEFAULT_TRANSITION_DURATION);
+	var tween = get_tree().create_tween();
+	tween.tween_callback(animate_gain_container.bind(Constants.BASE_MONEY_REWARD, base_gain_container));
+	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
+	tween.tween_callback(animate_gain_container.bind(GameLoop.get_turn_remaining_gain(), turn_remaining_container));
+	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
+	tween.tween_callback(animate_gain_container.bind(GameLoop.get_bounty_gains(), bounty_container));
+	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
+	tween.tween_callback(animate_gain_container.bind(GameLoop.compute_gains(), total_container));
+	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
 
-	var turn_remaining_gains = GameLoop.get_turn_remaining_gain();
-	if turn_remaining_gains == 0:
-		await AnimationUtils.add_child_fade_in(turn_remaining_container, no_reward_scene.instantiate(), Constants.DEFAULT_TRANSITION_DURATION);
+func animate_gain_container(amount : int, container : Control):
+	if amount == 0:
+		await AnimationUtils.add_child_fade_in(container, no_reward_scene.instantiate(), Constants.SHORT_TRANSITION_DURATION * 2);
 	else:
-		for i in range(turn_remaining_gains):
-			await AnimationUtils.add_child_fade_in(turn_remaining_container, shell_scene.instantiate(), Constants.DEFAULT_TRANSITION_DURATION);
+		for i in range(amount):
+			await AnimationUtils.add_child_fade_in(container, shell_scene.instantiate(), Constants.SHORT_TRANSITION_DURATION * 2);
 	
-	var bounty_gains = GameLoop.get_bounty_gains();
-	if bounty_gains == 0:
-		await AnimationUtils.add_child_fade_in(bounty_container, no_reward_scene.instantiate(), Constants.DEFAULT_TRANSITION_DURATION);
-	else:
-		for i in range(bounty_gains):
-			await AnimationUtils.add_child_fade_in(bounty_container, shell_scene.instantiate(), Constants.DEFAULT_TRANSITION_DURATION);
-
-	for i in range(GameLoop.compute_gains()):
-		await AnimationUtils.add_child_fade_in(total_container, shell_scene.instantiate(), Constants.DEFAULT_TRANSITION_DURATION);
 
 func open_confirmation_modal():
 	next_level_pop_up.modulate.a = 0;

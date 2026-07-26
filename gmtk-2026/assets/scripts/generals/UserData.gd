@@ -3,6 +3,7 @@ extends Node2D
 # The real collection of tiles of the player. This is to be put in the draw pile at the start of a level.
 var number_deck : Array[int];
 var operator_deck : Array[TileFactory.OperatorTileType];
+var card_deck : Array[CardModel];
 var currency : int;
 
 func pay(amount : int):

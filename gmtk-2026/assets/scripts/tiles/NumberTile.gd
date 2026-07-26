@@ -25,8 +25,10 @@ func consume():
 func on_click():
 	if status == TileFactory.TileStatus.NOT_SELECTED:
 		SignalBus.number_tile_selected.emit(self);
-	else:
+	elif status == TileFactory.TileStatus.SELECTED:
 		SignalBus.number_tile_unselected.emit(self);
+	elif status == TileFactory.TileStatus.NOT_SELECTABLE:
+		return;
 
 func UpdateTile(newValue:int)->void:
 	#TODO : add visual effect for update (shimer ?)

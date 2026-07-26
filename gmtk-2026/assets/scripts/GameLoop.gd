@@ -79,4 +79,4 @@ static func get_bounty_gains() -> int:
 	return Constants.MONEY_BOUNTY_FOR_PERFECT if Countdown.instance.countdown == 0 else 0;
 
 static func compute_gains() -> int:
-	return get_turn_remaining_gain() + get_bounty_gains();
+	return Constants.BASE_MONEY_REWARD + get_turn_remaining_gain() + get_bounty_gains();
