@@ -110,3 +110,6 @@ func get_random_bundle_operator_tile():
 
 func get_random_number_tile() -> NumberTile:
 	return NumberTile.create_tile(randi_range(Constants.MIN_NUMBER_TILE, Constants.MAX_NUMBER_TILE));
+
+func GetOperatorTileModelFromType(op:TileFactory.OperatorTileType)->OperatorTileModel:
+	return operator_tile_models_by_types[op];

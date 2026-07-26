@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Card_ChangeOperator" load_steps=2 format=3 uid="uid://kqia3o2y6fvs"]
+
+[ext_resource type="Script" uid="uid://bxtjwndl253c6" path="res://assets/scripts/cards/models/Submit/Card_ChangeOperator.gd" id="1_wge6m"]
+
+[resource]
+script = ExtResource("1_wge6m")
+OperatorToChange = 2
+Name = "Just a matter of rotation"
+Description = "Rotate these multiplications and see how little they do !"
+Type = 1
+metadata/_custom_type_script = "uid://bxtjwndl253c6"

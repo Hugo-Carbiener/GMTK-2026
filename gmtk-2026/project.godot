@@ -24,6 +24,7 @@ UserData="*res://assets/scripts/generals/UserData.gd"
 SceneManager="*res://assets/scripts/generals/SceneManager.gd"
 TileFactory="*res://assets/scripts/generals/TileFactory.gd"
 CardFactory="*res://assets/scripts/generals/CardFactory.gd"
+CardEffects="*res://assets/scripts/generals/CardEffects.gd"
 MainCamera="*res://assets/scripts/generals/MainCamera.gd"
 
 [debug]

@@ -26,14 +26,25 @@ func on_turn_start():
 		DrawCard();
 
 # Draws a card from the stack
-func DrawCard():
+func DrawCard()->bool:
 	if(_stackPileCards.size()<1):
-		if(!ShuffleDiscardPileInStack()):return; #if the stack and the discard are empty, no card is drawn 
+		if(!ShuffleDiscardPileInStack()):return false; #if the stack and the discard are empty, no card is drawn 
 	var card = CardController.Create(_stackPileCards.get(0));
 	_stackPileCards.erase(_stackPileCards.get(0));
 	cards.append(card);
 	add_child(card);
 	#TODO : add visual shenanigans ?
+	return true;
+
+# Adds a card at runtime to the discard pile
+func AddCardToDiscardPile(card:CardModel)->bool:
+	_discardPileCards.append(card);
+	return true;
+
+# Adds a card at runtime to the stack pile
+func AddCardToStackPile(card:CardModel)->bool:
+	_stackPileCards.append(card);
+	return true;
 
 # Will shuffle the discard in the stack -> if no cards in the discard, returns false
 func ShuffleDiscardPileInStack()->bool:
