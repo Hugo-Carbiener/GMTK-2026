@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Card_ChangeValueIfAllTilesAreValue" load_steps=2 format=3 uid="uid://cid3tvpbwsm1j"]
+
+[ext_resource type="Script" uid="uid://bfcc56aolncuf" path="res://assets/scripts/cards/models/Submit/Card_ChangeValueIfAllTilesAreValue.gd" id="1_xl1lx"]
+
+[resource]
+script = ExtResource("1_xl1lx")
+Num = 1
+Name = "Level it up !"
+Description = "If only tiles of 1, change all of them to the number of filled tiles."
+Type = 1
+metadata/_custom_type_script = "uid://bfcc56aolncuf"

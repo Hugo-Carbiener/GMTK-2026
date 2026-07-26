@@ -102,3 +102,18 @@ func CountNumberOfTilesOfNumber(tileCouples:Array[TileCouple], num:int)->int:
 		if couple.number.number == num:
 			count+=1;
 	return count;
+
+func CountNumberOfTiles(tileCouples:Array[TileCouple])->int:
+	var count:int=0;
+	for couple in tileCouples:
+		if couple==null or couple.number==null:continue;
+		else:
+			count+=1;
+	return count;
+
+func CheckIfAllValuesAreAValue(tileCouples:Array[TileCouple], num:int)->bool:
+	for couple in tileCouples:
+		if couple==null or couple.number==null:continue;
+		if couple.number.number != num:
+			return false;
+	return true;

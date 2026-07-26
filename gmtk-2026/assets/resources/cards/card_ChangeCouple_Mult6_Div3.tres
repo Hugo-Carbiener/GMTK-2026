@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Card_ChangeCoupleToCouple" load_steps=2 format=3 uid="uid://cigdws6dljqh5"]
+[gd_resource type="Resource" script_class="Card_ChangeCoupleToCouple" load_steps=2 format=3 uid="uid://j5vypyjmmj5v"]
 
 [ext_resource type="Script" uid="uid://cwp6iojug55qj" path="res://assets/scripts/cards/models/Submit/Card_ChangeCoupleToCouple.gd" id="1_la2ph"]
 

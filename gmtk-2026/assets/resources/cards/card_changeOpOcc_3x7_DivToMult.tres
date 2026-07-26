@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Card_ChangeOpBasedOnNumOccurences" load_steps=2 format=3 uid="uid://cpb2o5g6m13w4"]
+
+[ext_resource type="Script" uid="uid://2ypll1mgemqg" path="res://assets/scripts/cards/models/Submit/Card_ChangeOpBasedOnNumOccurences.gd" id="1_nkk6q"]
+
+[resource]
+script = ExtResource("1_nkk6q")
+Num = 7
+OccurencesThresh = 3
+OpToChange = 3
+OpToChangeTo = 2
+Name = "Oh no"
+Description = "If 3 tiles of 7, change all / to x"
+Type = 1
+metadata/_custom_type_script = "uid://2ypll1mgemqg"

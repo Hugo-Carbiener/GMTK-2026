@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card_GainIfOnlyAValue" load_steps=2 format=3 uid="uid://dtxa4oh6dsmor"]
+
+[ext_resource type="Script" uid="uid://xhl8at7v75dl" path="res://assets/scripts/cards/models/Submit/Card_GainIfOnlyAValue.gd" id="1_llf8l"]
+
+[resource]
+script = ExtResource("1_llf8l")
+Num = 5
+ShellGains = 5
+Name = "Trade for money !"
+Description = "If only tiles of 5, gain 5 shells !"
+Type = 1
+metadata/_custom_type_script = "uid://xhl8at7v75dl"
