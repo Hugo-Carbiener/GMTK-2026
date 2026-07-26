@@ -42,3 +42,8 @@ func on_click():
 		SignalBus.operator_tile_unselected.emit(self);
 	elif status == TileFactory.TileStatus.NOT_SELECTABLE:
 		return;
+
+func UpdateTile(newOperator:TileFactory.OperatorTileType)->void:
+	#TODO : add visual effect for update (shimer ?)
+	setup(TileFactory.GetOperatorTileModelFromType(newOperator));
+	return;
