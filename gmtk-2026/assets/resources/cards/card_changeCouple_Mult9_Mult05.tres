@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card_ChangeCoupleToCouple" load_steps=2 format=3 uid="uid://dv6lvrk3r20dd"]
+
+[ext_resource type="Script" uid="uid://b085o8unxx72o" path="res://assets/scripts/cards/models/Submit/Card_ChangeCoupleToCoupleFloat.gd" id="1_c57gn"]
+
+[resource]
+script = ExtResource("1_c57gn")
+NumToChange = 9
+OpToChange = 2
+NumToChangeTo = 0.5
+Name = "You'll float too"
+Description = "Change a x9 to x0.5"
+Type = 1
+metadata/_custom_type_script = "uid://cwp6iojug55qj"

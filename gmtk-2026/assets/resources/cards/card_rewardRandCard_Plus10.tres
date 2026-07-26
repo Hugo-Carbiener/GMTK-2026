@@ -5,9 +5,8 @@
 [resource]
 script = ExtResource("1_w4at4")
 Num = 10
-Op = 2
 RewardTarget = 1
 Name = "Costs and Rewards"
-Description = "Obtain a random card for x10 !"
+Description = "Obtain a random card for +10 !"
 Type = 1
 metadata/_custom_type_script = "uid://c0w6wyxlcxchp"

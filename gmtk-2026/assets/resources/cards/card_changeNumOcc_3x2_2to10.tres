@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card_ChangeNumBasedOnNumOccurences" load_steps=2 format=3 uid="uid://d3p5ujfg24sbl"]
+
+[ext_resource type="Script" uid="uid://djdycf5kiblj" path="res://assets/scripts/cards/models/Submit/Card_ChangeNumBasedOnNumOccurences.gd" id="1_mwuxi"]
+
+[resource]
+script = ExtResource("1_mwuxi")
+Num = 2
+OccurencesThresh = 3
+NumToChangeTo = 10
+Name = "Make more of them !"
+Description = "If you have 3 tiles of 2, change them to 10"
+Type = 1
+metadata/_custom_type_script = "uid://djdycf5kiblj"

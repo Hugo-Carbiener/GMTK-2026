@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Card_ApplyNumValueToAllFromCouple" load_steps=2 format=3 uid="uid://c5co7clbvimyt"]
+
+[ext_resource type="Script" uid="uid://58q8la3u4h5s" path="res://assets/scripts/cards/models/Submit/Card_ApplyNumValueToAllFromCouple.gd" id="1_ajmef"]
+
+[resource]
+script = ExtResource("1_ajmef")
+Num = 1
+NumToApply = 1
+Name = "Add it up !"
+Description = "If +1 is present, +1 to all tiles"
+Type = 1
+metadata/_custom_type_script = "uid://58q8la3u4h5s"

@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_kyy3d")
-NumToChange = 5
-NumToChangeTo = 1
-Name = "Reduce them !"
-Description = "Transform all 5 to 1 !"
+NumToChange = 2
+NumToChangeTo = 7
+Name = "More sevens !"
+Description = "All 2 become 7"
 Type = 1
 metadata/_custom_type_script = "uid://doo1pjd41l7cy"

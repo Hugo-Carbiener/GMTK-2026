@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Card_ChangeCoupleToCouple" load_steps=2 format=3 uid="uid://b4ipgl3k5c752"]
+
+[ext_resource type="Script" uid="uid://cwp6iojug55qj" path="res://assets/scripts/cards/models/Submit/Card_ChangeCoupleToCouple.gd" id="1_uwgk5"]
+
+[resource]
+script = ExtResource("1_uwgk5")
+NumToChange = 6
+NumToChangeTo = 4
+OpToChangeTo = 1
+Name = "It makes ten !"
+Description = "Change all +6 to -4"
+Type = 1
+metadata/_custom_type_script = "uid://cwp6iojug55qj"

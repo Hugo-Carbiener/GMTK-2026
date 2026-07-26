@@ -1,53 +1,80 @@
-[gd_scene load_steps=29 format=3 uid="uid://c8f1gu3mqa3jj"]
+[gd_scene load_steps=36 format=3 uid="uid://c8f1gu3mqa3jj"]
 
-[ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_h30ls"]
-[ext_resource type="PackedScene" uid="uid://b37we3vq24yiv" path="res://assets/scenes/Alien/alien.tscn" id="2_byndm"]
-[ext_resource type="Script" uid="uid://blnjpinkjkj7h" path="res://assets/scripts/countdown/Stats.gd" id="2_rpedi"]
-[ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="8_6utgn"]
-[ext_resource type="PackedScene" uid="uid://hpq21508uwp0" path="res://assets/scenes/ui/base-texture-button.tscn" id="8_rpedi"]
-[ext_resource type="Texture2D" uid="uid://dsmtvac3yg6v2" path="res://assets/sprites/UI_draw-pile-icon.png" id="9_by04b"]
-[ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="9_iqutw"]
-[ext_resource type="Script" uid="uid://dmbh6a480bju7" path="res://assets/scripts/ui/TurnCounter.gd" id="9_yuyms"]
-[ext_resource type="Script" uid="uid://d0xx0t4jhv723" path="res://assets/scripts/ui/shop/CurrencyCounter.gd" id="10_byndm"]
-[ext_resource type="Script" uid="uid://qslm53ygf6ly" path="res://assets/scripts/countdown/Countdown.gd" id="10_e5nrv"]
-[ext_resource type="Texture2D" uid="uid://dil0gufilg5hs" path="res://assets/sprites/UI_draw-pile-icon-pressed.png" id="10_yuyms"]
-[ext_resource type="Script" uid="uid://bmagvmlookhwy" path="res://assets/scripts/piles/DrawPile.gd" id="11_byndm"]
-[ext_resource type="Script" uid="uid://6omgg0p6dr4m" path="res://assets/scripts/countdown/Executor.gd" id="11_rpedi"]
-[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="11_tf1n7"]
-[ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/tiles/TileHandManager.gd" id="12_tf1n7"]
-[ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="13_hn3f4"]
-[ext_resource type="Script" uid="uid://cbghe7g1gbw8u" path="res://assets/scripts/cards/CardHandManager.gd" id="14_hn3f4"]
-[ext_resource type="Script" uid="uid://by320l0l85otw" path="res://assets/scripts/piles/DiscardPile.gd" id="16_32rov"]
-[ext_resource type="Script" uid="uid://b72s0jeb8jvfc" path="res://assets/scripts/ui/pop-up-screens/LoseScreen.gd" id="18_4v0yt"]
-[ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="19_lhm7q"]
-[ext_resource type="Script" uid="uid://ds82k34n8mhb6" path="res://assets/scripts/ui/DeckDetails.gd" id="19_tf1n7"]
-[ext_resource type="Script" uid="uid://ca6oanlr5h24s" path="res://assets/scripts/ui/pop-up-screens/WinScreen.gd" id="20_32rov"]
-[ext_resource type="Texture2D" uid="uid://d13fvsagoolpj" path="res://assets/sprites/UI_base-background.png" id="20_hn3f4"]
-[ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="21_xyoef"]
-[ext_resource type="Script" uid="uid://blmob42mssc5r" path="res://assets/scripts/ui/pop-up-screens/ConfirmationPopUp.gd" id="22_30nsa"]
-[ext_resource type="Texture2D" uid="uid://ytts6lujxwnv" path="res://assets/sprites/UI_vseparator.png" id="22_byndm"]
-[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/popup-subtitle.tres" id="23_tf6ax"]
+[ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_30nsa"]
+[ext_resource type="Shader" uid="uid://bq5jw40v31txk" path="res://assets/shaders/background_shader.gdshader" id="2_tf6ax"]
+[ext_resource type="PackedScene" uid="uid://b37we3vq24yiv" path="res://assets/scenes/Alien/alien.tscn" id="3_dt00p"]
+[ext_resource type="Script" uid="uid://blnjpinkjkj7h" path="res://assets/scripts/countdown/Stats.gd" id="4_882h4"]
+[ext_resource type="Script" uid="uid://cj8jprqj5ij1v" path="res://assets/scripts/ui/tooltip/TooltipFactory.gd" id="5_mas20"]
+[ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="6_p1w38"]
+[ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="7_7v4u3"]
+[ext_resource type="Script" uid="uid://dmbh6a480bju7" path="res://assets/scripts/ui/TurnCounter.gd" id="8_8w1vm"]
+[ext_resource type="Script" uid="uid://d0xx0t4jhv723" path="res://assets/scripts/ui/shop/CurrencyCounter.gd" id="9_7i6qa"]
+[ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="10_twowt"]
+[ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="11_rnnuh"]
+[ext_resource type="Script" uid="uid://qslm53ygf6ly" path="res://assets/scripts/countdown/Countdown.gd" id="12_i20t3"]
+[ext_resource type="Script" uid="uid://cbghe7g1gbw8u" path="res://assets/scripts/cards/CardHandManager.gd" id="13_ih54m"]
+[ext_resource type="Script" uid="uid://daf5e7smsr452" path="res://assets/scripts/tiles/TileHandManager.gd" id="14_ctk0x"]
+[ext_resource type="Texture2D" uid="uid://dr4105v4eldfk" path="res://assets/sprites/UI_rock-frame.png" id="15_03krj"]
+[ext_resource type="Texture2D" uid="uid://bnx2ouh6xnxji" path="res://assets/sprites/UI_rock-algea-frame.png" id="16_yl7la"]
+[ext_resource type="Texture2D" uid="uid://dmoowpnbfrakq" path="res://assets/sprites/UI_tile-couple-top.png" id="17_o5u2h"]
+[ext_resource type="Script" uid="uid://6omgg0p6dr4m" path="res://assets/scripts/countdown/Executor.gd" id="18_lby6w"]
+[ext_resource type="Texture2D" uid="uid://btfru1xbeqjfp" path="res://assets/sprites/UI_tile-couple-bot.png" id="19_5ciun"]
+[ext_resource type="PackedScene" uid="uid://hpq21508uwp0" path="res://assets/scenes/ui/base-texture-button.tscn" id="20_3nm2d"]
+[ext_resource type="Script" uid="uid://by320l0l85otw" path="res://assets/scripts/piles/DiscardPile.gd" id="21_ayqew"]
+[ext_resource type="Texture2D" uid="uid://dsmtvac3yg6v2" path="res://assets/sprites/UI_draw-pile-icon.png" id="22_6lhgx"]
+[ext_resource type="Texture2D" uid="uid://dil0gufilg5hs" path="res://assets/sprites/UI_draw-pile-icon-pressed.png" id="23_h626w"]
+[ext_resource type="Script" uid="uid://bmagvmlookhwy" path="res://assets/scripts/piles/DrawPile.gd" id="24_whxxy"]
+[ext_resource type="Script" uid="uid://ds82k34n8mhb6" path="res://assets/scripts/ui/DeckDetails.gd" id="25_noqx5"]
+[ext_resource type="Texture2D" uid="uid://d13fvsagoolpj" path="res://assets/sprites/UI_base-background.png" id="26_qp81l"]
+[ext_resource type="Script" uid="uid://b72s0jeb8jvfc" path="res://assets/scripts/ui/pop-up-screens/LoseScreen.gd" id="27_0yedg"]
+[ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="28_525qv"]
+[ext_resource type="Script" uid="uid://ca6oanlr5h24s" path="res://assets/scripts/ui/pop-up-screens/WinScreen.gd" id="29_uyx7s"]
+[ext_resource type="Texture2D" uid="uid://ytts6lujxwnv" path="res://assets/sprites/UI_vseparator.png" id="30_4mawc"]
+[ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="31_244i0"]
+[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/popup-subtitle.tres" id="32_lkssl"]
+[ext_resource type="Script" uid="uid://blmob42mssc5r" path="res://assets/scripts/ui/pop-up-screens/ConfirmationPopUp.gd" id="33_qn718"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mx32y"]
+shader = ExtResource("2_tf6ax")
+shader_parameter/target_resolution = Vector2(160, 90)
+shader_parameter/deep_color = Color(0.02, 0.08, 0.22, 1)
+shader_parameter/shallow_color = Color(0.05, 0.38, 0.52, 1)
+shader_parameter/foam_color = Color(0.4, 0.85, 0.9, 1)
+shader_parameter/speed = 0.50000002212006
+shader_parameter/scale = 8.0000003325
+shader_parameter/distortion = 0.8
 
 [sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
-font = ExtResource("9_iqutw")
+font = ExtResource("11_rnnuh")
 font_size = 32
 
 [node name="Encounter" type="Node2D"]
-script = ExtResource("1_h30ls")
+script = ExtResource("1_30nsa")
 
-[node name="Count down" type="Node2D" parent="."]
+[node name="Background layer" type="CanvasLayer" parent="."]
+layer = -100
 
-[node name="Alien" parent="." node_paths=PackedStringArray("Aliens") instance=ExtResource("2_byndm")]
-position = Vector2(145, 112.000015)
+[node name="Background" type="ColorRect" parent="Background layer"]
+material = SubResource("ShaderMaterial_mx32y")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Alien" parent="." node_paths=PackedStringArray("Aliens") instance=ExtResource("3_dt00p")]
+position = Vector2(-222, -74)
 Aliens = {
 0: NodePath("Alien_Jellyfish"),
 1: NodePath("Alien_Shark")
 }
 
 [node name="Stats" type="Node2D" parent="."]
-script = ExtResource("2_rpedi")
+script = ExtResource("4_882h4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(-320, -180)
+transform = Transform2D(1, 0, 0, 1, -320, -180)
 follow_viewport_enabled = true
 
 [node name="Ui" type="MarginContainer" parent="CanvasLayer"]
@@ -74,6 +101,8 @@ alignment = 2
 [node name="Turn container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+tooltip_text = "Turns left to win the encounter."
+script = ExtResource("5_mas20")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container"]
 layout_mode = 2
@@ -81,12 +110,13 @@ layout_mode = 2
 [node name="Turns left title" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container/VBoxContainer"]
 layout_mode = 2
 text = "turns left"
-label_settings = ExtResource("8_6utgn")
+label_settings = ExtResource("6_p1w38")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Turn container/VBoxContainer"]
+self_modulate = Color(0.44313726, 0.61960787, 0.6666667, 1)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-texture = ExtResource("13_hn3f4")
+texture = ExtResource("7_7v4u3")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -108,14 +138,16 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 size_flags_horizontal = 4
 text = "4"
-label_settings = ExtResource("8_6utgn")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("9_yuyms")
+script = ExtResource("8_8w1vm")
 
 [node name="Currency container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+tooltip_text = "Sea shells. It is the currency used to buy gear."
+script = ExtResource("5_mas20")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container"]
 layout_mode = 2
@@ -123,14 +155,15 @@ layout_mode = 2
 [node name="Money title" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer"]
 layout_mode = 2
 text = "money"
-label_settings = ExtResource("8_6utgn")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer"]
+self_modulate = Color(0.44313726, 0.61960787, 0.6666667, 1)
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-texture = ExtResource("13_hn3f4")
+texture = ExtResource("7_7v4u3")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -156,14 +189,14 @@ alignment = 2
 [node name="Currency amount" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "0"
-label_settings = ExtResource("8_6utgn")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("10_byndm")
+script = ExtResource("9_7i6qa")
 
 [node name="Currency icon" type="TextureRect" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Currency container/VBoxContainer/NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("11_tf1n7")
+texture = ExtResource("10_twowt")
 stretch_mode = 2
 
 [node name="Middle margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer"]
@@ -184,7 +217,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer"]
 layout_mode = 2
 text = "Bring this number to 0 by any means possible"
-label_settings = ExtResource("8_6utgn")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -192,13 +225,26 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/margin_top = 16
 
-[node name="Countdown" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin"]
+[node name="Countdown" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin" node_paths=PackedStringArray("countdown_modification_label")]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_gldp8")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("10_e5nrv")
+script = ExtResource("12_i20t3")
+countdown_modification_label = NodePath("../Countdown modification margin/Countdown modification")
+
+[node name="Countdown modification margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 150
+
+[node name="Countdown modification" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin/Countdown modification margin"]
+visible = false
+layout_mode = 2
+text = "/10"
+label_settings = ExtResource("6_p1w38")
 
 [node name="Card container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer"]
 layout_mode = 2
@@ -206,27 +252,32 @@ layout_mode = 2
 [node name="Card hand" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Card container"]
 layout_mode = 2
 alignment = 1
-script = ExtResource("14_hn3f4")
+script = ExtResource("13_ih54m")
 
-[node name="Hand container" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer" node_paths=PackedStringArray("number_tiles_container", "operator_tiles_container")]
+[node name="Tile hand margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="Hand container" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin" node_paths=PackedStringArray("number_tiles_container", "operator_tiles_container")]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-script = ExtResource("12_tf1n7")
+script = ExtResource("14_ctk0x")
 number_tiles_container = NodePath("Number hand background/Number hand container")
-operator_tiles_container = NodePath("Operator hand background/Operator hand container")
+operator_tiles_container = NodePath("Operator hand background/MarginContainer/Operator hand container")
 
-[node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container"]
+[node name="Number hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container"]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("13_hn3f4")
+texture = ExtResource("15_03krj")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="Number hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container/Number hand background"]
+[node name="Number hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container/Number hand background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -237,23 +288,28 @@ mouse_filter = 2
 theme_override_constants/separation = -64
 alignment = 1
 
-[node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container"]
-custom_minimum_size = Vector2(0, 32)
+[node name="Operator hand background" type="NinePatchRect" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("13_hn3f4")
-patch_margin_left = 6
+texture = ExtResource("16_yl7la")
+region_rect = Rect2(0, 0, 32, 48)
+patch_margin_left = 10
 patch_margin_top = 6
-patch_margin_right = 6
+patch_margin_right = 16
 patch_margin_bottom = 6
 
-[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Hand container/Operator hand background"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container/Operator hand background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = -16
+
+[node name="Operator hand container" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Tile hand margin/Hand container/Operator hand background/MarginContainer"]
+layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = -64
 alignment = 1
@@ -271,15 +327,37 @@ layout_mode = 2
 [node name="Tile columns margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Tile columns margin"]
+[node name="Tile couple area" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Tile columns margin"]
 layout_mode = 2
 theme_override_constants/separation = 0
-script = ExtResource("11_rpedi")
 
-[node name="Submit button container" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns" instance=ExtResource("8_rpedi")]
+[node name="Top" type="TextureRect" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Tile columns margin/Tile couple area"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("17_o5u2h")
+stretch_mode = 2
+
+[node name="Tile couple container" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Tile columns margin/Tile couple area"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 0
+script = ExtResource("18_lby6w")
+
+[node name="Bot" type="TextureRect" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Tile columns margin/Tile couple area"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("19_5ciun")
+stretch_mode = 2
+
+[node name="Submit button container" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns" instance=ExtResource("20_3nm2d")]
+self_modulate = Color(0.44313726, 0.61960787, 0.6666667, 1)
 layout_mode = 2
 mouse_filter = 1
 signal_on_button_pressed = "play_phase_submitted"
+
+[node name="Text container" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Submit button container" index="0"]
+tooltip_text = "End turn"
+script = ExtResource("5_mas20")
 
 [node name="Spacer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer"]
 layout_mode = 2
@@ -293,18 +371,28 @@ theme_override_constants/margin_bottom = -12
 [node name="Discard pile" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Draw pile margin"]
 layout_mode = 2
 disabled = true
-script = ExtResource("16_32rov")
+script = ExtResource("21_ayqew")
 
 [node name="Draw icon" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Draw pile margin" node_paths=PackedStringArray("deck_details_screen")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 mouse_filter = 1
-texture_normal = ExtResource("9_by04b")
-texture_pressed = ExtResource("10_yuyms")
-texture_hover = ExtResource("10_yuyms")
-script = ExtResource("11_byndm")
+texture_normal = ExtResource("22_6lhgx")
+texture_pressed = ExtResource("23_h626w")
+texture_hover = ExtResource("23_h626w")
+script = ExtResource("24_whxxy")
 deck_details_screen = NodePath("../../../../../../Deck detail screen")
+
+[node name="Tooltip" type="Control" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Draw pile margin/Draw icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "Deck"
+script = ExtResource("5_mas20")
 
 [node name="Deck detail screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("card_container", "operator_container", "number_container")]
 visible = false
@@ -314,8 +402,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.972549)
-script = ExtResource("19_tf1n7")
+color = Color(0, 0, 0, 0.7607843)
+script = ExtResource("25_noqx5")
 card_container = NodePath("MarginContainer/VBoxContainer/Card container margin/Card container")
 operator_container = NodePath("MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin/Operator tiles container padding/VBoxContainer/Operator tile container")
 number_container = NodePath("MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin/Numbers tiles container padding/VBoxContainer/Number tile container")
@@ -348,9 +436,9 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.7
 
 [node name="TextureRect" type="NinePatchRect" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Card container margin"]
-self_modulate = Color(0.21673852, 0.445251, 0.64408684, 1)
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 0.7411765)
 layout_mode = 2
-texture = ExtResource("20_hn3f4")
+texture = ExtResource("26_qp81l")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -371,9 +459,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="NinePatchRect" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin"]
-self_modulate = Color(0.21673852, 0.445251, 0.64408684, 1)
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 0.7411765)
 layout_mode = 2
-texture = ExtResource("20_hn3f4")
+texture = ExtResource("26_qp81l")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -392,7 +480,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin/Operator tiles container padding/VBoxContainer"]
 layout_mode = 2
 text = "Operators"
-label_settings = ExtResource("8_6utgn")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -405,9 +493,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="NinePatchRect" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin"]
-self_modulate = Color(0.21673852, 0.445251, 0.64408684, 1)
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 0.7411765)
 layout_mode = 2
-texture = ExtResource("20_hn3f4")
+texture = ExtResource("26_qp81l")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -426,7 +514,7 @@ layout_mode = 2
 [node name="Title" type="Label" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin/Numbers tiles container padding/VBoxContainer"]
 layout_mode = 2
 text = "Numbers"
-label_settings = ExtResource("8_6utgn")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -434,7 +522,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Lose screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container")]
+[node name="Lose screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "menu_button")]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -442,9 +530,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.972549)
-script = ExtResource("18_4v0yt")
+script = ExtResource("27_0yedg")
 title = NodePath("MarginContainer/VBoxContainer/Title")
 stats_container = NodePath("MarginContainer/VBoxContainer/Stats container")
+menu_button = NodePath("MarginContainer/VBoxContainer/Menu button")
 launch_signal = "on_loss"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Lose screen"]
@@ -463,12 +552,20 @@ theme_override_constants/separation = 19
 [node name="Title" type="Label" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "You could not bring the count down in time..."
-label_settings = ExtResource("19_lhm7q")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Stats container" type="MarginContainer" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Menu button" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer" instance=ExtResource("28_525qv")]
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 1)
+layout_mode = 2
+signal_on_button_pressed = "shop_clicked"
+
+[node name="Button text" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer/Menu button/Text container" index="0"]
+text = "Menu"
 
 [node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button", "base_gain_container", "turn_remaining_container", "bounty_container", "total_container")]
 visible = false
@@ -478,7 +575,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.972549)
-script = ExtResource("20_32rov")
+script = ExtResource("29_uyx7s")
 title = NodePath("MarginContainer/VBoxContainer/Title")
 stats_container = NodePath("MarginContainer/VBoxContainer/Content/Stats container")
 next_level_pop_up = NodePath("Confirmation pop up")
@@ -509,7 +606,7 @@ theme_override_constants/separation = 19
 [node name="Title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mission accomplished! The visitors are pleased."
-label_settings = ExtResource("19_lhm7q")
+label_settings = ExtResource("6_p1w38")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -523,7 +620,7 @@ size_flags_horizontal = 3
 
 [node name="Separator" type="TextureRect" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content"]
 layout_mode = 2
-texture = ExtResource("22_byndm")
+texture = ExtResource("30_4mawc")
 
 [node name="Gain container margin" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content"]
 layout_mode = 2
@@ -536,7 +633,7 @@ theme_override_constants/separation = 6
 [node name="Gains title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
 layout_mode = 2
 text = "Gains"
-label_settings = ExtResource("19_lhm7q")
+label_settings = ExtResource("31_244i0")
 
 [node name="Base gain container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
 custom_minimum_size = Vector2(0, 16)
@@ -545,7 +642,7 @@ layout_mode = 2
 [node name="Base gain title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Base gain container"]
 layout_mode = 2
 text = "Base gain:"
-label_settings = ExtResource("23_tf6ax")
+label_settings = ExtResource("32_lkssl")
 
 [node name="Turns remaining container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
 custom_minimum_size = Vector2(0, 16)
@@ -554,7 +651,7 @@ layout_mode = 2
 [node name="Turns remaining title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Turns remaining container"]
 layout_mode = 2
 text = "Turns remaining bonus:"
-label_settings = ExtResource("23_tf6ax")
+label_settings = ExtResource("32_lkssl")
 
 [node name="Bounty container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
 custom_minimum_size = Vector2(0, 16)
@@ -563,7 +660,7 @@ layout_mode = 2
 [node name="Bounty title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Bounty container"]
 layout_mode = 2
 text = "Perfect score bounty:"
-label_settings = ExtResource("23_tf6ax")
+label_settings = ExtResource("32_lkssl")
 
 [node name="Total container" type="VBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
 layout_mode = 2
@@ -572,7 +669,7 @@ layout_mode = 2
 layout_mode = 2
 text = "
 Total:"
-label_settings = ExtResource("19_lhm7q")
+label_settings = ExtResource("31_244i0")
 
 [node name="Shell container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container"]
 custom_minimum_size = Vector2(0, 16)
@@ -584,14 +681,16 @@ layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Shop button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container" instance=ExtResource("21_xyoef")]
+[node name="Shop button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container" instance=ExtResource("28_525qv")]
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 1)
 layout_mode = 2
 signal_on_button_pressed = "shop_clicked"
 
 [node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Shop button/Text container" index="0"]
 text = "Shop"
 
-[node name="Next level button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container" instance=ExtResource("21_xyoef")]
+[node name="Next level button" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container" instance=ExtResource("28_525qv")]
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 1)
 layout_mode = 2
 
 [node name="Button text" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Next level button/Text container" index="0"]
@@ -606,7 +705,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("22_30nsa")
+script = ExtResource("33_qn718")
 cancel_button = NodePath("VBoxContainer/Button container/Cancel button")
 
 [node name="Background" type="ColorRect" parent="CanvasLayer/Win screen/Confirmation pop up"]
@@ -621,14 +720,14 @@ theme_override_constants/separation = 19
 [node name="Title" type="Label" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
 layout_mode = 2
 text = "You are going to the next encounter without visiting the shop."
-label_settings = ExtResource("19_lhm7q")
+label_settings = ExtResource("31_244i0")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Subtitle" type="Label" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer"]
 layout_mode = 2
 text = "(You conserve shells between encounters)"
-label_settings = ExtResource("23_tf6ax")
+label_settings = ExtResource("32_lkssl")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -637,13 +736,13 @@ layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Cancel button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("21_xyoef")]
+[node name="Cancel button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("28_525qv")]
 layout_mode = 2
 
 [node name="Button text" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Cancel button/Text container" index="0"]
 text = "Cancel"
 
-[node name="Next fight button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("21_xyoef")]
+[node name="Next fight button" parent="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container" instance=ExtResource("28_525qv")]
 layout_mode = 2
 signal_on_button_pressed = "next_encounter_clicked"
 
@@ -652,6 +751,7 @@ text = "Next
 fight"
 
 [editable path="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns/Submit button container"]
+[editable path="CanvasLayer/Lose screen/MarginContainer/VBoxContainer/Menu button"]
 [editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Shop button"]
 [editable path="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Button container/Next level button"]
 [editable path="CanvasLayer/Win screen/Confirmation pop up/VBoxContainer/Button container/Cancel button"]

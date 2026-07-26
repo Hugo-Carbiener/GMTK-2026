@@ -4,10 +4,13 @@ class_name Card_AddCardForCouple extends CardModelSubmit
 
 @export var Num : int;
 @export var Op : TileFactory.OperatorTileType;
+@export var NumOfRewards : int=1;
 @export var RewardType : CardEffects.CARD_REWARD_TYPE;
 @export var RewardTarget : CardEffects.CARD_REWARD_TARGET;
 @export var CardReward : CardModel=null;
 
 func TriggerCardEffect(tileCouples : Array[TileCouple])->bool:
 	print("Attempting to trigger card reward ");
-	return CardEffects.RewardCardForCouple(tileCouples, Num, Op, RewardTarget, RewardType, CardReward);
+	for i in range(0, NumOfRewards):
+		if CardEffects.RewardCardForCouple(tileCouples, Num, Op, RewardTarget, RewardType, CardReward) == false : return false;
+	return true;
