@@ -99,9 +99,8 @@ func select_card_reward(card : CardController):
 	if card_rewards.find(card) == -1:
 		printerr("Selected a card reward that was not found in the shop stocks.");
 		return;
-
 	card_reward_selected = true;
-	# TODO card - add it to card deck
+	UserData.AddCardToPlayerDeck(card.Model);
 	await AnimationUtils.delete_child_fade_out(card, Constants.DEFAULT_TRANSITION_DURATION);
 	card_rewards.erase(card)
 	for other_cards in card_rewards:

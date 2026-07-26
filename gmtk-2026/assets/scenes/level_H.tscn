@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c8f1gu3mqa3jj"]
+[gd_scene load_steps=29 format=3 uid="uid://c8f1gu3mqa3jj"]
 
 [ext_resource type="Script" uid="uid://eijn4g7k67b0" path="res://assets/scripts/GameLoop.gd" id="1_h30ls"]
 [ext_resource type="PackedScene" uid="uid://b37we3vq24yiv" path="res://assets/scenes/Alien/alien.tscn" id="2_byndm"]
@@ -20,7 +20,9 @@
 [ext_resource type="Script" uid="uid://by320l0l85otw" path="res://assets/scripts/piles/DiscardPile.gd" id="16_32rov"]
 [ext_resource type="Script" uid="uid://b72s0jeb8jvfc" path="res://assets/scripts/ui/pop-up-screens/LoseScreen.gd" id="18_4v0yt"]
 [ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="19_lhm7q"]
+[ext_resource type="Script" uid="uid://ds82k34n8mhb6" path="res://assets/scripts/ui/DeckDetails.gd" id="19_tf1n7"]
 [ext_resource type="Script" uid="uid://ca6oanlr5h24s" path="res://assets/scripts/ui/pop-up-screens/WinScreen.gd" id="20_32rov"]
+[ext_resource type="Texture2D" uid="uid://d13fvsagoolpj" path="res://assets/sprites/UI_base-background.png" id="20_hn3f4"]
 [ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="21_xyoef"]
 [ext_resource type="Script" uid="uid://blmob42mssc5r" path="res://assets/scripts/ui/pop-up-screens/ConfirmationPopUp.gd" id="22_30nsa"]
 [ext_resource type="Texture2D" uid="uid://ytts6lujxwnv" path="res://assets/sprites/UI_vseparator.png" id="22_byndm"]
@@ -28,7 +30,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
 font = ExtResource("9_iqutw")
-font_size = 64
+font_size = 32
 
 [node name="Encounter" type="Node2D"]
 script = ExtResource("1_h30ls")
@@ -68,24 +70,6 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin"]
 layout_mode = 2
 alignment = 2
-
-[node name="Draw pile margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = -15
-theme_override_constants/margin_bottom = -12
-
-[node name="Draw icon" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Draw pile margin"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-texture_normal = ExtResource("9_by04b")
-texture_pressed = ExtResource("10_yuyms")
-script = ExtResource("11_byndm")
-
-[node name="Discard pile" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer/Draw pile margin"]
-layout_mode = 2
-disabled = true
-script = ExtResource("16_32rov")
 
 [node name="Turn container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Left margin/VBoxContainer"]
 custom_minimum_size = Vector2(0, 32)
@@ -294,9 +278,159 @@ script = ExtResource("11_rpedi")
 
 [node name="Submit button container" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Tile columns" instance=ExtResource("8_rpedi")]
 layout_mode = 2
+mouse_filter = 1
 signal_on_button_pressed = "play_phase_submitted"
 
 [node name="Spacer" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Draw pile margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_bottom = -12
+
+[node name="Discard pile" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Draw pile margin"]
+layout_mode = 2
+disabled = true
+script = ExtResource("16_32rov")
+
+[node name="Draw icon" type="TextureButton" parent="CanvasLayer/Ui/HBoxContainer/Right margin/VBoxContainer/Draw pile margin" node_paths=PackedStringArray("deck_details_screen")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+texture_normal = ExtResource("9_by04b")
+texture_pressed = ExtResource("10_yuyms")
+texture_hover = ExtResource("10_yuyms")
+script = ExtResource("11_byndm")
+deck_details_screen = NodePath("../../../../../../Deck detail screen")
+
+[node name="Deck detail screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("card_container", "operator_container", "number_container")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.972549)
+script = ExtResource("19_tf1n7")
+card_container = NodePath("MarginContainer/VBoxContainer/Card container margin/Card container")
+operator_container = NodePath("MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin/Operator tiles container padding/VBoxContainer/Operator tile container")
+number_container = NodePath("MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin/Numbers tiles container padding/VBoxContainer/Number tile container")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Deck detail screen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Deck detail screen/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Deck details"
+label_settings = SubResource("LabelSettings_gldp8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card container margin" type="MarginContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="TextureRect" type="NinePatchRect" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Card container margin"]
+self_modulate = Color(0.21673852, 0.445251, 0.64408684, 1)
+layout_mode = 2
+texture = ExtResource("20_hn3f4")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Card container" type="HBoxContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Card container margin"]
+layout_mode = 2
+
+[node name="Tiles container margin" type="MarginContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin"]
+layout_mode = 2
+
+[node name="Operator tiles container margin" type="MarginContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin"]
+self_modulate = Color(0.21673852, 0.445251, 0.64408684, 1)
+layout_mode = 2
+texture = ExtResource("20_hn3f4")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Operator tiles container padding" type="MarginContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin/Operator tiles container padding"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin/Operator tiles container padding/VBoxContainer"]
+layout_mode = 2
+text = "Operators"
+label_settings = ExtResource("8_6utgn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Operator tile container" type="Control" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Operator tiles container margin/Operator tiles container padding/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Numbers tiles container margin" type="MarginContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="NinePatchRect" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin"]
+self_modulate = Color(0.21673852, 0.445251, 0.64408684, 1)
+layout_mode = 2
+texture = ExtResource("20_hn3f4")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Numbers tiles container padding" type="MarginContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin/Numbers tiles container padding"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin/Numbers tiles container padding/VBoxContainer"]
+layout_mode = 2
+text = "Numbers"
+label_settings = ExtResource("8_6utgn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number tile container" type="Control" parent="CanvasLayer/Deck detail screen/MarginContainer/VBoxContainer/Tiles container margin/HBoxContainer/Numbers tiles container margin/Numbers tiles container padding/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -405,6 +539,7 @@ text = "Gains"
 label_settings = ExtResource("19_lhm7q")
 
 [node name="Base gain container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
 [node name="Base gain title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Base gain container"]
@@ -413,6 +548,7 @@ text = "Base gain:"
 label_settings = ExtResource("23_tf6ax")
 
 [node name="Turns remaining container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
 [node name="Turns remaining title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Turns remaining container"]
@@ -421,6 +557,7 @@ text = "Turns remaining bonus:"
 label_settings = ExtResource("23_tf6ax")
 
 [node name="Bounty container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
 [node name="Bounty title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Bounty container"]
@@ -438,6 +575,7 @@ Total:"
 label_settings = ExtResource("19_lhm7q")
 
 [node name="Shell container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container"]
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 0
 

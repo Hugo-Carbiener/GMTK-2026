@@ -27,6 +27,7 @@ func start_level():
 	Executor.instance.init();
 	Countdown.instance.init();
 	DrawPile.instance.init();
+	CardHandManager.instance.init();
 	start_phase(current_phase);
 
 static func get_next_phase() -> int:

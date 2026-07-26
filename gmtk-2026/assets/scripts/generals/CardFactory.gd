@@ -3,6 +3,7 @@ extends Node2D
 # Will generate the cards
 func _ready() -> void:
 	load_card_models();
+	PopulatePlayerDeck();
 
 enum CARD_TYPE{
 	DRAW_EFFECT,
@@ -14,9 +15,9 @@ enum CARD_STATUS {
 	IN_SHOP
 }
 
-var cardModels : Array[CardModel]; #All the possible cards based on the card model
-var cardDeck : Dictionary[CardModel,CardController]; #The in-game drawn cards 
+var cardModelsUniverse : Array[CardModel]; #All the possible cards in the universe
 
+# Will load all the card models in the universe
 func load_card_models():
 	var path = "res://assets/resources/cards/";
 	var dir = DirAccess.open(path)
@@ -38,10 +39,18 @@ func load_card_models():
 				var res = load(file_path)
 				# Check if the resource matches or inherits from target_type
 				if res and res is CardModel:
-					cardModels.append(res)
-
+					cardModelsUniverse.append(res)
 		file_name = dir.get_next()
 
+# Populate the player's deck at game start
+func PopulatePlayerDeck()->void:
+	if(UserData.card_deck.size()>=1): # if the deck is already populated, we do NOT populate it again since that means that we're no longer at game start
+		return;
+	for i in range(0, Constants.DECK_START_SIZE):
+		var model = cardModelsUniverse.get(randi() % cardModelsUniverse.size());
+		UserData.AddCardToPlayerDeck(model); #TODO : do we want to have multiple examples of the same card ?
+
+# Generates a random card based on the universe
 func generate_random_card() -> CardController:
-	var card_model = cardModels.get(randi() % cardModels.size());
+	var card_model = cardModelsUniverse.get(randi() % cardModelsUniverse.size());
 	return CardController.Create(card_model);

@@ -29,3 +29,15 @@ func gain(amount : int):
 func set_currency(amount : int):
 	currency = amount;
 	SignalBus.on_money_update.emit(currency);
+
+func FillPlayerCardInventory(cards:Array[CardModel])->void:
+	card_deck = cards.duplicate();
+	return;
+
+func AddCardToPlayerDeck(card:CardModel)->void:
+	card_deck.append(card);
+	return;
+
+func RemoveCardFromPlayerDeck(card:CardModel)->void:
+	card_deck.erase(card);
+	return;

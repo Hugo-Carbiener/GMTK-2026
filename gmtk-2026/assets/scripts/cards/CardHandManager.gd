@@ -2,23 +2,47 @@ class_name CardHandManager extends Control
 
 static var instance : CardHandManager;
 
-var cards : Array[CardController];
+var cards : Array[CardController]; # The cards currently in front of the player (their hand)
+
+var _discardPileCards : Array[CardModel];
+var _stackPileCards : Array[CardModel];
 
 func _ready() -> void:
 	if instance == null:
 		instance = self;
 
+# At level start, we populate the stack from the cards in the player's inventory
+func init():
+	for card in UserData.card_deck:
+		_stackPileCards.append(card);
+	print("Card stack :");
+	for i in _stackPileCards:
+		print(str(i)+" : "+i.Name);
+
 func on_turn_start():
 	var numCardsToDraw = Constants.MAX_NUMBER_CARDS_DRAWN;
 	if(cards.size()+numCardsToDraw>Constants.MAX_NUMBER_CARDS_IN_HAND):numCardsToDraw=Constants.MAX_NUMBER_CARDS_IN_HAND-cards.size();
 	for i in range(numCardsToDraw):
-		draw_random_card();
+		DrawCard();
 
-func draw_random_card():
-	var card = CardFactory.generate_random_card();
+# Draws a card from the stack
+func DrawCard():
+	if(_stackPileCards.size()<1):
+		if(!ShuffleDiscardPileInStack()):return; #if the stack and the discard are empty, no card is drawn 
+	var card = CardController.Create(_stackPileCards.get(0));
+	_stackPileCards.erase(_stackPileCards.get(0));
 	cards.append(card);
 	add_child(card);
+	#TODO : add visual shenanigans ?
 
+# Will shuffle the discard in the stack -> if no cards in the discard, returns false
+func ShuffleDiscardPileInStack()->bool:
+	if(_discardPileCards.size()<1):return false;
+	_stackPileCards = _discardPileCards.duplicate();
+	_stackPileCards.shuffle();
+	_discardPileCards.clear();
+	#TODO : add visual shenanigans ?
+	return true;
 
 #Function called when submitting
 func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
@@ -30,7 +54,7 @@ func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
 				card.MarkedForDeath=true;
 				#TODO : add some visual bullshittery here 
 	# Now we clean the cards
-	ClearCardsFromDeck()
+	DiscardCardsFromHand()
 	return;
 
 func ExecuteCardDraw()->void:
@@ -42,13 +66,14 @@ func ExecuteCardDraw()->void:
 				card.MarkedForDeath=true;
 				#TODO : add some visual bullshittery here 
 	# Now we clean the cards
-	ClearCardsFromDeck();
+	DiscardCardsFromHand();
 	return;
 
-func ClearCardsFromDeck()->void:
-	#TODO : clean this to avoid performing multiple useless loops -> put the cards marked for death in specific dict to clean during the triggers (see above)
+# Discard all cards from the hand that need to be discarded (used)
+func DiscardCardsFromHand()->void:
 	for card in cards:
 		if(card.MarkedForDeath):
-			#TODO : add some visual bullshittery here 
+			var model = card.Model;
 			card.Destroy();
 			cards.erase(card);
+			_discardPileCards.append(model);
