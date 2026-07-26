@@ -10,6 +10,8 @@ const no_reward_scene : PackedScene = preload("res://assets/scenes/ui/no-reward.
 @export_group("Gains containers")
 @export var base_gain_container : Control;
 @export var turn_remaining_container : Control;
+@export var difficulty_gain_container : Control;
+@export var card_effect_gain_container : Control;
 @export var bounty_container : Control;
 @export var total_container : Control;
 
@@ -34,6 +36,10 @@ func gain_animation():
 	tween.tween_callback(animate_gain_container.bind(Constants.BASE_MONEY_REWARD, base_gain_container));
 	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
 	tween.tween_callback(animate_gain_container.bind(GameLoop.get_turn_remaining_gain(), turn_remaining_container));
+	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
+	tween.tween_callback(animate_gain_container.bind(GameLoop.get_encounter_difficulty_gains(), difficulty_gain_container));
+	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
+	tween.tween_callback(animate_gain_container.bind(GameLoop.bonus_shells, card_effect_gain_container));
 	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);
 	tween.tween_callback(animate_gain_container.bind(GameLoop.get_bounty_gains(), bounty_container));
 	tween.tween_interval(Constants.DEFAULT_TRANSITION_DURATION);

@@ -12,7 +12,7 @@ func _ready() -> void:
 		instance = self;
 
 func init():
-	initial_countdown_value = randi() % (Constants.MAX_COUNTDOWN_VALUE - Constants.MIN_COUNTDOWN_VALUE) + Constants.MIN_COUNTDOWN_VALUE;
+	initial_countdown_value = round(Constants.BASE_COUNTDOWN_VALUE * pow(Constants.ENCOUNTER_FACTOR, UserData.encounter_cleared) + (randi() % Constants.COUNTDOWN_RANDOM_RANGE));
 	set_countdown_value(initial_countdown_value);
 
 func display_modification(operator_tile : OperatorTile, number_tile : NumberTile):

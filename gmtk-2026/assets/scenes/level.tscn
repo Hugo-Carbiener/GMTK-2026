@@ -566,8 +566,7 @@ layout_mode = 2
 [node name="Button text" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer/Menu button/Text container" index="0"]
 text = "Menu"
 
-[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button", "base_gain_container", "turn_remaining_container", "bounty_container", "total_container")]
-visible = false
+[node name="Win screen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("title", "stats_container", "next_level_pop_up", "next_level_button", "base_gain_container", "turn_remaining_container", "difficulty_gain_container", "card_effect_gain_container", "bounty_container", "total_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -581,8 +580,10 @@ next_level_pop_up = NodePath("Confirmation pop up")
 next_level_button = NodePath("MarginContainer/VBoxContainer/Button container/Next level button")
 base_gain_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Base gain container")
 turn_remaining_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Turns remaining container")
+difficulty_gain_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Difficulty gain container")
+card_effect_gain_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Card effects gain container")
 bounty_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Bounty container")
-total_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container/Shell container")
+total_container = NodePath("MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container/Shell container margin/Shell container")
 launch_signal = "on_win"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Win screen"]
@@ -652,6 +653,24 @@ layout_mode = 2
 text = "Turns remaining bonus:"
 label_settings = ExtResource("28_67d1b")
 
+[node name="Difficulty gain container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Difficulty gain title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Difficulty gain container"]
+layout_mode = 2
+text = "Difficulty bonus:"
+label_settings = ExtResource("28_67d1b")
+
+[node name="Card effects gain container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+
+[node name="Card effect gain title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Card effects gain container"]
+layout_mode = 2
+text = "Card effect gains:"
+label_settings = ExtResource("28_67d1b")
+
 [node name="Bounty container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
@@ -666,14 +685,18 @@ layout_mode = 2
 
 [node name="Total title" type="Label" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container"]
 layout_mode = 2
-text = "
-Total:"
+text = "Total:"
 label_settings = ExtResource("26_r652n")
 
-[node name="Shell container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container"]
+[node name="Shell container margin" type="MarginContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container"]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+
+[node name="Shell container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer/Content/Gain container margin/Gain container/Total container/Shell container margin"]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/separation = -8
 
 [node name="Button container" type="HBoxContainer" parent="CanvasLayer/Win screen/MarginContainer/VBoxContainer"]
 layout_mode = 2

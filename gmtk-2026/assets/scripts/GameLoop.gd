@@ -2,6 +2,7 @@ class_name GameLoop extends Node2D
 
 static var current_phase : Phases;
 static var turns_left : int;
+static var bonus_shells : int;
 
 static var phase_start_sequences = {
 	Phases.PLAY_PHASE : Callable(play_phase),
@@ -67,6 +68,7 @@ static func can_start_win_lose_conditions() -> bool:
 	return false; 
 
 static func win_level():
+	UserData.encounter_cleared += 1;
 	UserData.gain(compute_gains());
 	SignalBus.on_win.emit();
 
@@ -79,5 +81,8 @@ static func get_turn_remaining_gain() -> int:
 static func get_bounty_gains() -> int:
 	return Constants.MONEY_BOUNTY_FOR_PERFECT if Countdown.instance.countdown == 0 else 0;
 
+static func get_encounter_difficulty_gains() -> int:
+	return UserData.encounter_cleared - 1;
+
 static func compute_gains() -> int:
-	return Constants.BASE_MONEY_REWARD + get_turn_remaining_gain() + get_bounty_gains();
+	return Constants.BASE_MONEY_REWARD + get_turn_remaining_gain() + get_bounty_gains() + get_encounter_difficulty_gains() + bonus_shells;

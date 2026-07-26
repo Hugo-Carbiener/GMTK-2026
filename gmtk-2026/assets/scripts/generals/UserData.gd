@@ -5,6 +5,7 @@ var number_deck : Array[int];
 var operator_deck : Array[TileFactory.OperatorTileType];
 var card_deck : Array[CardModel];
 var currency : int;
+var encounter_cleared : int = 0;
 
 func pay(amount : int):
 	if amount == 0: return;
