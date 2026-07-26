@@ -2,11 +2,13 @@ class_name DrawPile extends BasePile
 
 static var instance : DrawPile;
 
+@export var deck_details_screen : DeckDetails;
+
 func _ready() -> void:
 	if instance == null:
 		instance = self;
 	pivot_offset = size / 2;
-	button_down.connect(on_click);
+	button_up.connect(on_click);
 
 func init():
 	populate_deck();
@@ -42,4 +44,4 @@ func refill_operator_tiles():
 	DiscardPile.instance.operator_tile_amounts.clear();
 
 func on_click():
-	pass;
+	deck_details_screen.open();

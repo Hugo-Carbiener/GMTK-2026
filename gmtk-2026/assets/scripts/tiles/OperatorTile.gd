@@ -38,5 +38,7 @@ func consume():
 func on_click():
 	if status == TileFactory.TileStatus.NOT_SELECTED:
 		SignalBus.operator_tile_selected.emit(self);
-	else:
+	elif status == TileFactory.TileStatus.SELECTED:
 		SignalBus.operator_tile_unselected.emit(self);
+	elif status == TileFactory.TileStatus.NOT_SELECTABLE:
+		return;
