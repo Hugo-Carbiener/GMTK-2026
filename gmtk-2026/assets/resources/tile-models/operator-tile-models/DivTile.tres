@@ -8,5 +8,5 @@ operator_type = 3
 text = "/"
 is_in_base_deck = true
 amount_in_base_deck = 2
-price = 5
+price = 11
 metadata/_custom_type_script = "uid://cshuev5xwvsfp"
