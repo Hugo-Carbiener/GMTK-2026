@@ -19,6 +19,7 @@ var status : CardFactory.CARD_STATUS;
 @export var button : Button;
 @export var card_content_container : Control;
 @export var card_flipped_container : Control;
+@export var can_be_flipped : bool;
 
 func _ready() -> void:
 	super();
@@ -52,6 +53,8 @@ func on_execution():
 	await AnimationUtils.bounce(self, grow_factor);
 
 func FlipCard()->void:
+	if !can_be_flipped: return;
+	
 	is_hover_blocked = true;
 	CardIsFlipped=!CardIsFlipped;
 	await AnimationUtils.animate_scale(self, Vector2i.ONE, Vector2.DOWN, Constants.SHORT_TRANSITION_DURATION * 2);

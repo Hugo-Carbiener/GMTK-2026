@@ -1,36 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr5mjvrne3jfv"]
+[gd_scene load_steps=6 format=3 uid="uid://bc16216tgqvcn"]
 
-[ext_resource type="Texture2D" uid="uid://bjs8f2so80yc7" path="res://assets/sprites/UI_card-background.png" id="1_5yskb"]
-[ext_resource type="Script" uid="uid://blef3j5kwcfvq" path="res://assets/scripts/cards/CardController.gd" id="1_lgpeh"]
-[ext_resource type="Texture2D" uid="uid://cp7uypjvyos78" path="res://assets/sprites/UI_card-frame.png" id="2_0gtvu"]
-[ext_resource type="LabelSettings" uid="uid://cofn4v34fc87p" path="res://assets/fonts/card-font.tres" id="4_xjee2"]
-[ext_resource type="Texture2D" uid="uid://cltui8xs78q5k" path="res://assets/sprites/UI_card-face-down.png" id="5_0gtvu"]
+[ext_resource type="Script" uid="uid://blef3j5kwcfvq" path="res://assets/scripts/cards/CardController.gd" id="1_4w0bp"]
+[ext_resource type="Texture2D" uid="uid://boh14nc2ff2k3" path="res://assets/sprites/UI_malus-card-frame.png" id="2_4w0bp"]
+[ext_resource type="Texture2D" uid="uid://c8o50sa30xvew" path="res://assets/sprites/UI_malus-card-background.png" id="3_y4nyu"]
+[ext_resource type="LabelSettings" uid="uid://cofn4v34fc87p" path="res://assets/fonts/card-font.tres" id="4_ne6ff"]
+[ext_resource type="Texture2D" uid="uid://cltui8xs78q5k" path="res://assets/sprites/UI_card-face-down.png" id="5_6tr31"]
 
-[node name="Card" type="MarginContainer" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription", "button", "card_content_container", "card_flipped_container")]
+[node name="Malus card" type="MarginContainer" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription", "button", "card_content_container", "card_flipped_container")]
 self_modulate = Color(0.47617084, 0.5705026, 0.71798384, 1)
 clip_contents = true
 offset_right = 80.0
 offset_bottom = 112.0
 focus_behavior_recursive = 1
-script = ExtResource("1_lgpeh")
+script = ExtResource("1_4w0bp")
 LabelCardName = NodePath("Card padding/Card content padding/VBoxContainer/Name margin/Name")
 LabelCardDescription = NodePath("Card padding/Card content padding/VBoxContainer/Description margin/Description")
 button = NodePath("Button")
 card_content_container = NodePath("Card padding")
 card_flipped_container = NodePath("Card flipped margin")
-can_be_flipped = true
 
 [node name="Card padding" type="MarginContainer" parent="."]
 layout_mode = 2
 
 [node name="Card frame" type="TextureRect" parent="Card padding"]
 layout_mode = 2
-texture = ExtResource("2_0gtvu")
+texture = ExtResource("2_4w0bp")
 stretch_mode = 3
 
 [node name="Card background" type="TextureRect" parent="Card padding"]
 layout_mode = 2
-texture = ExtResource("1_5yskb")
+texture = ExtResource("3_y4nyu")
 stretch_mode = 3
 
 [node name="Card content padding" type="MarginContainer" parent="Card padding"]
@@ -50,7 +49,7 @@ theme_override_constants/margin_right = 8
 [node name="Name" type="Label" parent="Card padding/Card content padding/VBoxContainer/Name margin"]
 layout_mode = 2
 text = "NOM"
-label_settings = ExtResource("4_xjee2")
+label_settings = ExtResource("4_ne6ff")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -68,7 +67,7 @@ custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 size_flags_vertical = 1
 text = "Imme anbzdba zdbqdzbdzqbdv yvzavzdv "
-label_settings = ExtResource("4_xjee2")
+label_settings = ExtResource("4_ne6ff")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -79,7 +78,7 @@ layout_mode = 2
 
 [node name="Card flipped" type="TextureRect" parent="Card flipped margin"]
 layout_mode = 2
-texture = ExtResource("5_0gtvu")
+texture = ExtResource("5_6tr31")
 
 [node name="Name margin" type="MarginContainer" parent="Card flipped margin"]
 layout_mode = 2
@@ -91,7 +90,7 @@ layout_mode = 2
 text = "A flipped card
 is not triggered
 and not discarded"
-label_settings = ExtResource("4_xjee2")
+label_settings = ExtResource("4_ne6ff")
 horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="."]
