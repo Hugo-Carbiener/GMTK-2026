@@ -1,72 +1,99 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr5mjvrne3jfv"]
+[gd_scene load_steps=6 format=3 uid="uid://cr5mjvrne3jfv"]
 
 [ext_resource type="Texture2D" uid="uid://bjs8f2so80yc7" path="res://assets/sprites/UI_card-background.png" id="1_5yskb"]
 [ext_resource type="Script" uid="uid://blef3j5kwcfvq" path="res://assets/scripts/cards/CardController.gd" id="1_lgpeh"]
-[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="3_xjee2"]
-[ext_resource type="Texture2D" uid="uid://8aicdqxox5tr" path="res://assets/sprites/jimothy.png" id="4_xjee2"]
+[ext_resource type="Texture2D" uid="uid://cp7uypjvyos78" path="res://assets/sprites/UI_card-frame.png" id="2_0gtvu"]
+[ext_resource type="LabelSettings" uid="uid://cofn4v34fc87p" path="res://assets/fonts/card-font.tres" id="4_xjee2"]
+[ext_resource type="Texture2D" uid="uid://cltui8xs78q5k" path="res://assets/sprites/UI_card-face-down.png" id="5_0gtvu"]
 
-[node name="Card" type="TextureRect" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription", "button", "CardPadding")]
+[node name="Card" type="MarginContainer" node_paths=PackedStringArray("LabelCardName", "LabelCardDescription", "button", "card_content_container", "card_flipped_container")]
 self_modulate = Color(0.47617084, 0.5705026, 0.71798384, 1)
 clip_contents = true
-offset_right = 48.0
-offset_bottom = 64.0
+offset_right = 80.0
+offset_bottom = 112.0
 focus_behavior_recursive = 1
-texture = ExtResource("1_5yskb")
-stretch_mode = 3
 script = ExtResource("1_lgpeh")
-LabelCardName = NodePath("Card padding/VBoxContainer/Name")
-LabelCardDescription = NodePath("Card padding/VBoxContainer/Description")
+LabelCardName = NodePath("Card padding/Card content padding/VBoxContainer/Name margin/Name")
+LabelCardDescription = NodePath("Card padding/Card content padding/VBoxContainer/Description margin/Description")
 button = NodePath("Button")
-CardPadding = NodePath("Card padding")
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
+card_content_container = NodePath("Card padding")
+card_flipped_container = NodePath("Card flipped margin")
 
 [node name="Card padding" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Card padding"]
 layout_mode = 2
-mouse_filter = 2
 
-[node name="Name" type="Label" parent="Card padding/VBoxContainer"]
+[node name="Card frame" type="TextureRect" parent="Card padding"]
+layout_mode = 2
+texture = ExtResource("2_0gtvu")
+stretch_mode = 3
+
+[node name="Card background" type="TextureRect" parent="Card padding"]
+layout_mode = 2
+texture = ExtResource("1_5yskb")
+stretch_mode = 3
+
+[node name="Card content padding" type="MarginContainer" parent="Card padding"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card padding/Card content padding"]
+layout_mode = 2
+
+[node name="Name margin" type="MarginContainer" parent="Card padding/Card content padding/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Name" type="Label" parent="Card padding/Card content padding/VBoxContainer/Name margin"]
 layout_mode = 2
 text = "NOM"
-label_settings = ExtResource("3_xjee2")
+label_settings = ExtResource("4_xjee2")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Card padding/VBoxContainer"]
+[node name="Description margin" type="MarginContainer" parent="Card padding/Card content padding/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_bottom = -65
+size_flags_vertical = 10
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 16
 
-[node name="TextureRect" type="TextureRect" parent="Card padding/VBoxContainer/MarginContainer"]
-layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("4_xjee2")
-expand_mode = 4
-
-[node name="Description" type="Label" parent="Card padding/VBoxContainer"]
+[node name="Description" type="Label" parent="Card padding/Card content padding/VBoxContainer/Description margin"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
-text = "Imme anbzdba zdbqdzbdzqbdv yvzavzdv vydavzvdz hbhbhbh b bhbhbvvb"
-label_settings = ExtResource("3_xjee2")
+size_flags_vertical = 1
+text = "Imme anbzdba zdbqdzbdzqbdv yvzavzdv "
+label_settings = ExtResource("4_xjee2")
+horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Card flipped margin" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Card flipped" type="TextureRect" parent="Card flipped margin"]
+layout_mode = 2
+texture = ExtResource("5_0gtvu")
+
+[node name="Name margin" type="MarginContainer" parent="Card flipped margin"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 16
+
+[node name="Warning" type="Label" parent="Card flipped margin/Name margin"]
+layout_mode = 2
+text = "A flipped card
+is not triggered
+and not discarded"
+label_settings = ExtResource("4_xjee2")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+mouse_filter = 1
+flat = true

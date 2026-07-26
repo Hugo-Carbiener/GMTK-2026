@@ -62,6 +62,7 @@ func ExecuteCardSubmit(tileCouples : Array[TileCouple])->void:
 		if card.CardIsFlipped:continue;
 		if(card.Type==CardFactory.CARD_TYPE.SUBMIT_EFFECT):
 			if(card.Model.TriggerCardEffect(tileCouples)):
+				await card.on_execution();
 				card.MarkedForDeath=true;
 				#TODO : add some visual bullshittery here 
 	# Now we clean the cards
@@ -74,6 +75,7 @@ func ExecuteCardDraw()->void:
 		if card.CardIsFlipped:continue;
 		if(card.Type==CardFactory.CARD_TYPE.DRAW_EFFECT):
 			if(card.Model.TriggerCardEffect()):
+				await card.on_execution();
 				card.MarkedForDeath=true;
 				#TODO : add some visual bullshittery here 
 	# Now we clean the cards
