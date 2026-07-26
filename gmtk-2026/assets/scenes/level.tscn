@@ -405,6 +405,7 @@ script = ExtResource("25_te4eo")
 title = NodePath("MarginContainer/VBoxContainer/Title")
 stats_container = NodePath("MarginContainer/VBoxContainer/Stats container")
 menu_button = NodePath("MarginContainer/VBoxContainer/Menu button")
+launch_signal = "on_loss"
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Lose screen"]
 layout_mode = 1
