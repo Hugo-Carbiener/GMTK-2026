@@ -69,7 +69,7 @@ func AddCardToPlayerStack(model:CardModel)->CardModel:
 
 func AddCardToPlayerDiscard(model:CardModel)->CardModel:
 	UserData.AddCardToPlayerDeck(model);
-	CardHandManager.instance.AddCardToStackPile(model);
+	CardHandManager.instance.AddCardToDiscardPile(model);
 	return model;
 
 # Generates a random card based on the universe
