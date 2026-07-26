@@ -20,7 +20,7 @@ shader_parameter/target_resolution = Vector2(160, 90)
 shader_parameter/deep_color = Color(0.01127649, 0.050959475, 0.1630654, 1)
 shader_parameter/shallow_color = Color(0.030735528, 0.2947225, 0.40812042, 1)
 shader_parameter/foam_color = Color(0.14877924, 0.47476333, 0.50951403, 1)
-shader_parameter/speed = 0.50000002212006
+shader_parameter/speed = 0.20000000787006
 shader_parameter/scale = 8.0000003325
 shader_parameter/distortion = 0.8
 
