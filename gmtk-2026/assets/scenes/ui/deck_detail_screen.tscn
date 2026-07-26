@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4tdnsx72ianc"]
+[gd_scene load_steps=7 format=3 uid="uid://c4tdnsx72ianc"]
 
 [ext_resource type="Script" uid="uid://ds82k34n8mhb6" path="res://assets/scripts/ui/DeckDetails.gd" id="1_5okqy"]
 [ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="2_ail1e"]
 [ext_resource type="Texture2D" uid="uid://d13fvsagoolpj" path="res://assets/sprites/UI_base-background.png" id="3_0sk03"]
+[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="3_ail1e"]
 [ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="4_1g560"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
@@ -10,7 +11,6 @@ font = ExtResource("2_ail1e")
 font_size = 32
 
 [node name="Deck detail screen" type="ColorRect" node_paths=PackedStringArray("card_container", "operator_container", "number_container")]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -42,6 +42,13 @@ layout_mode = 2
 layout_mode = 2
 text = "Deck details"
 label_settings = SubResource("LabelSettings_gldp8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "(Does not account for tile transformations)"
+label_settings = ExtResource("3_ail1e")
 horizontal_alignment = 1
 vertical_alignment = 1
 
