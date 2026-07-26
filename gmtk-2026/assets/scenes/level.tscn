@@ -237,6 +237,7 @@ script = ExtResource("10_rhoc4")
 countdown_modification_label = NodePath("../../Countdown modification margin/Countdown modification")
 
 [node name="Countdown modification margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_top = 9
