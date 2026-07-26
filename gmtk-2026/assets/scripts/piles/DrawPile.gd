@@ -2,7 +2,7 @@ class_name DrawPile extends BasePile
 
 static var instance : DrawPile;
 
-@export var deck_details_screen : DeckDetails;
+@export var UI_parent : Control;
 
 func _ready() -> void:
 	if instance == null:
@@ -44,4 +44,5 @@ func refill_operator_tiles():
 	DiscardPile.instance.operator_tile_amounts.clear();
 
 func on_click():
-	deck_details_screen.open();
+	var deck_details = DeckDetails.create();
+	UI_parent.add_child(deck_details);
