@@ -12,13 +12,11 @@ func _ready() -> void:
 func on_mouse_enter():
 	if is_hover_blocked: return;
 	
-	z_index += 1;
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "scale", grow_factor * Vector2.ONE, Constants.SHORT_TRANSITION_DURATION);
 
 func on_mouse_exit():
 	if is_hover_blocked: return;
 	
-	z_index -= 1;
 	var tween = get_tree().create_tween();
 	tween.tween_property(self, "scale", Vector2.ONE, Constants.SHORT_TRANSITION_DURATION);
