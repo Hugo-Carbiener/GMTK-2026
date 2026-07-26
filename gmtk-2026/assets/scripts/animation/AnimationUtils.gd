@@ -80,3 +80,16 @@ func hshake(target : CanvasItem, amplitude: float, duration: float):
 	var tween = get_tree().create_tween();
 	tween.tween_property(target, "position:x", original_x, duration).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT);
 	await tween.finished;
+
+func camera_shake(camera : Camera2D, amplitude : float, duration : float, delay : float = 0.):
+	var original_offset = camera.offset;
+	var shake_direction = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0)).normalized() * amplitude;
+	camera.offset = original_offset + shake_direction;
+	var tween = get_tree().create_tween();
+	tween.tween_property(camera, "offset", original_offset, duration).set_delay(delay).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT);
+	await tween.finished;
+
+func wait(duration: float):
+	var tween = get_tree().create_tween();
+	tween.tween_interval(duration);
+	await tween.finished;

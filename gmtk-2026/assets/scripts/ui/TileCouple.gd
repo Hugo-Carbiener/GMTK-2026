@@ -27,11 +27,14 @@ func remove_number():
 
 func execute():
 	operator.consume();
-	await number.consume();
+	number.consume();
+	await Countdown.instance.display_modification(operator, number);
 	operator_slot_container.remove_child(operator);
 	number_slot_container.remove_child(number);
 	operator.scale = Vector2i.ONE;
 	number.scale = Vector2i.ONE;
+	await AnimationUtils.wait(Constants.DEFAULT_TRANSITION_DURATION);
+	Countdown.instance.consume_modification(operator, number);
 	var new_countdown_value = operator.execute(number, Countdown.instance.countdown);
 	await Countdown.instance.set_countdown_value(new_countdown_value);
 	SignalBus.on_tile_couple_executed.emit(operator, number);

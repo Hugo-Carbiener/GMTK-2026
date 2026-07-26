@@ -43,6 +43,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(-320, -180)
+transform = Transform2D(1, 0, 0, 1, -320, -180)
 follow_viewport_enabled = true
 
 [node name="Shop UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("tile_shop_number_tile_container", "tile_shop_operator_tile_container", "tile_bundle_operator_tile_container", "card_reward_container", "reroll_button", "reroll_price_tag", "next_level_button")]

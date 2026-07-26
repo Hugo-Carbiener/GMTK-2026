@@ -62,8 +62,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Count down" type="Node2D" parent="."]
-
 [node name="Alien" parent="." node_paths=PackedStringArray("Aliens") instance=ExtResource("2_1gm5j")]
 position = Vector2(145, 112.000015)
 Aliens = {
@@ -75,6 +73,8 @@ Aliens = {
 script = ExtResource("9_40vaa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+offset = Vector2(-320, -180)
+transform = Transform2D(1, 0, 0, 1, -320, -180)
 follow_viewport_enabled = true
 
 [node name="Ui" type="MarginContainer" parent="CanvasLayer"]
@@ -225,13 +225,25 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/margin_top = 16
 
-[node name="Countdown" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin"]
+[node name="Countdown" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin" node_paths=PackedStringArray("countdown_modification_label")]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_gldp8")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_rhoc4")
+countdown_modification_label = NodePath("../Countdown modification margin/Countdown modification")
+
+[node name="Countdown modification margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 150
+
+[node name="Countdown modification" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin/Countdown modification margin"]
+layout_mode = 2
+text = "/10"
+label_settings = ExtResource("8_53275")
 
 [node name="Card container" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer"]
 layout_mode = 2
