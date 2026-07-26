@@ -1,18 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://citjsv3psjfmy"]
+[gd_scene load_steps=12 format=3 uid="uid://citjsv3psjfmy"]
 
 [ext_resource type="Script" uid="uid://tcmt76tjhdwy" path="res://assets/scripts/ui/TitleScreen.gd" id="1_bxdlt"]
 [ext_resource type="Shader" uid="uid://bq5jw40v31txk" path="res://assets/shaders/background_shader.gdshader" id="1_gombr"]
 [ext_resource type="PackedScene" uid="uid://b37we3vq24yiv" path="res://assets/scenes/Alien/alien.tscn" id="1_k4pkt"]
+[ext_resource type="Texture2D" uid="uid://dte123glqnlqi" path="res://assets/sprites/UI_logo.png" id="3_blw75"]
 [ext_resource type="Texture2D" uid="uid://2k7ufovw10g7" path="res://assets/sprites/UI_sea-shell-silhouette.png" id="3_k4pkt"]
 [ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="4_q7gsk"]
 [ext_resource type="Texture2D" uid="uid://d13fvsagoolpj" path="res://assets/sprites/UI_base-background.png" id="5_ken44"]
 [ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="6_rqjmp"]
-[ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="7_bch4e"]
 [ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="7_blw75"]
 [ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="9_blw75"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ken44"]
-font = ExtResource("7_bch4e")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f5wkr"]
 shader = ExtResource("1_gombr")
@@ -43,8 +40,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 64
+theme_override_constants/margin_left = 124
+theme_override_constants/margin_top = 16
 script = ExtResource("1_bxdlt")
 start_game_button = NodePath("HBoxContainer/Title buttons/Button container/Start game button")
 quit_button = NodePath("HBoxContainer/Title buttons/Button container/Quit game button")
@@ -54,12 +51,11 @@ layout_mode = 2
 
 [node name="Title buttons" type="VBoxContainer" parent="CanvasLayer/Page padding/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="CanvasLayer/Page padding/HBoxContainer/Title buttons"]
+[node name="Logo" type="TextureRect" parent="CanvasLayer/Page padding/HBoxContainer/Title buttons"]
 layout_mode = 2
-text = "ABYSSAL EQUATIONS"
-label_settings = SubResource("LabelSettings_ken44")
+texture = ExtResource("3_blw75")
 
 [node name="Button container" type="VBoxContainer" parent="CanvasLayer/Page padding/HBoxContainer/Title buttons"]
 layout_mode = 2
@@ -108,9 +104,10 @@ vertical_alignment = 1
 [node name="Text margin" type="MarginContainer" parent="CanvasLayer/Page padding/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
 theme_override_constants/margin_top = 56
 theme_override_constants/margin_right = 126
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_bottom = 16
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer/Page padding/HBoxContainer/Text margin"]
 self_modulate = Color(0, 0, 0, 0.45882353)
