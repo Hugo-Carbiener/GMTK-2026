@@ -219,27 +219,29 @@ label_settings = ExtResource("8_53275")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Countdown margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Countdown margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 16
 
-[node name="Countdown" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin" node_paths=PackedStringArray("countdown_modification_label")]
+[node name="Countdown" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/HBoxContainer/Countdown margin" node_paths=PackedStringArray("countdown_modification_label")]
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_gldp8")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_rhoc4")
-countdown_modification_label = NodePath("../Countdown modification margin/Countdown modification")
+countdown_modification_label = NodePath("../../Countdown modification margin/Countdown modification")
 
-[node name="Countdown modification margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin"]
+[node name="Countdown modification margin" type="MarginContainer" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/margin_top = 9
-theme_override_constants/margin_right = 150
 
-[node name="Countdown modification" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/Countdown margin/Countdown modification margin"]
-visible = false
+[node name="Countdown modification" type="Label" parent="CanvasLayer/Ui/HBoxContainer/Middle margin/VBoxContainer/Countdown container/VBoxContainer/HBoxContainer/Countdown modification margin"]
 layout_mode = 2
 text = "/10"
 label_settings = ExtResource("8_53275")
