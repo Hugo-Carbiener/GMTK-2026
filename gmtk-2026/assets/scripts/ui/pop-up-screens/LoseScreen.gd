@@ -2,6 +2,10 @@ class_name LoseScreen extends PopUpScreen
 
 @export var title : Label;
 @export var stats_container : Control;
+@export var menu_button : BaseTextureButton;
+
+func _ready() -> void:
+	menu_button.button_up.connect(restart);
 
 func launch():
 	modulate.a = 0;
@@ -12,4 +16,7 @@ func launch():
 	var stats = StatsContainer.create_stats();
 	stats_container.add_child(stats);
 	stats.fade_in();
-	
+
+func restart():
+	pass;
+	# TODO go to titlescreen

@@ -1,45 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1eytjrnudo32"]
+[gd_scene load_steps=4 format=3 uid="uid://c1eytjrnudo32"]
 
 [ext_resource type="Script" uid="uid://cabwos8i2t07g" path="res://assets/scripts/ui/TileCouple.gd" id="1_a2vad"]
-[ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="1_a5qcp"]
+[ext_resource type="Texture2D" uid="uid://iwga24pw08np" path="res://assets/sprites/UI_operator-slot.png" id="2_a5qcp"]
+[ext_resource type="Texture2D" uid="uid://bxh5g04a4kl7u" path="res://assets/sprites/UI_number-slot.png" id="4_ph8cd"]
 
 [node name="Tile couple" type="HBoxContainer" node_paths=PackedStringArray("operator_slot_container", "number_slot_container")]
 offset_right = 44.0
 offset_bottom = 48.0
+theme_override_constants/separation = 0
 script = ExtResource("1_a2vad")
-operator_slot_container = NodePath("Operator slot container")
-number_slot_container = NodePath("Number slot container")
+operator_slot_container = NodePath("Operator slot container/Operator tile margin")
+number_slot_container = NodePath("Number slot container/Number tile margin")
 
 [node name="Operator slot container" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_top = 16
 
-[node name="Border margin" type="MarginContainer" parent="Operator slot container"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 2
-
-[node name="Border" type="TextureRect" parent="Operator slot container/Border margin"]
+[node name="Border" type="TextureRect" parent="Operator slot container"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_a5qcp")
+texture = ExtResource("2_a5qcp")
 stretch_mode = 2
+
+[node name="Operator tile margin" type="MarginContainer" parent="Operator slot container"]
+layout_mode = 2
+size_flags_vertical = 8
 
 [node name="Number slot container" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_bottom = 16
 
-[node name="Border margin" type="MarginContainer" parent="Number slot container"]
-layout_mode = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 2
-
-[node name="Border" type="TextureRect" parent="Number slot container/Border margin"]
+[node name="Border" type="TextureRect" parent="Number slot container"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("1_a5qcp")
+texture = ExtResource("4_ph8cd")
 stretch_mode = 2
+
+[node name="Number tile margin" type="MarginContainer" parent="Number slot container"]
+layout_mode = 2
+size_flags_vertical = 0

@@ -1,7 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://djbietfg5n1l1"]
+[gd_scene load_steps=16 format=3 uid="uid://djbietfg5n1l1"]
 
 [ext_resource type="Script" uid="uid://caaxuk4dtt411" path="res://assets/scripts/ui/shop/Shop.gd" id="1_6p2lh"]
+[ext_resource type="Shader" uid="uid://bq5jw40v31txk" path="res://assets/shaders/background_shader.gdshader" id="1_nxakl"]
 [ext_resource type="Texture2D" uid="uid://bkgbd2fuxpa2y" path="res://assets/sprites/UI_separator.png" id="6_2uom1"]
+[ext_resource type="LabelSettings" uid="uid://8ctotgrwvi1l" path="res://assets/fonts/popup-subtitle.tres" id="6_lf37j"]
+[ext_resource type="LabelSettings" uid="uid://cm58mtwkiidhb" path="res://assets/fonts/popup-title.tres" id="7_2thns"]
 [ext_resource type="PackedScene" uid="uid://bj2117f1rt8ba" path="res://assets/scenes/ui/large-texture-button.tscn" id="7_kam1a"]
 [ext_resource type="Texture2D" uid="uid://d13fvsagoolpj" path="res://assets/sprites/UI_base-background.png" id="7_nxakl"]
 [ext_resource type="Texture2D" uid="uid://ng3c8mfuf6gx" path="res://assets/sprites/UI_base-frame.png" id="8_6p2lh"]
@@ -10,7 +13,16 @@
 [ext_resource type="Texture2D" uid="uid://ckeakvfn4keay" path="res://assets/sprites/UI_sea-shell.png" id="10_d6ybq"]
 [ext_resource type="LabelSettings" uid="uid://lkuv7qo5ybos" path="res://assets/fonts/default-font.tres" id="13_ti5cm"]
 [ext_resource type="FontFile" uid="uid://dvrlh4qp1i8hx" path="res://assets/fonts/Dedicool.ttf" id="14_xvw66"]
-[ext_resource type="LabelSettings" uid="uid://dpgm8xre7qh46" path="res://assets/fonts/small-font.tres" id="18_co8v4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8b1w"]
+shader = ExtResource("1_nxakl")
+shader_parameter/target_resolution = Vector2(160, 90)
+shader_parameter/deep_color = Color(0.01127649, 0.050959475, 0.1630654, 1)
+shader_parameter/shallow_color = Color(0.030735528, 0.2947225, 0.40812042, 1)
+shader_parameter/foam_color = Color(0.14877924, 0.47476333, 0.50951403, 1)
+shader_parameter/speed = 0.50000002212006
+shader_parameter/scale = 8.0000003325
+shader_parameter/distortion = 0.8
 
 [sub_resource type="LabelSettings" id="LabelSettings_gldp8"]
 font = ExtResource("14_xvw66")
@@ -18,17 +30,20 @@ font_size = 48
 
 [node name="Shop" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
+[node name="Background layer" type="CanvasLayer" parent="."]
+layer = -100
 
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
+[node name="Background" type="ColorRect" parent="Background layer"]
+self_modulate = Color(0.22670749, 0.22670749, 0.22670746, 1)
+material = SubResource("ShaderMaterial_d8b1w")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-color = Color(0.71652323, 0.51166373, 0.4659539, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Shop UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("tile_shop_number_tile_container", "tile_shop_operator_tile_container", "tile_bundle_operator_tile_container", "card_reward_container", "reroll_button", "reroll_price_tag", "next_level_button")]
 anchors_preset = 15
@@ -36,10 +51,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 script = ExtResource("1_6p2lh")
 tile_shop_number_tile_container = NodePath("Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container/Number tile container")
 tile_shop_operator_tile_container = NodePath("Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container/Operator tile container")
@@ -87,7 +104,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop"]
-modulate = Color(0.4539553, 0.5293821, 0.37678492, 1)
+modulate = Color(0.5294118, 0.6392157, 0.79607844, 1)
 layout_mode = 2
 texture = ExtResource("7_nxakl")
 patch_margin_left = 6
@@ -118,14 +135,13 @@ vertical_alignment = 1
 [node name="Subtitle" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container"]
 layout_mode = 2
 text = "New tiles for a price"
-label_settings = ExtResource("18_co8v4")
+label_settings = ExtResource("6_lf37j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Tiles margin" type="MarginContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 16
 
 [node name="Tiles container" type="VBoxContainer" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin"]
 layout_mode = 2
@@ -136,7 +152,7 @@ alignment = 1
 [node name="Number title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
 layout_mode = 2
 text = "Numbers"
-label_settings = ExtResource("13_ti5cm")
+label_settings = ExtResource("7_2thns")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -153,7 +169,7 @@ texture = ExtResource("6_2uom1")
 [node name="Operators title" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile shop/Tile shop padding/Tile shop container/Tiles margin/Tiles container"]
 layout_mode = 2
 text = "Operators"
-label_settings = ExtResource("13_ti5cm")
+label_settings = ExtResource("7_2thns")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -168,7 +184,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles"]
-modulate = Color(0.6720501, 0.36165833, 0.68738973, 1)
+modulate = Color(0.44313726, 0.61960787, 0.6666667, 1)
 layout_mode = 2
 texture = ExtResource("7_nxakl")
 patch_margin_left = 6
@@ -197,7 +213,7 @@ vertical_alignment = 1
 [node name="Subtitle" type="Label" parent="CanvasLayer/Shop UI/Page container/Shop content container/Tile bundles/Tile bundles padding/Tile bundle container"]
 layout_mode = 2
 text = "Less effective, less expensive"
-label_settings = ExtResource("18_co8v4")
+label_settings = ExtResource("6_lf37j")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -220,7 +236,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Card reward container"]
-modulate = Color(0.37293574, 0.5310716, 0.57692516, 1)
+modulate = Color(0.22745098, 0.4745098, 0.4509804, 1)
 layout_mode = 2
 texture = ExtResource("7_nxakl")
 patch_margin_left = 6
@@ -263,6 +279,7 @@ theme_override_constants/separation = 32
 alignment = 1
 
 [node name="Reroll button" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container" instance=ExtResource("7_kam1a")]
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 1)
 layout_mode = 2
 
 [node name="Button text" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container/Reroll button/Text container" index="0"]
@@ -273,6 +290,7 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="Next level button" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container" instance=ExtResource("7_kam1a")]
+self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 1)
 layout_mode = 2
 
 [node name="Button text" parent="CanvasLayer/Shop UI/Page container/Shop content container/Card reward/Button container/Next level button/Text container" index="0"]
