@@ -5,6 +5,7 @@ class_name LoseScreen extends PopUpScreen
 @export var menu_button : BaseTextureButton;
 
 func _ready() -> void:
+	super();
 	menu_button.button_up.connect(restart);
 
 func launch():
@@ -18,5 +19,4 @@ func launch():
 	stats.fade_in();
 
 func restart():
-	pass;
-	# TODO go to titlescreen
+	SceneManager.menu();
