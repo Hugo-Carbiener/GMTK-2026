@@ -562,7 +562,6 @@ layout_mode = 2
 [node name="Menu button" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer" instance=ExtResource("27_jmfrp")]
 self_modulate = Color(0.15294118, 0.4627451, 0.47843137, 1)
 layout_mode = 2
-signal_on_button_pressed = "shop_clicked"
 
 [node name="Button text" parent="CanvasLayer/Lose screen/MarginContainer/VBoxContainer/Menu button/Text container" index="0"]
 text = "Menu"
